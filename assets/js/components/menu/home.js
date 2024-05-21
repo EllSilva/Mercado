@@ -20,7 +20,7 @@ export default {
 
     methods: {
         shop() { 
-            window.location.href = '/shop/#/'
+            window.location.href = '/Mercado/shop/#/'
           },
 
  
