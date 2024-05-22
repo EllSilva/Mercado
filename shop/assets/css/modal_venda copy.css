@@ -95,7 +95,7 @@
     background-color: #ffffff;
     top:0;
 }
-.header .menu .mobile-menu-head .go-back{
+.header .menu .mobile-menu-head .go_back{
     height: 50px;
     width: 50px;
     border-right: 1px solid rgba(0,0,0,0.1);
@@ -106,7 +106,7 @@
     font-size: 16px;
     display: none;
 }
-.header .menu .mobile-menu-head.active .go-back{
+.header .menu .mobile-menu-head.active .go_back{
     display: block;
 }
 .header .menu .mobile-menu-head .current-menu-title{

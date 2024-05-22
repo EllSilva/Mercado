@@ -1,18 +1,120 @@
+.menu_principal {
+  position: fixed;
+  width: 100%; 
+  z-index: 501;
+  transition: all 0.5s ease;
+
+}
+
+.menu_principal .mobile-menu-head {
+  display: flex;
+  height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 501;
+  position: sticky;
+  background-color: #ffffff;
+  top: 0;
+}
+.menu_principal .mobile-menu-head .go_back{
+  height: 50px;
+  width: 50px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  font-size: 16px;   
+}
+
+ 
+
+.menu_principal .mobile-menu-head .menux{
+  height: 50px;
+  width: 50px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  font-size: 16px;  
+}
+
+ 
+
+.menu_principal .mobile-menu-head .mobile-menu-close {
+  height: 50px;
+  width: 50px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  font-size: 25px;
+}
+
+
+
+.h6 {
+  font-size: 12px;
+}
+
+.small {
+  font-size: 9px;
+}
+
+.pd-t {
+  padding-top: 10%;
+}
+
+@media (max-width: 1200px) {
+  .pd-t {
+    padding-top: 15%;
+  }
+}
+
+@media (max-width: 900px) {
+  .pd-t {
+    padding-top: 20%;
+  }
+}
+
+@media (max-width: 650px) {
+  .pd-t {
+    padding-top: 32%;
+  }
+
+  .inputBox { 
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-t {
+    padding-top: 42%;
+  }
+  .inputBox { 
+    width: 280px !important;
+  }
+}
+
 .inputBoxContente {
   display: flex;
-justify-content: center;
-align-items: center;
-min-height: 15vh;
-flex-direction: column;
-gap: 30px;
-background-color: #2a68aa;
-
+  justify-content: center;
+  align-items: center;
+  min-height: 15vh;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #2a68aa;
 }
 
 .inputBox {
   position: relative;
-  width: 350px;
+  width: 400px;
 }
+
 .inputBox input {
   width: 100%;
   padding: 10px;
@@ -25,32 +127,30 @@ background-color: #2a68aa;
   transition: 0.5s;
 }
 
-.inputBox span{
+.inputBox span {
   position: absolute;
- left: 0;
- padding: 10px;
- pointer-events: none;
- font-size: 1em;
- color: #ffffff;
- text-transform: uppercase;
- transition: 0.5s;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: 0.5s;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span
-{  
- padding: 0 10px;
- transform: translateX(10px) translateY(-7px);
- font-size: 0.65em;
- color: #fff;  
- background: #1d2b3a; 
- border-left: 1px solid #d44ce6;
- border-right: 1px solid #d44ce6;
- letter-spacing: 0.2em;
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  padding: 0 10px;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  color: #fff;
+  background: #1d2b3a;
+  border-left: 1px solid #d44ce6;
+  border-right: 1px solid #d44ce6;
+  letter-spacing: 0.2em;
 }
 
 .inputBox input:valid,
-.inputBox input:focus
-{
+.inputBox input:focus {
   border: 1px solid #d44ce6;
-} 
+}
