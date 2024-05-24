@@ -531,6 +531,11 @@ mark,
   height:  100%;
 }
 
+.img-fluid2 {
+  max-width: 100%;
+  height:  auto;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #F5F5F5;
@@ -9597,6 +9602,15 @@ a.text-dark:hover, a.text-dark:focus {
   justify-content: center;
   background: rgba(61, 70, 77, 0.5);
   z-index: 1;
+}
+
+.cat-item2 {
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.cat-item2:hover {
+  
 }
 
 .cat-item {

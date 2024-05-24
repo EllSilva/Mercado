@@ -37,7 +37,12 @@ Vue.component('c-cliente', page_cliente)
 
 
 import page_home from './view/home/home.js'
-Vue.component('p-home', page_home)
+Vue.component('p-home', page_home) 
+import page_detalhes from './view/detalhes/home.js'
+Vue.component('p-detalhes', page_detalhes)
+import page_categoria from './view/categoria/home.js'
+Vue.component('p-categoria', page_categoria)
+
 
 import page_servicos_hospedagem from './view/servicos/hospedagem.js'
 Vue.component('p-servicos_hospedagem', page_servicos_hospedagem)
@@ -85,11 +90,8 @@ Vue.component('p-identidade', page_identidade)
 import page_servicos from './view/servicos/home.js'
 Vue.component('p-servicos', page_servicos)
 
-import page_sobre from './view/sobre/home.js'
-Vue.component('p-sobre', page_sobre)
 
-import page_galeria from './view/galeria/home.js'
-Vue.component('p-galeria', page_galeria)
+
 
 import page_contato from './view/contato/home.js'
 Vue.component('p-contato', page_contato)
@@ -101,6 +103,8 @@ Vue.use(Router)
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/loja', component: { template: '<c-loja></c-loja>' } },
+    { path: '/loja/detalhes', component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/loja/categoria', component: { template: '<p-categoria></p-categoria>' } },
 
 
     { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
@@ -121,8 +125,6 @@ const routes = [
      
     { path: '/criacao-visual', component: { template: '<p-identidade></p-identidade>' } },
      
-    { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
-    { path: '/galeria', component: { template: '<p-galeria></p-galeria>' } },
 
     { path: '/contato', component: { template: '<p-contato></p-contato>' } },
  

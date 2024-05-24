@@ -29,8 +29,12 @@ export default {
             this.isActive3 = !this.isActive3;
         },
 
+        mostrar() {
+            
+            window.href("#/loja/detalhes");
+        },
 
-
+        
 
 
 
