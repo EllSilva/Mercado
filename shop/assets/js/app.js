@@ -18,23 +18,8 @@ Vue.component('c-slider_principal', page_slider_principal)
 
 import page_loja from './components/jls/loja.js'
 Vue.component('c-loja', page_loja)
-
-import page_planos_site from './components/jls/planos/website.js'
-Vue.component('c-planos_site', page_planos_site)
-
-import page_planos_hosp from './components/jls/planos/hospedagem.js'
-Vue.component('c-planos_hosp', page_planos_hosp)
-
-import page_planos_email from './components/jls/planos/email.js'
-Vue.component('c-planos_email', page_planos_email)
-
-import page_planos_domin from './components/jls/planos/dominio.js'
-Vue.component('c-planos_domin', page_planos_domin)
-
-import page_cliente from './components/jls/cliente.js'
-Vue.component('c-cliente', page_cliente)
-
-
+ 
+ 
 
 import page_home from './view/home/home.js'
 Vue.component('p-home', page_home) 

@@ -13,10 +13,10 @@ export default {
     },
 
     async mounted() {
+
+     
       var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 6,
-        spaceBetween: 20,
-        sliderPerGroup: 6,
+        
         loop: true,
         centerSlide: "true",
         fade: "true",
@@ -33,7 +33,7 @@ export default {
       
         breakpoints: {
           0: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
           520: {
             slidesPerView: 2,
@@ -42,7 +42,7 @@ export default {
             slidesPerView: 3,
           },
           1000: {
-            slidesPerView: 6,
+            slidesPerView: 5,
           },
         },
       });
