@@ -1,6 +1,9 @@
- 
-
-
+  
+.btn-carinho {
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
 
  
 .h6 {
@@ -90,12 +93,12 @@
   font-size: 0.65em;
   color: #fff;
   background: #1d2b3a;
-  border-left: 1px solid #d44ce6;
-  border-right: 1px solid #d44ce6;
+  border-left: 1px solid #dc3545 ;
+  border-right: 1px solid #dc3545 ;
   letter-spacing: 0.2em;
 }
 
 .inputBox input:valid,
 .inputBox input:focus {
-  border: 1px solid #d44ce6;
+  border: 1px solid #dc3545 ;
 }

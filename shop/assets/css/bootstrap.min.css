@@ -3,7 +3,7 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */  
+ */
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -36,7 +36,7 @@
 *::after {
     box-sizing: border-box
 }
- 
+
 @media(prefers-reduced-motion: no-preference) {
     :root {
         scroll-behavior: smooth
@@ -681,7 +681,7 @@ progress {
     .container-md,
     .container-sm,
     .container {
-        max-width: 1140px
+        max-width: 1240px
     }
 }
 
@@ -693,7 +693,7 @@ progress {
     .container-md,
     .container-sm,
     .container {
-        max-width: 1320px
+        max-width: 1420px
     }
 }
 
@@ -4537,8 +4537,8 @@ fieldset:disabled .btn {
 .navbar-collapse {
     flex-basis: 100%;
     flex-grow: 1;
-    align-items: center; 
-    
+    align-items: center;
+
 }
 
 .navbar-toggler {
@@ -4709,9 +4709,7 @@ fieldset:disabled .btn {
         flex-basis: auto
     }
 
-    .navbar-expand-xl .navbar-toggler {
-     
-    }
+    .navbar-expand-xl .navbar-toggler {}
 }
 
 @media(min-width: 1400px) {
@@ -8249,6 +8247,10 @@ fieldset:disabled .btn {
 
 .fs-6 {
     font-size: 1rem !important
+}
+
+.fs-7 {
+    font-size: 0.75rem !important
 }
 
 .fst-italic {

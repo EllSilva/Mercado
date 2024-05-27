@@ -13,13 +13,13 @@ Vue.component('c-footer', page_footer)
 import page_form_contact from './components/form/home.js'
 Vue.component('c-form_contact', page_form_contact)
 
-import page_slider_principal from './components/jls/slider_principal.js'
-Vue.component('c-slider_principal', page_slider_principal)
+import page_carinho from './components/jls/carinho.js'
+Vue.component('c-carinho', page_carinho)
 
 import page_loja from './components/jls/loja.js'
 Vue.component('c-loja', page_loja)
  
- 
+  
 
 import page_home from './view/home/home.js'
 Vue.component('p-home', page_home) 

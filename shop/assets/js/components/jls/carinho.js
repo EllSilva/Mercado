@@ -1,4 +1,4 @@
-import get_template from '../../components/get_template.js'
+import get_template from '../get_template.js'
 
 export default {
   data: function () {
@@ -33,5 +33,5 @@ export default {
  
   },
 
-  template: await get_template('./assets/js/components/jls/cliente')
+  template: await get_template('./assets/js/components/jls/carinho')
 }

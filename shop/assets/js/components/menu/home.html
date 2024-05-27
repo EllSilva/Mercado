@@ -6,7 +6,7 @@
     
     -->
 
-    <!-- Spinner End -->
+    <!-- Spinner End proceed -->
 
     <!-- Navbar start -->
     <div class="container-fluid fixed-top " style="border: 1px solid #dee2e6;
@@ -57,10 +57,16 @@
 
                                             <li class="menu-item-has-children ">
 
-                                                <a class="h6 text-decoration-none text-truncate"
-                                                    @click="mostrar()">SUMOL ORANGE 330ML</a>
 
+                                                <button
+                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 btn-carinho"
+                                                    @click="mostrar()" type="button">Prosseguir com a compra</button>
+ 
+                                                <!-- Modal do carinho 1 -->
 
+                                                <c-carinho></c-carinho>
+
+                                                <!--fim Modal do carinho 1 -->
 
 
                                                 <div class="sub-menu mega-menu mega-menu-column-4 "
