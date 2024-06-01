@@ -1,98 +1,47 @@
-<div>
-
-    <!-- Topbar Start -->
-    <div class="container-fluid">
-        <div class="row bg-secondary py-1 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3" href="">Sobre</a>
-                    <a class="text-body mr-3" href="">Contacta-nos</a>
-                    <a class="text-body mr-3" href="">Help</a>
-                    <a class="text-body mr-3" href="">FAQs</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                 
-                    <div class="btn-group mx-2">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                            data-toggle="dropdown">Pagamento</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Cartão de crédito</button>
-                            <button class="dropdown-item" type="button">Transferência bancária</button>
-                            <button class="dropdown-item" type="button">Voucher online</button>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                            data-toggle="dropdown">EN</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">FR</button>
-                            <button class="dropdown-item" type="button">AR</button>
-                            <button class="dropdown-item" type="button">RU</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle"
-                            style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle"
-                            style="padding-bottom: 2px;">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
+<div class="menu_principal">
+    <!-- Spinner Start
+     <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
     </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <div class="container-fluid bg-dark">
-        <div class="row px-xl-5">
-        
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                        <span class="h1 text-uppercase text-dark bg-light px-2">eli</span>
-                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">lo</span>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a> 
-
-                            <a  @click="shop()" class="nav-item nav-link ">shop</a> 
-                           
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Compras <i
-                                        class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Supermercado</a>
-                                    <a href="checkout.html" class="dropdown-item">Eletrônica </a>
-                                    <a href="cart.html" class="dropdown-item">Eletrodoméstico</a>
-                                    <a href="checkout.html" class="dropdown-item">Papelaria</a>
-                                </div>
-                            </div>
-                            <a href="detail.html" class="nav-item nav-link">Novidades</a>
-                            <a href="contact.html" class="nav-item nav-link">Promoções</a>
-                        </div>
-                  
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- Navbar End -->
-
+    
+    -->
+  <!-- Navbar start -->
+  <div class="container-fluid fixed-top" style="background-color: rgb(29, 9, 66);">
  
+    <div class="container px-0" >
+        <nav class="navbar navbar-light  navbar-expand-xl" >
+            <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">elilo</h1></a>
+            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarCollapse" style="background-color: rgb(29, 9, 66);">
+                <div class="navbar-nav mx-auto"> 
+                    <div class="d-flex justify-content-between">
+                        <div class="top-info ps-2"> 
+                            <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
+                        </div>
+                        <div class="top-link pe-2">
+                            <a href="#" class="text-white"><small class="text-white mx-2">Política de Privacidade</small>/</a>
+                            <a href="#" class="text-white"><small class="text-white mx-2">Termos de Uso</small>/</a>
+                            <a href="#" class="text-white"><small class="text-white ms-2">Vendas e reembolsos</small></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex m-3 me-0">
+                     <a href="/shop/index.html#/" class="position-relative me-4 my-auto">
+                        <i class="fa fa-shopping-bag fa-2x"></i>
+                         
+                    </a>
+                    <a href="#" class="my-auto">
+                        <i class="fas fa-user fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
 
 </div>
 <!-- Navbar End -->

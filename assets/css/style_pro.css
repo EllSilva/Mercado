@@ -1,23 +1,74 @@
+  
+.btn-carinho {
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
+
+ 
+.h6 {
+  font-size: 12px;
+}
+
+.small {
+  font-size: 9px;
+}
+
+.pd-t {
+  padding-top: 7%;
+}
+ 
+
+@media (max-width: 1200px) {
+  .pd-t {
+    padding-top: 14%;
+  }
+}
+
+@media (max-width: 900px) {
+  .pd-t {
+    padding-top: 20%;
+  }
+}
+
+@media (max-width: 650px) {
+  .pd-t {
+    padding-top: 31%;
+  }
+
+  .inputBox { 
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-t {
+    padding-top: 26%;
+  }
+  .inputBox { 
+    width: 280px !important;
+  }
+}
+
 .inputBoxContente {
   display: flex;
-justify-content: center;
-align-items: center;
-min-height: 15vh;
-flex-direction: column;
-gap: 30px;
-background-color: #2a68aa;
-
+  justify-content: center;
+  align-items: center;
+  min-height: 14vh;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #2a68aa;
 }
 
 .inputBox {
   position: relative;
-  width: 350px;
+  width: 500px;
 }
+
 .inputBox input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #fff;
-  background: #2a68aa;
+  border: 1px solid #dc3545; 
   border-radius: 5px;
   outline: none;
   color: #fff;
@@ -25,32 +76,30 @@ background-color: #2a68aa;
   transition: 0.5s;
 }
 
-.inputBox span{
+.inputBox span {
   position: absolute;
- left: 0;
- padding: 10px;
- pointer-events: none;
- font-size: 1em;
- color: #ffffff;
- text-transform: uppercase;
- transition: 0.5s;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: 0.5s;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span
-{  
- padding: 0 10px;
- transform: translateX(10px) translateY(-7px);
- font-size: 0.65em;
- color: #fff;  
- background: #1d2b3a; 
- border-left: 1px solid #d44ce6;
- border-right: 1px solid #d44ce6;
- letter-spacing: 0.2em;
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  padding: 0 10px;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  color: #fff;
+  background: #1d2b3a;
+  border-left: 1px solid #dc3545 ;
+  border-right: 1px solid #dc3545 ;
+  letter-spacing: 0.2em;
 }
 
 .inputBox input:valid,
-.inputBox input:focus
-{
-  border: 1px solid #d44ce6;
-} 
+.inputBox input:focus {
+  border: 1px solid #dc3545 ;
+}

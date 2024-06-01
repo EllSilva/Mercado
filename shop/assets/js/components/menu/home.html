@@ -10,10 +10,10 @@
 
     <!-- Navbar start -->
     <div class="container-fluid fixed-top " style="border: 1px solid #dee2e6;
-    border-radius: 10px; box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25)">
+    border-radius: 10px; box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25); background-color: rgb(29, 9, 66);">
 
         <div class="container px-0 ">
-            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <nav class="navbar navbar-light  navbar-expand-xl">
                 <div class="d-flex m-3 me-0 ">
 
                     <button class="navbar-toggler  bg-white me-4" type="button" data-bs-toggle="collapse"
@@ -61,7 +61,7 @@
                                                 <button
                                                     class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 btn-carinho"
                                                     @click="mostrar()" type="button">Prosseguir com a compra</button>
- 
+
                                                 <!-- Modal do carinho 1 -->
 
                                                 <c-carinho></c-carinho>
@@ -105,20 +105,84 @@
 
 
     <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bg-white" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">elilo</h5>
                     <div class="modal-body d-flex align-items-center">
                         <div class="input-group w-75 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="Buscar Produto"
-                                aria-describedby="search-icon-1">
+                            <input type="search" class="form-control p-3" placeholder="Buscar Produto Nome ou E-mail"
+                                aria-describedby="search-icon-1" v-model="search">
                             <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+
+                <!-- Fruits Shop Start-->
+                <div class="fruite  ">
+                    <div class="container pt-5">
+                        <div class="tab-class text-center">
+
+                            <div class="tab-content">
+                                <div class="row ">
+
+                                    <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3"
+                                        v-for="(item, row) in filteredProduto" :key="item.Code">
+                                        <div class="rounded position-relative fruite-item"
+                                            style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
+                                            <div class="fruite-img">
+                                                <img :src="item.image" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                                style="top: 10px; left: 10px; font-size: 12px;">
+                                                {{ item.categoria }}</div>
+                                            <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
+                                                <p style="font-size: 12px; height: 30px;"> {{ item.name }}</p>
+                                                <p class="text-dark fs-6 fw-bold mb-0">$4.99 / kg</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+
+                                                    <a v-if="awesome" href="#"
+                                                        class="btn border border-secondary rounded-pill px-3 text-primary"
+                                                        @click="awesome = !awesome" style="width: 100%;"><i
+                                                            class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                        Adiciona</a>
+
+                                                    <div v-else
+                                                        class="input-group quantity border border-secondary rounded-pill">
+                                                        <div class="input-group-btn">
+                                                            <button
+                                                                class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                                                @click="item.qdd ? item.qdd-- : false">
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-center border-0"
+                                                            v-model="item.qdd">
+                                                        <div class="input-group-btn">
+                                                            <button
+                                                                class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                                                @click="item.qdd++">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fruits Shop End-->
+
 
             </div>
         </div>

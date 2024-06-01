@@ -88,7 +88,8 @@ Vue.use(Router)
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/loja', component: { template: '<c-loja></c-loja>' } },
-    { path: '/loja/detalhes', component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/detalhes/:id',  name:"novorota", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/categoria', component: { template: '<p-categoria></p-categoria>' } },
 
 
@@ -96,7 +97,7 @@ const routes = [
     { path: '/hospedagem', component: { template: '<p-servicos_hospedagem></p-servicos_hospedagem>' } },
    
   
-    { path: '/criacao-de-sites', component: { template: '<p-servicos_website></p-servicos_website>' } },
+    { path: '/criacao-de-sites',  component: { template: '<p-servicos_website></p-servicos_website>' } },
     { path: '/criacao-de-loja-virtual', component: { template: '<p-servicos_loja_virtual></p-servicos_loja_virtual>' } },
     { path: '/criacao-de-logotipo', component: { template: '<p-logotipo></p-logotipo>' } },
     { path: '/criacao-de-cartoes', component: { template: '<p-cartoes></p-cartoes>' } },
@@ -119,7 +120,11 @@ const router = new Router({ routes })
 
 new Vue({
     router,
-    data: {}
+    data: {},
+    async mounted() {
+ 
+    }
+
 }).$mount('#app')
 
 ;(async () => { })()
