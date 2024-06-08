@@ -3,10 +3,7 @@ import get_template from '../../components/get_template.js'
 export default {
     data: function () {
         return {
-
-
-
-
+ 
             fields: [
                 {
                   key: "name",
@@ -126,10 +123,10 @@ export default {
               ],
 
               qdd: 1,
-              awesome: true,
-
+              awesome: false,
+              qtddCart: "",
               
-            isActive1: false,
+            isActive1: true,
             isActive2: false,
             isActive3: false,
 
@@ -202,7 +199,7 @@ export default {
 
         homeMenu() {
             this.activo5 = false,
-                this.activo4 = false,
+               
                 this.activo3 = false,
                 this.activo2 = false,
                 this.activo1 = true,
@@ -211,7 +208,7 @@ export default {
 
         sobreMenu() {
             this.activo5 = false,
-                this.activo4 = false,
+               
                 this.activo3 = false,
                 this.activo2 = true,
                 this.activo1 = false
@@ -220,7 +217,7 @@ export default {
 
         servicoMenu() {
             this.activo5 = false,
-                this.activo4 = false,
+               
                 this.activo3 = true,
                 this.activo2 = false,
                 this.activo1 = false,
@@ -228,8 +225,7 @@ export default {
         },
 
         galeriaMenu() {
-            this.activo5 = false,
-                this.activo4 = true,
+            this.activo5 = false, 
                 this.activo3 = false,
                 this.activo2 = false,
                 this.activo1 = false,
@@ -238,7 +234,7 @@ export default {
 
         contactoMenu() {
             this.activo5 = true,
-                this.activo4 = false,
+               
                 this.activo3 = false,
                 this.activo2 = false,
                 this.activo1 = false,
@@ -251,7 +247,13 @@ export default {
 
     async mounted() {
 
- 
+      if(localStorage.getItem('carinho')){
+       var cats = JSON.parse(localStorage.getItem('carinho'));
+        console.log(cats.length)
+        this.qtddCart = cats.length
+       
+    }
+     
 
     },
     template: await get_template('./assets/js/components/menu/home')

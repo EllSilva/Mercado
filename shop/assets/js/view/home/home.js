@@ -6,6 +6,7 @@ export default {
 
   data: function () {
     return {
+      tarefa: "",
       title: "home",
 
       categoria: [
@@ -16,7 +17,7 @@ export default {
         },
         {
           "id": 2,
-          "name": "ARROZ & MASSA",
+          "name": "ARROZ E MASSA",
           "image": "./assets/img/categoria/arroz.png"
         },
         {
@@ -95,6 +96,12 @@ export default {
   },
 
   methods: {
+    visualizar(index) { 
+      this.tarefa = this.categoria[index].name;
+     
+      localStorage.setItem('catCodigo', this.tarefa); 
+      this.$router.push({ name: "categoria"}) 
+    },
 
   },
 

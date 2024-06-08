@@ -13,6 +13,8 @@ export default {
       title: "Contato",
       qdd: 3,
 
+      produtoId: "",
+
       productos: [
         {
           "id": 1,
@@ -116,7 +118,7 @@ export default {
       let productos = [];
       productos = this.productos.filter((item) => {
         return (
-          item.id == this.codigo
+          item.id == this.produtoId
         );
       })
 
@@ -124,7 +126,7 @@ export default {
         this.nome = productos[0].name,
         this.categoria = productos[0].categoria,
         this.preco = productos[0].price,
-        this.descricao = productos[0].description, 
+        this.descricao = productos[0].description,
         this.imagem = productos[0].image,
 
 
@@ -141,12 +143,14 @@ export default {
   },
 
   async mounted() {
- if (localStorage.codigo) {
+    if (localStorage.codigo) {
       this.codigo = localStorage.codigo;
     }
-    this.filteredProduto
+    this.produtoId = this.$route.params.id,
+      this.filteredProduto
 
-    
+    alert(this.produtoId)
+    console.log("aquiiii" + this.produtoId)
   },
   template: await get_template('./assets/js/view/detalhes/home')
 }

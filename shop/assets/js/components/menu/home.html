@@ -22,53 +22,44 @@
                     <a href="#" class="position-relative me-4 my-auto">
                         elilo
                     </a>
-
                     <div class="d-flex position-absolute" style=" right: 0px; ">
                         <div class=" inputBox collapse navbar-collapse  me-4">
                             <input type="search" class="form-control p-2" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                             <span>Buscar Produto</span>
                         </div>
-
                         <button
                             class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                             data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                 class="fas fa-search text-primary"></i></button>
 
+
                         <!-- Modal do carinho -->
                         <div class="header">
-
                             <div class="row v-center">
-
                                 <div class="header-item item-center ">
-
-                                    <nav class="menu" :class="{ active: isActive1 }">
-                                        <div class="mobile-menu-head">
-                                            <div class="go_back" @click="mostrar()" v-if="isActive3">
+                                    <nav class="menu menu_alt" :class="{ active: isActive1 }">
+                                        <div class="mobile-menu-head" style="background-color: aqua; height: 90px;">
+                                            <div class="go_back">
                                                 <i class="fa fa-angle-left"></i>
                                             </div>
-                                            <div class="current-menu-title"> oii</div>
                                             <a @click="isActive1 = !isActive1">
                                                 <div class="mobile-menu-close">&times;</div>
                                             </a>
                                         </div>
                                         <div class="menu-main ">
-
-
                                             <li class="menu-item-has-children ">
 
 
-                                                <button
-                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 btn-carinho"
-                                                    @click="mostrar()" type="button">Prosseguir com a compra</button>
-
-                                                <!-- Modal do carinho 1 -->
+                                                <!--  <button
+                                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 btn-carinho"
+                                                @click="mostrar()" type="button">Prosseguir com a compra</button>Modal do carinho 1 -->
 
                                                 <c-carinho></c-carinho>
 
                                                 <!--fim Modal do carinho 1 -->
 
-
+                                                <!--
                                                 <div class="sub-menu mega-menu mega-menu-column-4 "
                                                     :class="{ active: isActive2 }"
                                                     style="background-color: rgb(255, 255, 255);">
@@ -78,6 +69,7 @@
                                                     </div>
 
                                                 </div>
+                                            -->
                                             </li>
                                         </div>
                                     </nav>
@@ -91,7 +83,7 @@
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;"> {{ qtddCart }}</span>
                         </a>
                         <a href="#" class="my-auto">
                             <i class="fas fa-user fa-2x"></i>

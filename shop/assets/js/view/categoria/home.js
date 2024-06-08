@@ -1,5 +1,7 @@
 import get_template from '../../components/get_template.js'
 import Router from '../../vendor/vue-router.js'
+let cats = new Array();
+
 export default {
   data: function () {
     return {
@@ -18,7 +20,7 @@ export default {
           "id": 1,
           "qdd": 1,
           "name": "TANGERINA NACIONAL 600G DA HORTA",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 200,
           "image": "./assets/img/produtos/tangerina.png",
           "description": "TANGERINA NACIONAL 600G DA HORTA"
@@ -27,7 +29,7 @@ export default {
           "id": 2,
           "qdd": 1,
           "name": "PIMENTO AMARELO 500G DA HORTA",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 250,
           "image": "./assets/img/produtos/pimenta.png",
           "description": " PIMENTO AMARELO 500G DA HORTA"
@@ -35,8 +37,8 @@ export default {
         {
           "id": 3,
           "qdd": 1,
-          "name": " PERA IMPORTADA 1KG",
-          "categoria": "Fruta e Legumes",
+          "name": "PERA IMPORTADA 1KG",
+          "categoria": "Frutas & Legumes",
           "price": 4699,
           "image": "./assets/img/produtos/import.png",
           "description": "PERA IMPORTADA 1KG"
@@ -45,7 +47,7 @@ export default {
           "id": 4,
           "qdd": 1,
           "name": "LIMÃO NACIONAL 1KG DA HORTA",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 299,
           "image": "./assets/img/produtos/limao.png",
           "description": "LIMÃO NACIONAL 1KG DA HORTA"
@@ -54,7 +56,7 @@ export default {
           "id": 5,
           "qdd": 1,
           "name": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 300,
           "image": "./assets/img/produtos/uva.jpg",
           "description": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO"
@@ -63,7 +65,7 @@ export default {
           "id": 6,
           "qdd": 1,
           "name": "LARANJA NACIONAL 1,2KG DA HORTA",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 3699,
           "image": "./assets/img/produtos/laranja.png",
           "description": "LARANJA IMPORTADA 1KG"
@@ -72,7 +74,7 @@ export default {
           "id": 7,
           "qdd": 1,
           "name": " LARANJA IMPORTADA 1KG",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 5499,
           "image": "./assets/img/produtos/laranja_import2.png",
           "description": "LARANJA IMPORTADA 1KG"
@@ -81,7 +83,7 @@ export default {
           "id": 8,
           "qdd": 1,
           "name": "ALHO IMPORTADO 250G AVO PEDRO",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 200,
           "image": "./assets/img/produtos/alho.png",
           "description": "ALHO IMPORTADO 250G AVO PEDRO"
@@ -90,7 +92,7 @@ export default {
           "id": 9,
           "qdd": 1,
           "name": "BATATA 1KG GIRASSOL",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 2199,
           "image": "./assets/img/produtos/batata.jpg",
           "description": "BATATA 1KG GIRASSOL"
@@ -99,42 +101,110 @@ export default {
           "id": 10,
           "qdd": 1,
           "name": "BATATA DOCE 1KG GIRASSOL",
-          "categoria": "Fruta e Legumes",
+          "categoria": "Frutas & Legumes",
           "price": 2199,
           "image": "./assets/img/produtos/doce.png",
           "description": "BATATA DOCE 1KG GIRASSOL"
         }
-
 
       ]
     }
 
   },
 
+  computed: {
+    filteredCategoria() {
+      let productos = [];
+      productos = this.productos.filter((item) => {
+        return (
+          item.categoria.toLowerCase().indexOf(this.codigo.toLowerCase()) > -1
+        );
+      })
+
+      return productos;
+    },  
+  },
+
+
   methods: {
 
-    visualizar(index) {
-      this.task = this.productos[index].id;
-      this.editedTask = index;
-
-      localStorage.setItem('codigo', this.task); 
-      this.$router.push({ name: "detalhes"}) 
+    visualizar(id) {
+      //this.task = this.productos[id].id;
+      // this.editedTask = id; 
+      //  localStorage.setItem('codigo', this.task); 
+      this.$router.push({ name: "novorota", params: { id } })
     },
 
 
+
+    add(index) {
+      this.task = this.productos[index].id;
+      this.awesome = this.task
+
+    },
+
     // dados nao utilizado
 
-    addCat() {
+    addCat(index) { 
+     
+     cats = this.productos[index];
+      var nome = this.productos[index].name;
+      var qtdd = this.productos[index].qdd;
+      var nome = this.productos[index].name;
+      var qtdd = this.productos[index].qdd;
 
-      if (!this.newCat) {
+      alert(cats)
+      console.log("aquiii" +nome)
+      let totalQuantity = 0;
+
+      console.log(nome.length )
+      if(cats.length > 0){
+        
+      }
+      this.qdd = totalQuantity;
+
+ 
+      // O Array() é usado para criar Array de objetos
+      let carinho = new Array();
+
+      // Verifica se a propriedade no localStorage
+      if (localStorage.hasOwnProperty("carinho")) {
+        // Recuperar os valores da propriedade carinho do localStorage
+        // Converte de String para Object
+        carinho = JSON.parse(localStorage.getItem("carinho"));
+      }
+
+
+
+      // Adiciona um novo objeto no array criado
+      carinho.push(cats);
+
+      // Salva no localStorage
+      localStorage.setItem("carinho", JSON.stringify(carinho));
+
+  
+
+    },
+
+
+    addCatxx(index) {
+
+
+      this.task = this.productos[index].id;
+
+      console.log(this.task)
+
+      if (!this.task) {
         return;
       }
 
       this.productos.push(this.task);
-      this.task = '';
+
+
+      alert(this.productos.push(this.task))
       this.saveCats();
     },
-
+    
     removeCat(x) {
       this.productos.splice(x, 1);
       this.saveCats();
@@ -154,16 +224,7 @@ export default {
       this.cats.push(this.newCat);
       this.newCat = '';
       this.saveCats();
-    },
-
-
-
-    edit(index) {
-      localStorage.codigo = this.productos.id;
-      alert("oiiiiiiii 2222")
-
-    },
-
+    }, 
 
     qdd_p(id) {
       this.productos.id = id;
@@ -191,14 +252,17 @@ export default {
 
   async mounted() {
 
-    if (localStorage.getItem('gatoo')) {
-      try {
-        this.cats = JSON.parse(localStorage.getItem('gatoo'));
-      } catch (e) {
-        localStorage.removeItem('gatoo');
-      }
-    }
+    if(localStorage.getItem('carinho')){
+      cats = JSON.parse(localStorage.getItem('carinho'));
+      console.log(cats.length)
+      this.addCat();
+  }
+   
 
+    if (localStorage.catCodigo) { 
+      this.codigo = localStorage.catCodigo;
+    }
+    this.filteredCategoria
 
     var swiper = new Swiper(".mySwiper", {
 
