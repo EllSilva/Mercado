@@ -3,6 +3,8 @@ import get_template from '../../components/get_template.js'
 export default {
   data: function () {
     return {
+      qtddCart: 0,
+
       nome: "",
       categoria: "",
       imagem: "",
@@ -148,6 +150,13 @@ export default {
     }
     this.produtoId = this.$route.params.id,
       this.filteredProduto
+
+      if(localStorage.getItem('carinho')){
+       var cats = JSON.parse(localStorage.getItem('carinho'));
+        console.log(cats.length)
+       // this.addCat();
+        this.qtddCart = cats.length
+    }
 
     alert(this.produtoId)
     console.log("aquiiii" + this.produtoId)

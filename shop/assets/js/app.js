@@ -12,14 +12,15 @@ Vue.component('c-footer', page_footer)
 
 import page_form_contact from './components/form/home.js'
 Vue.component('c-form_contact', page_form_contact)
+ 
 
-import page_carinho from './components/jls/carinho.js'
-Vue.component('c-carinho', page_carinho)
+
+
 
 import page_loja from './components/jls/loja.js'
 Vue.component('c-loja', page_loja)
  
-  
+
 
 import page_home from './view/home/home.js'
 Vue.component('p-home', page_home) 
@@ -52,9 +53,9 @@ const routes = [
     { path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/detalhes/:id',  name:"novorota", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/categoria', name:"categoria", component: { template: '<p-categoria></p-categoria>' } },
-
-
     { path: '/loja/checkout', component: { template: '<p-checkout></p-checkout>' } },
+ 
+
     { path: '/hospedagem', component: { template: '<p-checkout_hospedagem></p-checkout_hospedagem>' } },
     { path: '/criacao-de-sites',  component: { template: '<p-checkout_website></p-checkout_website>' } }, 
    

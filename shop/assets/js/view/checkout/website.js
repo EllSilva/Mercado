@@ -20,6 +20,6 @@ export default {
 
            
     },
-    template: await get_template('./assets/js/view/servicos/website')
+    template: await get_template('./assets/js/view/checkout/website')
 }
  

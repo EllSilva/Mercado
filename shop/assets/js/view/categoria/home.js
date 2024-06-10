@@ -5,6 +5,7 @@ let cats = new Array();
 export default {
   data: function () {
     return {
+      qtddCart: 0,
       cats: [],
       newCat: null,
 
@@ -127,16 +128,14 @@ export default {
 
 
   methods: {
-
+      
     visualizar(id) {
       //this.task = this.productos[id].id;
       // this.editedTask = id; 
       //  localStorage.setItem('codigo', this.task); 
       this.$router.push({ name: "novorota", params: { id } })
     },
-
-
-
+ 
     add(index) {
       this.task = this.productos[index].id;
       this.awesome = this.task
@@ -150,8 +149,11 @@ export default {
      cats = this.productos[index];
       var nome = this.productos[index].name;
       var qtdd = this.productos[index].qdd;
-      var nome = this.productos[index].name;
-      var qtdd = this.productos[index].qdd;
+      var preco = this.productos[index].price;
+      var categoria = this.productos[index].categoria;
+      var image = this.productos[index].image;
+      var descricao = this.productos[index].description;
+      var totalPreco = qtdd * preco;
 
       alert(cats)
       console.log("aquiii" +nome)
@@ -177,33 +179,31 @@ export default {
 
 
       // Adiciona um novo objeto no array criado
-      carinho.push(cats);
+      //carinho.push(cats);
+      carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
 
       // Salva no localStorage
       localStorage.setItem("carinho", JSON.stringify(carinho));
 
-  
+      cats = JSON.parse(localStorage.getItem('carinho')); 
+     // this.addCat();
+      this.qtddCart = cats.length
 
     },
 
 
-    addCatxx(index) {
-
-
-      this.task = this.productos[index].id;
-
-      console.log(this.task)
-
-      if (!this.task) {
-        return;
-      }
-
-      this.productos.push(this.task);
-
-
-      alert(this.productos.push(this.task))
-      this.saveCats();
+    qdd_p(id) {
+      this.productos.id = id;
+      this.qdd++
+      window.location.href = "/";
     },
+
+    qdd_n(id) {
+      this.productos.id = id;
+      this.qdd++
+      alert()
+    },
+ 
     
     removeCat(x) {
       this.productos.splice(x, 1);
@@ -223,20 +223,10 @@ export default {
 
       this.cats.push(this.newCat);
       this.newCat = '';
-      this.saveCats();
+     // this.saveCats();
     }, 
 
-    qdd_p(id) {
-      this.productos.id = id;
-      this.qdd++
-      window.location.href = "/";
-    },
 
-    qdd_n(id) {
-      this.productos.id = id;
-      this.qdd++
-      alert()
-    },
 
     adicionar(variavel, quantidade) {
       variavel += quantidade;
@@ -255,9 +245,11 @@ export default {
     if(localStorage.getItem('carinho')){
       cats = JSON.parse(localStorage.getItem('carinho'));
       console.log(cats.length)
-      this.addCat();
+     // this.addCat();
+      this.qtddCart = cats.length
   }
    
+ 
 
     if (localStorage.catCodigo) { 
       this.codigo = localStorage.catCodigo;

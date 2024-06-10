@@ -7,7 +7,7 @@ export default {
   data: function () {
     return {
       tarefa: "",
-      title: "home",
+      qtddCart: 0,
 
       categoria: [
         {
@@ -106,6 +106,12 @@ export default {
   },
 
   async mounted() {
+
+    if(localStorage.getItem('carinho')){
+     var cats = JSON.parse(localStorage.getItem('carinho')); 
+      this.qtddCart = cats.length
+  }
+
 
     var swiper = new Swiper(".slider_flayer", {
       effect: "coverflow",
