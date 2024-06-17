@@ -1,4 +1,5 @@
 import get_template from '../../components/get_template.js'
+let cats = new Array();
 
 export default {
   data: function () {
@@ -13,7 +14,7 @@ export default {
       codigo: '',
 
       title: "Contato",
-      qdd: 3,
+      qdd: 1,
 
       produtoId: "",
 
@@ -112,7 +113,6 @@ export default {
 
       ]
     }
-
   },
 
   computed: {
@@ -138,10 +138,52 @@ export default {
   },
 
   methods: {
-    persist() {
-      localStorage.codigo = this.codigo;
-
-    }
+ 
+     addCat() { 
+      cats = this.productos[this.produtoId];
+       var nome = this.nome;
+       var qtdd = this.qdd;
+       var preco = this.preco;
+       var categoria = this.categoria;
+       var image = this.imagem;
+       var descricao = this.descricao;
+       var totalPreco = qtdd * preco;
+ 
+       alert(cats)
+       console.log("aquiii" +nome)
+       let totalQuantity = 0;
+ 
+       console.log(nome.length )
+       if(cats.length > 0){
+         
+       }
+       this.qdd = totalQuantity;
+ 
+       // O Array() é usado para criar Array de objetos
+       let carinho = new Array();
+ 
+       // Verifica se a propriedade no localStorage
+       if (localStorage.hasOwnProperty("carinho")) {
+         // Recuperar os valores da propriedade carinho do localStorage
+         // Converte de String para Object
+         carinho = JSON.parse(localStorage.getItem("carinho"));
+       }
+ 
+ 
+ 
+       // Adiciona um novo objeto no array criado
+       //carinho.push(cats);
+       carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
+ 
+       // Salva no localStorage
+       localStorage.setItem("carinho", JSON.stringify(carinho));
+ 
+       cats = JSON.parse(localStorage.getItem('carinho')); 
+      // this.addCat();
+       this.qtddCart = cats.length
+ 
+     },
+  
   },
 
   async mounted() {
@@ -158,8 +200,8 @@ export default {
         this.qtddCart = cats.length
     }
 
-    alert(this.produtoId)
-    console.log("aquiiii" + this.produtoId)
+    alert(this.produtoId) 
   },
+
   template: await get_template('./assets/js/view/detalhes/home')
 }

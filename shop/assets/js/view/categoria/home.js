@@ -16,6 +16,33 @@ export default {
       qdd: 1,
       awesome: true,
 
+
+      totalCat: 0,
+      carinhoLista: [],
+
+      itens: [
+        {
+          "name": 'Apples',
+          "desc": 'Apples are a type of fruit that grow on trees.'
+        },
+        {
+          "name": 'Pizza',
+          "desc": 'Pizza has a bread base with tomato sauce, cheese, and toppings on top.'
+        },
+        {
+          "name": 'Rice',
+          "desc": 'Rice is a type of grain that people like to eat.'
+        },
+        {
+          "name": 'Fish',
+          "desc": 'Fish is an animal that lives in water.'
+        },
+        {
+          "name": 'Cake',
+          "desc": 'Cake is something sweet that tastes good.'
+        }
+      ],
+
       productos: [
         {
           "id": 1,
@@ -123,30 +150,28 @@ export default {
       })
 
       return productos;
-    },  
+    },
   },
 
 
   methods: {
-      
+
     visualizar(id) {
       //this.task = this.productos[id].id;
       // this.editedTask = id; 
       //  localStorage.setItem('codigo', this.task); 
       this.$router.push({ name: "novorota", params: { id } })
     },
- 
+
     add(index) {
       this.task = this.productos[index].id;
       this.awesome = this.task
 
     },
 
-    // dados nao utilizado
+    addCat(index) {
 
-    addCat(index) { 
-     
-     cats = this.productos[index];
+      cats = this.productos[index];
       var nome = this.productos[index].name;
       var qtdd = this.productos[index].qdd;
       var preco = this.productos[index].price;
@@ -155,42 +180,65 @@ export default {
       var descricao = this.productos[index].description;
       var totalPreco = qtdd * preco;
 
-      alert(cats)
-      console.log("aquiii" +nome)
-      let totalQuantity = 0;
 
-      console.log(nome.length )
-      if(cats.length > 0){
-        
+      //  if (cats.length == 0) {
+
+      let totalQuantity = 0;
+      if (cats.length == 0) {
       }
       this.qdd = totalQuantity;
 
- 
       // O Array() é usado para criar Array de objetos
       let carinho = new Array();
 
       // Verifica se a propriedade no localStorage
       if (localStorage.hasOwnProperty("carinho")) {
         // Recuperar os valores da propriedade carinho do localStorage
-        // Converte de String para Object
+        // Converte de String para Object 
         carinho = JSON.parse(localStorage.getItem("carinho"));
       }
-
-
-
       // Adiciona um novo objeto no array criado
       //carinho.push(cats);
       carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
 
       // Salva no localStorage
       localStorage.setItem("carinho", JSON.stringify(carinho));
+      iziToast.success({
+        title: 'OK',
+        position: 'bottomCenter',
+        message: 'Compra realizado com sucesso !',
+      });
+     
 
-      cats = JSON.parse(localStorage.getItem('carinho')); 
-     // this.addCat();
-      this.qtddCart = cats.length
+      this.carinhos()
+      //  }
+
+    },
+     
+    somaCats() {
+      var soma = 0;
+      for (var i = 0; i < this.carinho.length; i++) {
+        soma += this.carinho[i].totalPreco;
+        this.totalCat = soma
+      }
 
     },
 
+    carinhos() {
+    
+      if (localStorage.getItem('carinho')) {
+        cats = JSON.parse(localStorage.getItem('carinho')) || [];
+
+        this.carinhoLista = cats
+
+
+      //  this.somaCats(); 
+        this.qtddCart = cats.length
+      
+      } else {
+        this.carinhoLista = "carinho vazio"
+      }
+    },
 
     qdd_p(id) {
       this.productos.id = id;
@@ -204,11 +252,6 @@ export default {
       alert()
     },
  
-    
-    removeCat(x) {
-      this.productos.splice(x, 1);
-      this.saveCats();
-    },
 
     saveCats() {
       const parsed = JSON.stringify(this.task);
@@ -223,35 +266,35 @@ export default {
 
       this.cats.push(this.newCat);
       this.newCat = '';
-     // this.saveCats();
-    }, 
-
-
-
-    adicionar(variavel, quantidade) {
-      variavel += quantidade;
-      alert(variavel += quantidade)
+      // this.saveCats();
     },
 
-    remover(variavel, quantidade) {
-      variavel -= quantidade;
-    }
+    removeCat(index) {
 
-
+     
+      
+    },
+  
   },
 
   async mounted() {
+    this.carinhos()
 
-    if(localStorage.getItem('carinho')){
-      cats = JSON.parse(localStorage.getItem('carinho'));
-      console.log(cats.length)
-     // this.addCat();
-      this.qtddCart = cats.length
-  }
-   
+    this.carinhoLista.splice(index, 1);
+    localStorage.removeItem(index);
+    localStorage.setItem("carinho", JSON.stringify(this.carinhoLista));
+    this.somaCats();
  
+    if (localStorage.getItem('carinho')) {
+      cats = JSON.parse(localStorage.getItem('carinho')) || [];
+      console.log(cats.length)
+      // this.addCat();
+      this.qtddCart = cats.length
+    }
 
-    if (localStorage.catCodigo) { 
+
+
+    if (localStorage.catCodigo) {
       this.codigo = localStorage.catCodigo;
     }
     this.filteredCategoria

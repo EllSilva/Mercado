@@ -1,4 +1,13 @@
  /*responsive*/
+ .checkout { 
+     background-color: #f7f7f7;
+     border-radius: 15% 15% 15% 15%;
+  
+     right: 0%;
+     color: #000000; 
+     margin-right: 30%;
+ }
+
 
  .header .item-center {
      order: 3;
@@ -21,7 +30,7 @@
  .header .menu {
      position: fixed;
      background-color: #f7f7f7;
-     border-radius: 50%  0 0 0;
+     border-radius: 50% 0 0 0;
      left: 100%;
      top: 0;
      height: 100%;
@@ -33,15 +42,15 @@
  }
 
  .header .menu_alt {
-    width: 40%;
-}
+     width: 35%;
+ }
 
  .menu_alt2 {
-    width: 100%;
-    z-index: 2099;
-    position: absolute;
-}
- 
+     width: 100%;
+     z-index: 2099;
+     position: absolute;
+ }
+
  .header .menu.active {
      transform: translate(0%);
  }
@@ -219,10 +228,10 @@
 
      .header .menu {
          width: 100%;
-         border-radius: 40%  0 0 0;
+         border-radius: 40% 0 0 0;
      }
  }
- 
+
  @media (max-width: 992px) {
 
      .hero-header,

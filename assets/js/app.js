@@ -23,8 +23,8 @@ Vue.component('c-loja', page_loja)
 
 import page_home from './view/home/home.js'
 Vue.component('p-home', page_home) 
-import page_detalhes from './view/detalhes/home.js'
-Vue.component('p-detalhes', page_detalhes)
+import page_privacidade from './view/privacidade/home.js'
+Vue.component('p-privacidade', page_privacidade)
 import page_categoria from './view/categoria/home.js'
 Vue.component('p-categoria', page_categoria)
 
@@ -88,7 +88,7 @@ Vue.use(Router)
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/loja', component: { template: '<c-loja></c-loja>' } },
-    { path: '/loja/detalhes', component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/politica-privacidade', component: { template: '<p-privacidade></p-privacidade>' } },
     { path: '/loja/categoria', component: { template: '<p-categoria></p-categoria>' } },
 
 

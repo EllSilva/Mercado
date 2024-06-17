@@ -3,8 +3,13 @@ import get_template from '../../components/get_template.js'
 let cats = new Array();
 export default {
   props: {
-    qtddCart: String
+    qtddCart: String,
+
+    carinhoLista: {
+      type: Array,
+    },
   },
+
 
   data: function () {
     return {
@@ -176,48 +181,51 @@ export default {
 
     removeCat(index) {
 
-      this.carinho.splice(index, 1);
+      this.carinhoLista.splice(index, 1);
       localStorage.removeItem(index);
-      localStorage.setItem("carinho", JSON.stringify(this.carinho));
-      alert("Remover" + this.carinho.nome)
+      localStorage.setItem("carinho", JSON.stringify(this.carinhoLista));
+        
+
 
       this.somaCats();
+
+      this.carinhoLista
       this.carinhos();
-
-
+     
     },
 
     somaCats() {
-      var soma = 0;
-      for (var i = 0; i < this.carinho.length; i++) {
-        soma += this.carinho[i].totalPreco; 
-        this.totalCat = soma 
-      }
-
-    },
-
-    carinhos() {
-
       if (localStorage.getItem('carinho')) {
         cats = JSON.parse(localStorage.getItem('carinho')) || [];
 
-        this.carinho = cats
+        var soma = 0;
+        for (var i = 0; i < cats.length; i++) {
+          soma += cats[i].totalPreco;
+          this.totalCat = soma
 
-        console.log(this.carinho[0].preco)
-
-        this.somaCats();
-
-        this.qtddCart = cats.length
-
-        console.log(cats.length)
-
+        }
+          
       }
     },
 
+    carinhos() {
+    
+      if (localStorage.getItem('carinho')) {
+        cats = JSON.parse(localStorage.getItem('carinho')) || [];
+
+        this.carinhoLista = cats
 
 
+      //  this.somaCats(); 
+        this.qtddCart = cats.length
 
-
+        alert("Remover")
+        alert( this.qtddCart);
+      
+      } else {
+        this.carinhoLista = "carinho vazio"
+      }
+    },
 
     mostrar() {
       this.isActive2 = !this.isActive2;
@@ -228,77 +236,12 @@ export default {
       this.activo = !this.activo;
     },
 
-    mostrarSite() {
-      this.activoSite = !this.activoSite;
-    },
-
-    mostrarDesign() {
-      this.activoDesign = !this.activoDesign;
-    },
-
-    mostrarMarketig() {
-      this.activoMarketig = !this.activoMarketig;
-    },
-
-    mostrarOutros() {
-      this.activoOutros = !this.activoOutros;
-    },
-
-    fechaTodosMenu() {
-      this.activo = !this.activo;
-      this.activoService = !this.activoService;
-    },
-
-    homeMenu() {
-      this.activo5 = false,
-
-        this.activo3 = false,
-        this.activo2 = false,
-        this.activo1 = true,
-        this.activo = !this.activo;
-    },
-
-    sobreMenu() {
-      this.activo5 = false,
-
-        this.activo3 = false,
-        this.activo2 = true,
-        this.activo1 = false
-      this.activo = !this.activo;
-    },
-
-    servicoMenu() {
-      this.activo5 = false,
-
-        this.activo3 = true,
-        this.activo2 = false,
-        this.activo1 = false,
-        this.activo = !this.activo;
-    },
-
-    galeriaMenu() {
-      this.activo5 = false,
-        this.activo3 = false,
-        this.activo2 = false,
-        this.activo1 = false,
-        this.activo = !this.activo;
-    },
-
-    contactoMenu() {
-      this.activo5 = true,
-
-        this.activo3 = false,
-        this.activo2 = false,
-        this.activo1 = false,
-        this.activo = !this.activo;
-    },
-
-
-
   },
 
   async mounted() {
-    this.carinhos()
+    this.carinhos();
+    this.somaCats();
+
   },
   template: await get_template('./assets/js/components/menu/home')
 }
