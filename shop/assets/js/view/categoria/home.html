@@ -1,12 +1,12 @@
 <div class="pd-t">
-  
-  <c-menu :qtddCart="qtddCart" :carinhoLista="carinhoLista" ></c-menu>
 
- 
+  <c-menu :qtddCart="qtddCart" :carinhoLista="carinhoLista"></c-menu>
+
+
 
 
   <div class="pd-xl">
- 
+
     <div style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); z-index: 2000;">
       <div class="swiper mySwiper cat-item2">
         <div class="swiper-wrapper pl-4 px-4">
@@ -131,66 +131,70 @@
         </div>
       </div>
 
-    </div> 
+    </div>
     <!-- Fruits Shop Start-->
     <div class="fruite  ">
       <div class="container ">
-        <div class="tab-class text-center">
-          <div class="tab-content">
-            <div class="row ">
+        <div class="tab-class">
+          <div class="tab-content" v-for="produto in filteredCategoria">
+  
+                <h1 class="mb-4">{{ produto.nome }}</h1>
+            
+                <div class="row  text-center">
 
-              <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3" v-for="(cat, index) in filteredCategoria"
-                :key="cat.id">
-                <div class="rounded position-relative fruite-item"
-                  style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
-                  <a @click="visualizar(cat.id)">
-                    <div class="fruite-img">
-                      <img :src="cat.image" class="img-fluid w-100 rounded-top" alt="">
-                    </div>
-                  </a>
-                  <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                    style="top: 5px; left: 5px; font-size: 12px;">
-                    {{ cat.categoria }}</div>
-                  <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
-                    <p style="font-size: 12px; height: 20px;"> {{ cat.name }}</p>
-                    <p class="text-dark fs-6 fw-bold mb-0">{{ cat.price }} AOA </p>
-                    <div class="d-flex justify-content-between flex-lg-wrap">
+                  <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3" v-for="(cat, index)  in produto.produtos"
+                    :key="cat.id">
+                    <div class="rounded position-relative fruite-item"
+                      style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
+                      <a @click="visualizar(cat.id)">
+                        <div class="fruite-img">
+                          <img :src="img+cat.img" class="img-fluid w-100 rounded-top" alt="">
+                        </div>
+                      </a>
+                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                        style="top: 5px; left: 5px; font-size: 12px;">
+                        {{ cat.categoria }}</div>
+                      <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
+                        <p style="font-size: 12px; height: 20px;"> {{ cat.nome }}</p>
+                        <p class="text-dark fs-6 fw-bold mb-0">{{ cat.preco }} AOA </p>
+                        <div class="d-flex justify-content-between flex-lg-wrap">
 
-                      <div class="row ">
-                        <div class="col-md-6 col-lg-6 col-xl-2 col-2 px-2">
+                          <div class="row ">
+                            <div class="col-md-6 col-lg-6 col-xl-2 col-2 px-2">
 
-                          <div class="btn-group-vertical">
-                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" @click="cat.qdd++">
-                              <i class="fa fa-plus"></i>
-                            </button>
-                            <button class="btn btn-sm btn-minus rounded-circle bg-light border"
-                              @click="cat.qdd ? cat.qdd-- : false" >
-                              <i class="fa fa-minus"></i>
-                            </button>
+                              <div class="btn-group-vertical">
+                                <button class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                  @click="cat.quantidade++">
+                                  <i class="fa fa-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                  @click="cat.quantidade ? cat.quantidade-- : false">
+                                  <i class="fa fa-minus"></i>
+                                </button>
+                              </div>
+
+                            </div>
+                            <div class="col-md-6 col-lg-2 col-xl-10 col-10">
+                              <input type="text" class="form-control text-center border-0" style="height: 21px;"
+                                v-model="cat.quantidade">
+                              <a class="btn border border-secondary rounded-pill px-3 text-primary"
+                                @click="addCat(index)" style="width: 100%;"><i
+                                  class="fa fa-shopping-bag me-2 text-primary"></i> ADD</a>
+                            </div>
+
+
                           </div>
-
                         </div>
-                        <div class="col-md-6 col-lg-2 col-xl-10 col-10">
-                          <input type="text" class="form-control text-center border-0" style="height: 21px;"
-                            v-model="cat.qdd">
-                          <a class="btn border border-secondary rounded-pill px-3 text-primary" @click="addCat(index)"
-                            style="width: 100%;"><i class="fa fa-shopping-bag me-2 text-primary"></i> ADD</a>
-                        </div>
-                     
-
                       </div>
                     </div>
+
+
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           </div>
+          <!-- Fruits Shop End-->
+
         </div>
       </div>
-      <!-- Fruits Shop End-->
-
-    </div>
-  </div>

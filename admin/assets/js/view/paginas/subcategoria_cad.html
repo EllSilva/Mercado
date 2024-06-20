@@ -1,0 +1,99 @@
+<div id="content">
+  <!-- dashboard inner -->
+  <div class="midde_cont">
+    <div class="container-fluid">
+
+
+      <div class="row column_title">
+        <div class="col-md-12">
+          <div class="page_title">
+            <h2>Cadastro</h2>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row column3">
+        <!-- progress bar -->
+        <div class="col-md-12">
+          <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+              <div class="heading1 margin_0">
+                <h2>Cadastro Categoria </h2>
+              </div>
+            </div>
+            <div class="full progress_bar_inner">
+              <div class="login_form">
+                <form enctype="multipart/form-data" action="javascript:void(0)"
+                  @submit.prevent="sendFile">
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-md-6 col-12 margin_bottom_30">
+                        <div class="field">
+                          <label class="label_field">Nome</label>
+                          <input type="text" name="categoria" placeholder="Nome Categoria" v-model="nome" />
+                        </div>
+
+                        <div class="field">
+                          <label class="label_field">Categoria</label> 
+
+                        <select class="form-select imput" v-model="ref"  @change="escolher(event.target.value)">
+                          <option disabled value="" >Selecione</option>
+                          <option v-for="(option, index) in todos_categoria" :value="option.nome">
+                              {{ option.nome }}   
+                            </option>
+                      </select> 
+                        </div>
+
+                       
+ 
+                         <!--
+                        <select class="form-select imput" v-model="selet_estado" @change="escolher(event.target.value)">
+                          <option disabled value="" >Selecione</option>
+                          <option v-for="(option, index) in todos_categoria" :value="option.id">
+                              {{ option.nome }}   
+                            </option>
+                      </select> 
+                        -->
+                      </div>
+
+                      <div class="col-md-6 col-12 margin_bottom_30">
+                        <div class="field">
+                          <label class="label_field">Imagem</label>
+                          <input placeholder="imagem" name="imagem" class="form-control" type="file" id="formFile"
+                            ref="img" id="upload-button" v-on:change="updatePreview">
+                          <figure class="image-container">
+                            <img class="image-img" :src="imagemVer" accept="image/*" style="float:right;width:42px;height:42px;">
+                          </figure>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 col-12">
+                        <div class="field margin_10">
+                          <button class="main_bt">Salvar Novo</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </fieldset>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end progress bar -->
+      </div>
+
+    </div>
+    <!-- footer -->
+    <div class="container-fluid">
+         <!-- footer --> 
+          <div class="footer">
+            <p>Copyright © 2024 Shop Elilo. Todos os direitos reservados.<br><br>
+              Desenvonvido por: <a href="https://jlsystem.ao/">JLSystem </a>
+            </p>
+          </div> 
+  </div>
+  <!-- end dashboard inner -->
+</div>

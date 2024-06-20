@@ -12,8 +12,7 @@ export default class SubcatProdutosController {
         }
     }
 
-    
-    //mostrar apenas uma publicacao e os seus produtos 
+    //mostrar varias categoria e os seus produtos 
     async show({ params }: HttpContext) {
         const publicidade = await SubCategoria.findOrFail(params.id)
 
@@ -24,5 +23,15 @@ export default class SubcatProdutosController {
             data: publicidade,
         }
     }
+
+    //mostrar apenas uma publicacao e os seus produtos  
+       //  async show({ params }: HttpContext) {
+       //      const publicidade = await SubCategoria.findOrFail(params.id)
+     //            await publicidade.load('produtos')
+      //           return {
+      //           message: 'Lista da publicidade pelo id',
+      //           data: publicidade,
+       //      }
+      //   }
 
 }

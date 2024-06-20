@@ -1,3 +1,3 @@
 export default {
-    path: 'https://api.ark-tracos.com/api'
+    path: 'http://localhost:3333/api'
 }

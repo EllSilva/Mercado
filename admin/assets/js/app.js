@@ -30,6 +30,8 @@ Vue.component('p-categoriaCad', page_categoriaCad)
 import page_cadastroProd from './view/paginas/produto_cad.js'
 Vue.component('p-cadastroProd', page_cadastroProd)
 
+import page_subcategoriaCad from './view/paginas/subcategoria_cad.js'
+Vue.component('p-subcategoriaCad', page_subcategoriaCad)
 
 
 import page_detalhes from './view/detalhes/home.js'
@@ -41,8 +43,6 @@ Vue.component('p-categoria', page_categoria)
 import page_encomendas from './view/paginas/encomenda.js'
 Vue.component('p-encomendas', page_encomendas)
 
-import page_servicos_dominio from './view/paginas/dominio.js'
-Vue.component('p-servicos_dominio', page_servicos_dominio)
 
 import page_servicos_website from './view/paginas/website.js'
 Vue.component('p-servicos_website', page_servicos_website)
@@ -96,12 +96,12 @@ const routes = [
     { path: '/loja/categoria', component: { template: '<p-categoria></p-categoria>' } },
 
 
-    { path: '/dominios', component: { template: '<p-servicos_dominio></p-servicos_dominio>' } },
 
     
     { path: '/encomenda', component: { template: '<p-encomendas></p-encomendas>' } },
     { path: '/produto/cadastro', component: { template: '<p-cadastroProd></p-cadastroProd>' } },
     { path: '/produto/categoria', component: { template: '<p-categoriaCad></p-categoriaCad>' } },
+    { path: '/produto/subcategoria', component: { template: '<p-subcategoriaCad></p-subcategoriaCad>' } },
      
   
     { path: '/criacao-de-sites', component: { template: '<p-servicos_website></p-servicos_website>' } },

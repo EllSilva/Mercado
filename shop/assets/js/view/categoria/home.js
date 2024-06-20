@@ -1,5 +1,6 @@
 import get_template from '../../components/get_template.js'
 import Router from '../../vendor/vue-router.js'
+import api from "../../../../../static/js/api/adm.js"
 let cats = new Array();
 
 export default {
@@ -7,7 +8,7 @@ export default {
     return {
       qtddCart: 0,
       cats: [],
-      newCat: null,
+      img: "",
 
       task: "",
       editedTask: null,
@@ -19,36 +20,16 @@ export default {
 
       totalCat: 0,
       carinhoLista: [],
+      todos_subc_produto: [],
 
-      itens: [
-        {
-          "name": 'Apples',
-          "desc": 'Apples are a type of fruit that grow on trees.'
-        },
-        {
-          "name": 'Pizza',
-          "desc": 'Pizza has a bread base with tomato sauce, cheese, and toppings on top.'
-        },
-        {
-          "name": 'Rice',
-          "desc": 'Rice is a type of grain that people like to eat.'
-        },
-        {
-          "name": 'Fish',
-          "desc": 'Fish is an animal that lives in water.'
-        },
-        {
-          "name": 'Cake',
-          "desc": 'Cake is something sweet that tastes good.'
-        }
-      ],
-
+    
       productos: [
         {
           "id": 1,
           "qdd": 1,
+          "ref": 22,
           "name": "TANGERINA NACIONAL 600G DA HORTA",
-          "categoria": "Frutas & Legumes",
+          "categoria": "fffffff",
           "price": 200,
           "image": "./assets/img/produtos/tangerina.png",
           "description": "TANGERINA NACIONAL 600G DA HORTA"
@@ -56,6 +37,7 @@ export default {
         {
           "id": 2,
           "qdd": 1,
+          "ref": 333,
           "name": "PIMENTO AMARELO 500G DA HORTA",
           "categoria": "Frutas & Legumes",
           "price": 250,
@@ -65,6 +47,7 @@ export default {
         {
           "id": 3,
           "qdd": 1,
+          "ref": 555,
           "name": "PERA IMPORTADA 1KG",
           "categoria": "Frutas & Legumes",
           "price": 4699,
@@ -74,6 +57,7 @@ export default {
         {
           "id": 4,
           "qdd": 1,
+          "ref": 77,
           "name": "LIMÃO NACIONAL 1KG DA HORTA",
           "categoria": "Frutas & Legumes",
           "price": 299,
@@ -83,6 +67,7 @@ export default {
         {
           "id": 5,
           "qdd": 1,
+          "ref": 777,
           "name": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO",
           "categoria": "Frutas & Legumes",
           "price": 300,
@@ -92,6 +77,7 @@ export default {
         {
           "id": 6,
           "qdd": 1,
+          "ref": 888,
           "name": "LARANJA NACIONAL 1,2KG DA HORTA",
           "categoria": "Frutas & Legumes",
           "price": 3699,
@@ -101,6 +87,7 @@ export default {
         {
           "id": 7,
           "qdd": 1,
+          "ref": 999,
           "name": " LARANJA IMPORTADA 1KG",
           "categoria": "Frutas & Legumes",
           "price": 5499,
@@ -110,6 +97,7 @@ export default {
         {
           "id": 8,
           "qdd": 1,
+          "ref": 88,
           "name": "ALHO IMPORTADO 250G AVO PEDRO",
           "categoria": "Frutas & Legumes",
           "price": 200,
@@ -119,6 +107,7 @@ export default {
         {
           "id": 9,
           "qdd": 1,
+          "ref": 1,
           "name": "BATATA 1KG GIRASSOL",
           "categoria": "Frutas & Legumes",
           "price": 2199,
@@ -128,6 +117,7 @@ export default {
         {
           "id": 10,
           "qdd": 1,
+          "ref": 999,
           "name": "BATATA DOCE 1KG GIRASSOL",
           "categoria": "Frutas & Legumes",
           "price": 2199,
@@ -143,6 +133,17 @@ export default {
   computed: {
     filteredCategoria() {
       let productos = [];
+      productos = this.todos_subc_produto.filter((item) => {
+        return (
+          item.ref == 12345
+        );
+      })
+
+      return productos;
+    },
+
+    filteredCategoriaxxx() {
+      let productos = [];
       productos = this.productos.filter((item) => {
         return (
           item.categoria.toLowerCase().indexOf(this.codigo.toLowerCase()) > -1
@@ -155,6 +156,15 @@ export default {
 
 
   methods: {
+
+    async lista_subcat_produtos() {
+      let res = await api.lista_subcategorias_produtos();
+
+      this.todos_subc_produto = res.data 
+
+      console.log(this.todos_subc_produto)
+      return res;
+  },
 
     visualizar(id) {
       //this.task = this.productos[id].id;
@@ -208,13 +218,13 @@ export default {
         position: 'bottomCenter',
         message: 'Compra realizado com sucesso !',
       });
-     
+
 
       this.carinhos()
       //  }
 
     },
-     
+
     somaCats() {
       var soma = 0;
       for (var i = 0; i < this.carinho.length; i++) {
@@ -225,59 +235,39 @@ export default {
     },
 
     carinhos() {
-    
+
       if (localStorage.getItem('carinho')) {
         cats = JSON.parse(localStorage.getItem('carinho')) || [];
 
         this.carinhoLista = cats
 
 
-      //  this.somaCats(); 
+        //  this.somaCats(); 
         this.qtddCart = cats.length
-      
+
       } else {
         this.carinhoLista = "carinho vazio"
       }
     },
-
-    qdd_p(id) {
-      this.productos.id = id;
-      this.qdd++
-      window.location.href = "/";
-    },
-
-    qdd_n(id) {
-      this.productos.id = id;
-      this.qdd++
-      alert()
-    },
  
-
-    saveCats() {
-      const parsed = JSON.stringify(this.task);
-      localStorage.setItem('gatoo', parsed);
-    },
-
-
-    persist() {
-      if (!this.newCat) {
-        return;
-      }
-
-      this.cats.push(this.newCat);
-      this.newCat = '';
-      // this.saveCats();
-    },
+  
 
     removeCat(index) {
-
-     
-      
+ 
     },
-  
+
   },
 
   async mounted() {
+
+   this.img = 'http://localhost:3333/api/uploads/'
+//console.log(this.filteredCategoria) 
+
+    if (localStorage.getItem('catCodigo')) {
+      this.codigo = localStorage.getItem('catCodigo');
+    }
+
+    this.lista_subcat_produtos()
     this.carinhos()
 
     this.carinhoLista.splice(index, 1);
@@ -285,18 +275,7 @@ export default {
     localStorage.setItem("carinho", JSON.stringify(this.carinhoLista));
     this.somaCats();
  
-    if (localStorage.getItem('carinho')) {
-      cats = JSON.parse(localStorage.getItem('carinho')) || [];
-      console.log(cats.length)
-      // this.addCat();
-      this.qtddCart = cats.length
-    }
 
-
-
-    if (localStorage.catCodigo) {
-      this.codigo = localStorage.catCodigo;
-    }
     this.filteredCategoria
 
     var swiper = new Swiper(".mySwiper", {

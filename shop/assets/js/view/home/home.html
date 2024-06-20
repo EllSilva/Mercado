@@ -5,19 +5,20 @@
         <div class="container pt-5">
             <div class="tab-class text-center">
 
+
                 <div class="tab-content">
                     <div class="row ">
-
-                        <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3" v-for="(cat, index) in categoria"
+  
+                        <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3" v-for="(cat, index) in todos_categoria"
                             :key="index">
                             <a @click="visualizar(index)">
                                 <div class="rounded position-relative fruite-item"
                                     style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
                                     <div class="fruite-img">
-                                        <img :src="cat.image" class="img-fluid w-100 rounded-top" alt="">
+                                        <img :src="img+cat.img" class="img-fluid w-100 rounded-top" alt="">
                                     </div>
                                     <div class="p-1 border border-secondary border-top-0 rounded-bottom">
-                                        <p class=" fs-7 text-dark fw-bold">{{ cat.name }}</p>
+                                        <p class=" fs-7 text-dark fw-bold">{{ cat.nome }}</p>
                                     </div>
                                 </div>
                             </a>

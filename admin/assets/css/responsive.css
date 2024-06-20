@@ -154,6 +154,10 @@
     body {
         overflow-x: hidden;
     }
+    
+    .padding_bottom_50 {
+        padding-bottom: 5px;
+    }
     .container {
         width: 100%;
         padding: 0 20px;
@@ -384,7 +388,7 @@
         margin-top: 25px;
         margin-bottom: 25px;
     }
-    .login_form form .field input {
+    .login_form form .field input, select {
         max-width: 395px;
         width: 100%;
     }

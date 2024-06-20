@@ -24,45 +24,51 @@
             </div>
             <div class="full progress_bar_inner">
               <div class="login_form">
-                <form>
+                <form enctype="multipart/form-data" action="javascript:void(0)" @submit.prevent="sendFile">
                   <fieldset>
                     <div class="row">
                       <div class="col-md-6 col-12 margin_bottom_30">
-                        <div class="field">
+                        <div class="field padding_bottom_50">
                           <label class="label_field">Produto</label>
-                          <input type="text" name="produto" placeholder="Nome Produto" />
+                          <input type="text" name="produto" placeholder="Nome Produto" v-model="nome" />
                         </div>
-                        <div class="field">
+
+                        <div class="field padding_bottom_50">
                           <label class="label_field">Imagem</label>
-                          <input type="file" name="imagem" placeholder="imagem" />
+                          <input placeholder="imagem" name="imagem" class="form-control" type="file" id="formFile"
+                            ref="img" id="upload-button" v-on:change="updatePreview">
+                          <figure class="image-container">
+                            <img class="image-img" :src="imagemVer" accept="image/*"
+                              style="width:42px;height:42px;">
+                          </figure>
                         </div>
-                        <div class="field">
+                        <div class="field padding_bottom_50">
                           <label class="label_field">Preço</label>
-                          <input type="text" name="preco" placeholder="Preço Atual do Produto" />
+                          <input type="text" name="preco" placeholder="Preço Atual do Produto" v-model="preco" />
                         </div>
                       </div>
                       <div class="col-md-6 col-12 margin_bottom_30">
-                        <div class="field">
-                          <label class="label_field">Categoria</label>
-                          <input type="text" name="Estoque" list="datalistOptions" id="exampleDataList" placeholder="Buscar Categoria..."/>
-                          <datalist id="datalistOptions">
-                            <option value="San Francisco">
-                            <option value="New York">
-                            <option value="Seattle">
-                            <option value="Los Angeles">
-                            <option value="Chicago">
-                          </datalist>
+                        <div class="field padding_bottom_50 ">
+                          <label class="label_field">SubCategoria</label>
+                          <select class="form-select imput" v-model="subcategoria_id" placeholder="Buscar Categoria...">
+                            <option disabled value="">Selecione</option>
+                            <option v-for="(option, index) in todos_subcategoria" :value="option.id">
+                              {{ option.nome }}
+                            </option>
+                          </select>
+
                         </div>
 
- 
-                        <div class="field">
+
+                        <div class="field padding_bottom_50 ">
                           <label class="label_field">Estoque</label>
-                          <input type="text" name="Estoque" placeholder="Estoque Atual" />
+                          <input type="text" name="Estoque" placeholder="Estoque Atual" v-model="quantidade" />
                         </div>
-                        <div class="field">
+                        <div class="field padding_bottom_50 ">
                           <label class="label_field">Descrição</label>
-                          <input type="text" name="descricao" placeholder="Adicionar a Descrição do item" />
-                        </div>                   
+                          <input type="text" name="descricao" placeholder="Adicionar a Descrição do item"
+                            v-model="descricao" />
+                        </div>
                       </div>
 
                       <div class="col-md-12 col-12">
@@ -83,14 +89,14 @@
       </div>
 
     </div>
-    <!-- footer -->
-    <div class="container-fluid">
-      <div class="footer">
-        <p>Copyright © 2018 Designed by html.design. All rights reserved.<br><br>
-          Distributed By: <a href="https://themewagon.com/">ThemeWagon</a>
-        </p>
+       <!-- footer -->
+       <div class="container-fluid">
+        <div class="footer">
+          <p>Copyright © 2024 Shop Elilo. Todos os direitos reservados.<br><br>
+            Desenvonvido por: <a href="https://jlsystem.ao/">JLSystem </a>
+          </p>
+        </div>
       </div>
-    </div>
   </div>
   <!-- end dashboard inner -->
 </div>

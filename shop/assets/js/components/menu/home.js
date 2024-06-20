@@ -219,8 +219,8 @@ export default {
       //  this.somaCats(); 
         this.qtddCart = cats.length
 
-        alert("Remover")
-        alert( this.qtddCart);
+      //  alert("Remover")
+      //  alert( this.qtddCart);
       
       } else {
         this.carinhoLista = "carinho vazio"

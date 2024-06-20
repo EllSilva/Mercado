@@ -1,5 +1,5 @@
 import get_template from '../../components/get_template.js'
-
+import api from "../../../../../static/js/api/adm.js"
 
 export default {
 
@@ -8,7 +8,8 @@ export default {
     return {
       tarefa: "",
       qtddCart: 0,
-
+      img: null,
+      todos_categoria: [],
       categoria: [
         {
           "id": 1,
@@ -91,44 +92,50 @@ export default {
           "image": "./assets/img/categoria/eletronica.png"
         }
       ]
+
     }
 
   },
 
   methods: {
-    visualizar(index) { 
+    async lista_cat() {
+      let res = await api.lista_categorias();
+
+      this.todos_categoria = res.data 
+
+      console.log(this.todos_categoria)
+      return res;
+  },
+ 
+    visualizar(index) {
+      this.tarefa = this.todos_categoria[index].nome;
+
+ alert(this.tarefa)
+
+      localStorage.setItem('catCodigo', this.tarefa);
+      this.$router.push({ name: "categoria" })
+    },
+
+    visualizar2(index) {
       this.tarefa = this.categoria[index].name;
-     
-      localStorage.setItem('catCodigo', this.tarefa); 
-      this.$router.push({ name: "categoria"}) 
+
+      localStorage.setItem('catCodigo', this.tarefa);
+      this.$router.push({ name: "categoria" })
     },
 
   },
 
   async mounted() {
+   this.img = 'http://localhost:3333/api/uploads/'
 
-    if(localStorage.getItem('carinho')){
-     var cats = JSON.parse(localStorage.getItem('carinho')); 
+    this.lista_cat()
+
+    if (localStorage.getItem('carinho')) {
+      var cats = JSON.parse(localStorage.getItem('carinho'));
       this.qtddCart = cats.length
-  }
+    }
 
 
-    var swiper = new Swiper(".slider_flayer", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    });
   },
 
   template: await get_template('./assets/js/view/home/home')

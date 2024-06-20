@@ -11,7 +11,7 @@ export default class Subcategoria extends BaseModel {
   declare id: number
 
   @column()
-  declare ref: string 
+  declare ref: number 
 
   @column()
   declare nome: string

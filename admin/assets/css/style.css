@@ -1269,7 +1269,7 @@ a[data-toggle="collapse"] {
     color: #999;
 }
 
-.time_form form .field input {
+.time_form form .field input, select {
     border: solid #ddd 1px;
     font-size: 13px;
     font-weight: 500;
@@ -2818,7 +2818,8 @@ ul.inbox-pagination li {
     border: 1px solid #e6e6e6;
 }
 
-.inbox-body .modal .modal-body input,
+.inbox-body .modal .modal-body input, 
+.inbox-body .modal .modal-body select,
 .inbox-body .modal .modal-body textarea {
     border: 1px solid #e6e6e6;
     box-shadow: none;
@@ -2913,7 +2914,8 @@ ul.inbox-pagination li {
     position: relative;
 }
 
-.fileinput-button input {
+.fileinput-button input, 
+.fileinput-button select{
     cursor: pointer;
     direction: ltr;
     font-size: 23px;
@@ -3317,7 +3319,7 @@ table.projects tr td:first-child {
 
 .login_form form .field label.label_field {
     margin: 0 30px 0 0;
-    width: 115px;
+    
     line-height: 45px;
     text-align: right;
     height: 45px;
@@ -3330,11 +3332,14 @@ table.projects tr td:first-child {
     margin: 0 0 20px;
 }
 
-.login_form form .field input {
+.login_form form .field input, select {
+    /*---
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: solid #ddd 2px;
+   ----*/
+   border: solid #ddd 2px;
     width: 395px;
     float: right;
     padding: 10px;
@@ -3342,9 +3347,10 @@ table.projects tr td:first-child {
     font-weight: 300;
     transition: ease all 0.5s;
 }
+ 
 
-.login_form form .field input:hover,
-.login_form form .field input:focus {
+.login_form form .field input,select:hover,
+.login_form form .field input,select:focus {
     box-shadow: none;
 }
 
