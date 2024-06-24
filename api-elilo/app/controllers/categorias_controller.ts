@@ -5,7 +5,7 @@ import Categoria from '#models/categoria'
 
 export default class CategoriasController {
 
-    async store({ params, request, response }: HttpContext) {
+    async store({request, response }: HttpContext) {
 
         //const body = request.body()
         const body = request.body()

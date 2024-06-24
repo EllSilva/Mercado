@@ -6,39 +6,15 @@ import SubCategoria from '#models/subcategoria'
 
 export default class ProdutosController {
 
-
     async store({ request, params, response }: HttpContext) {
         const body = request.body()
-        const subcategoriaId = params.subcategoriaId
-       
-        const image = request.file('img', {
-            size: '2mb',
-            extnames: ['jpg', 'png', 'jpeg']
-        })
-        if (!image.isValid) {
-            return response.badRequest({
-                errors: image.errors
-            })
-        }
+        const subcategoriaId = body.subcategoriaId
+     
 
-        await image.move(app.makePath('uploads'), {
-            name: `${cuid()}.${image.extname}`,
-
-        })
-
-        body.img = image.fileName
-
-        await SubCategoria.findOrFail(subcategoriaId)
-        body.subcategoriaId = subcategoriaId
         
+ 
 
-        const produtos = await Produto.create(body)
-        response.status(201)
-
-        return {
-            message: 'Produto criado com sucesso',
-            data: produtos,
-        }
+        return  subcategoriaId
     }
 
 

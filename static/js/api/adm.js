@@ -18,9 +18,18 @@ export default {
         return await http.get('/categorias')
     }, 
 
+    async cadastra_subcategoria(
+        ref, nome, img) {
+        return await http.post('/subcategorias', {
+            ref, nome, img
+
+        })
+    },
+
     async lista_subcategorias() { 
         return await http.get('/subcategorias')
     },   
+
 
 
     async lista_subcategorias_produtos() { 
@@ -28,21 +37,11 @@ export default {
     },   
 
 
-
-
-    async cadastra_blog(
-        titulo, descricao, imagem) {
-        return await http.post('/publicidades', {
-            titulo, descricao, imagem
-
-        })
-    },
-
-    async lista_blog_um(id) {
-        return await http.get('/publicidades/'+id)
+    async lista_um_produto(id) {
+        return await http.get('/produtos/'+id)
     }, 
 
-    
+     
 
     async listar_blog( titulo, descricao, imagem) {
         return await http.get('/publicidades', {

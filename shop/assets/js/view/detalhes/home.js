@@ -1,23 +1,22 @@
 import get_template from '../../components/get_template.js'
+import api from "../../../../../static/js/api/adm.js"
 let cats = new Array();
 
 export default {
   data: function () {
     return {
       qtddCart: 0,
-
+      img: "",
       nome: "",
       categoria: "",
       imagem: "",
       preco: "",
       descricao: "",
-      codigo: '',
-
-      title: "Contato",
+      codigo: '', 
       qdd: 1,
 
       produtoId: "",
-
+      detalhe_produto: [],
       productos: [
         {
           "id": 1,
@@ -114,93 +113,89 @@ export default {
       ]
     }
   },
-
-  computed: {
-    filteredProduto() {
-      let productos = [];
-      productos = this.productos.filter((item) => {
-        return (
-          item.id == this.produtoId
-        );
-      })
-
-      this.id = productos[0].id,
-        this.nome = productos[0].name,
-        this.categoria = productos[0].categoria,
-        this.preco = productos[0].price,
-        this.descricao = productos[0].description,
-        this.imagem = productos[0].image,
-
-
-        console.log(productos[0].id)
-      return productos;
-    },
-  },
-
+ 
   methods: {
- 
-     addCat() { 
-      cats = this.productos[this.produtoId];
-       var nome = this.nome;
-       var qtdd = this.qdd;
-       var preco = this.preco;
-       var categoria = this.categoria;
-       var image = this.imagem;
-       var descricao = this.descricao;
-       var totalPreco = qtdd * preco;
- 
-       alert(cats)
-       console.log("aquiii" +nome)
-       let totalQuantity = 0;
- 
-       console.log(nome.length )
-       if(cats.length > 0){
-         
-       }
-       this.qdd = totalQuantity;
- 
-       // O Array() é usado para criar Array de objetos
-       let carinho = new Array();
- 
-       // Verifica se a propriedade no localStorage
-       if (localStorage.hasOwnProperty("carinho")) {
-         // Recuperar os valores da propriedade carinho do localStorage
-         // Converte de String para Object
-         carinho = JSON.parse(localStorage.getItem("carinho"));
-       }
- 
- 
- 
-       // Adiciona um novo objeto no array criado
-       //carinho.push(cats);
-       carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
- 
-       // Salva no localStorage
-       localStorage.setItem("carinho", JSON.stringify(carinho));
- 
-       cats = JSON.parse(localStorage.getItem('carinho')); 
-      // this.addCat();
-       this.qtddCart = cats.length
- 
-     },
+
+    async lista_produto() {
+      let res = await api.lista_um_produto(this.produtoId);
   
+      this.detalhe_produto = res 
+
+      this.id = this.detalhe_produto.id,
+      this.nome = this.detalhe_produto.nome,
+      this.categoria = this.detalhe_produto.categoria,
+      this.preco = this.detalhe_produto.price,
+      this.descricao = this.detalhe_produto.description,
+      this.imagem = this.detalhe_produto.img
+
+      console.log(this.detalhe_produto.id) 
+ 
+      return res;
+    },
+
+    addCat() {
+      cats = this.productos[this.produtoId];
+      var nome = this.nome;
+      var qtdd = this.qdd;
+      var preco = this.preco;
+      var categoria = this.categoria;
+      var image = this.imagem;
+      var descricao = this.descricao;
+      var totalPreco = qtdd * preco;
+
+      alert(cats)
+      console.log("aquiii" + nome)
+      let totalQuantity = 0;
+
+      console.log(nome.length)
+      if (cats.length > 0) {
+
+      }
+      this.qdd = totalQuantity;
+
+      // O Array() é usado para criar Array de objetos
+      let carinho = new Array();
+
+      // Verifica se a propriedade no localStorage
+      if (localStorage.hasOwnProperty("carinho")) {
+        // Recuperar os valores da propriedade carinho do localStorage
+        // Converte de String para Object
+        carinho = JSON.parse(localStorage.getItem("carinho"));
+      }
+
+
+
+      // Adiciona um novo objeto no array criado
+      //carinho.push(cats);
+      carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
+
+      // Salva no localStorage
+      localStorage.setItem("carinho", JSON.stringify(carinho));
+
+      cats = JSON.parse(localStorage.getItem('carinho'));
+      // this.addCat();
+      this.qtddCart = cats.length
+
+    },
+
   },
 
   async mounted() {
+    this.img = 'http://localhost:3333/api/uploads/'
+    this.produtoId = this.$route.params.id,
+    this.lista_produto()
+
+  //  console.log(this.detalhe_produto)
     if (localStorage.codigo) {
       this.codigo = localStorage.codigo;
-    }
-    this.produtoId = this.$route.params.id,
-      this.filteredProduto
+    } 
 
-      if(localStorage.getItem('carinho')){
-       var cats = JSON.parse(localStorage.getItem('carinho'));
-        console.log(cats.length)
-       // this.addCat();
-        this.qtddCart = cats.length
+    if (localStorage.getItem('carinho')) {
+      var cats = JSON.parse(localStorage.getItem('carinho'));
+     // console.log(cats.length)
+      // this.addCat();
+      this.qtddCart = cats.length
     }
-
-    alert(this.produtoId) 
   },
 
   template: await get_template('./assets/js/view/detalhes/home')

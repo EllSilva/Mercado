@@ -98,19 +98,20 @@ export default {
   },
 
   methods: {
+
     async lista_cat() {
       let res = await api.lista_categorias();
 
-      this.todos_categoria = res.data 
+      this.todos_categoria = res.data
 
       console.log(this.todos_categoria)
       return res;
-  },
- 
-    visualizar(index) {
-      this.tarefa = this.todos_categoria[index].nome;
+    },
 
- alert(this.tarefa)
+    visualizar(index) {
+      this.tarefa = this.todos_categoria[index].id;
+
+      alert(this.tarefa)
 
       localStorage.setItem('catCodigo', this.tarefa);
       this.$router.push({ name: "categoria" })
@@ -126,8 +127,8 @@ export default {
   },
 
   async mounted() {
-   this.img = 'http://localhost:3333/api/uploads/'
-
+    this.img = 'http://localhost:3333/api/uploads_categoria/'
+  
     this.lista_cat()
 
     if (localStorage.getItem('carinho')) {

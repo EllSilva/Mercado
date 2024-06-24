@@ -135,14 +135,14 @@ export default {
       let productos = [];
       productos = this.todos_subc_produto.filter((item) => {
         return (
-          item.ref == 12345
+          item.ref == this.codigo
         );
       })
 
       return productos;
     },
 
-    filteredCategoriaxxx() {
+    filteredCategoriaxxx() { 
       let productos = [];
       productos = this.productos.filter((item) => {
         return (
@@ -161,8 +161,7 @@ export default {
       let res = await api.lista_subcategorias_produtos();
 
       this.todos_subc_produto = res.data 
-
-      console.log(this.todos_subc_produto)
+ 
       return res;
   },
 
@@ -260,7 +259,7 @@ export default {
 
   async mounted() {
 
-   this.img = 'http://localhost:3333/api/uploads/'
+   this.img = 'http://localhost:3333/api/uploads_categoria/'
 //console.log(this.filteredCategoria) 
 
     if (localStorage.getItem('catCodigo')) {
