@@ -7,6 +7,7 @@ export default {
             nome: "",
             img: "",
             file: "",
+            textImagem: "Encolha a imagem",
             imagemVer: null
         }
 

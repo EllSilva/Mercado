@@ -5,34 +5,50 @@ export default {
     data: function () {
         return {
             subcategoria_id: "",
+            categoria_id: "",
             nome: "",
             preco: "",
             descricao: "",
             quantidade: "",
             categoria: "",
             img: "",
-            file: "", 
+            file: "",
             imagemVer: null,
+            todos_categoria: [],
             todos_subcategoria: [],
+            textImagem: "Encolha a imagem",
+
+            codigoCat: "",
         }
 
     },
 
+
+    computed: {
+        filteredSubCategoria() {
+            let sub = [];
+            sub = this.todos_subcategoria.filter((item) => {
+                return (
+                    item.ref == this.codigoCat
+                );
+            })
+            return sub;
+        },
+    },
+
     methods: {
 
-        escolher(elementos) {
-            let nomesCertos = []
+        escolher(elementos) { 
 
-            this.todos_estado.filter(elemento => {
-                if (elementos == elemento.id) {
-                    nomesCertos.push(elemento.nome);
-                    this.estado = elemento.nome
+            this.todos_categoria.filter(elemento => {
+                if (elementos == elemento.id) { 
+                    this.codigoCat = elemento.id 
+                    this.categoria == elemento.nome
                 }
             })
-
-            this.cidades()
+            this.lista_subcat()
         },
-        
+
         updatePreview(e) {
             var file,
                 files = e.target.files;
@@ -45,7 +61,7 @@ export default {
                 file = new FileReader();
                 file.onload = (e) => {
                     this.imagemVer = e.target.result;
-                    //this.nome = files[0].name;
+                    this.textImagem = files[0].name;
                 };
             } else {
                 alert("o tamanho da imagem deve ser menor que 2MBs");
@@ -66,7 +82,7 @@ export default {
             dataForm.append("subcategoria_id", this.subcategoria_id);
 
             let res = await fetch(
-                `http://localhost:3333/api/subcategorias/`+this.subcategoria_id+`/produtos`,
+                `http://localhost:3333/api/subcategorias/` + this.subcategoria_id + `/produtos`,
                 {
                     method: "POST",
                     body: dataForm,
@@ -91,21 +107,30 @@ export default {
                 message: this.msg,
                 position: "bottomCenter",
             });
-
         },
- 
+
 
         async lista_subcat() {
             let res = await api.lista_subcategorias();
 
             this.todos_subcategoria = res.data
-            console.log(this.todos_subcategoria)
+        //    console.log(this.todos_subcategoria)
+            return res;
+        },
+
+
+        async lista_categ() {
+            let res = await api.lista_categorias();
+
+            this.todos_categoria = res.data
+           // console.log(this.todos_categoria)
             return res;
         },
 
     },
 
     async mounted() {
+        this.lista_categ()
         this.lista_subcat()
     },
     template: await get_template('./assets/js/view/paginas/produto_cad')

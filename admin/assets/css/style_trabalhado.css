@@ -1,0 +1,13 @@
+input[type="file"]{
+    display: none;
+}
+
+  
+.label_img { 
+    border: solid #cfcfcf 2px;
+     font-weight: 500;
+    color: #979797; 
+    border-inline-color: #666;
+    border-radius: 0;
+}
+ 

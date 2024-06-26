@@ -181,7 +181,7 @@ export default {
   },
 
   async mounted() {
-    this.img = 'http://localhost:3333/api/uploads/'
+      this.img = 'http://localhost:3333/api/uploads_produto/'
     this.produtoId = this.$route.params.id,
     this.lista_produto()
 

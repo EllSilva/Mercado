@@ -34,25 +34,44 @@
                         </div>
 
                         <div class="field padding_bottom_50">
+                          
                           <label class="label_field">Imagem</label>
-                          <input placeholder="imagem" name="imagem" class="form-control" type="file" id="formFile"
-                            ref="img" id="upload-button" v-on:change="updatePreview">
-                          <figure class="image-container">
-                            <img class="image-img" :src="imagemVer" accept="image/*"
-                              style="width:42px;height:42px;">
-                          </figure>
+                          <input type="file" id="file_img" accept="image/*" class="imput_img form-control" name="imagem" 
+                          ref="img" v-on:change="updatePreview">
+                         <label for="file_img" class="label_img form-control">
+                            <i>
+                              <img class="image-img" :src="imagemVer" accept="image/*"
+                                  style="width:32px; height:32px;">
+                            </i> {{ textImagem }} 
+                          </label>
                         </div>
+  
+
                         <div class="field padding_bottom_50">
                           <label class="label_field">Preço</label>
                           <input type="text" name="preco" placeholder="Preço Atual do Produto" v-model="preco" />
                         </div>
                       </div>
                       <div class="col-md-6 col-12 margin_bottom_30">
+                       
+                        <div class="field padding_bottom_50 ">
+                          <label class="label_field">Categoria</label>
+                          <select class="form-select imput" v-model="categoria" placeholder="Buscar Categoria..." 
+                         required @change="escolher(event.target.value)">
+                            <option disabled value="">Selecione</option>
+                            <option v-for="(cat, index) in todos_categoria" :value="cat.id">
+                              {{ cat.nome }}
+                            </option>
+                          </select>
+
+                        </div>
+
                         <div class="field padding_bottom_50 ">
                           <label class="label_field">SubCategoria</label>
-                          <select class="form-select imput" v-model="subcategoria_id" placeholder="Buscar Categoria...">
+                          <select class="form-select imput" v-model="subcategoria_id" placeholder="Buscar SubCategoria..."
+                          required>
                             <option disabled value="">Selecione</option>
-                            <option v-for="(option, index) in todos_subcategoria" :value="option.id">
+                            <option v-for="(option, index) in filteredSubCategoria" :value="option.id">
                               {{ option.nome }}
                             </option>
                           </select>

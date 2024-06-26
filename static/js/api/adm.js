@@ -25,10 +25,15 @@ export default {
 
         })
     },
-
+    
     async lista_subcategorias() { 
         return await http.get('/subcategorias')
     },   
+
+    async lista_produtos() { 
+        return await http.get('/produtos')
+    },   
+
 
 
 

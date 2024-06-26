@@ -37,13 +37,20 @@
 
                       <div class="col-md-6 col-12 margin_bottom_30">
                         <div class="field">
+                          
                           <label class="label_field">Imagem</label>
-                          <input placeholder="imagem" name="imagem" class="form-control" type="file" id="formFile"
-                            ref="img" id="upload-button" v-on:change="updatePreview">
-                          <figure class="image-container">
-                            <img class="image-img" :src="imagemVer" accept="image/*" style="float:right;width:42px;height:42px;">
-                          </figure>
+                          <input type="file" id="file_img" accept="image/*" class="imput_img form-control" name="imagem" 
+                          ref="img" v-on:change="updatePreview">
+                         <label for="file_img" class="label_img form-control">
+                            <i>
+                              <img class="image-img" :src="imagemVer" accept="image/*"
+                                  style="width:32px; height:32px;">
+                            </i> {{ textImagem }} 
+                          </label>
                         </div>
+ 
+
+
                       </div>
 
                       <div class="col-md-12 col-12">

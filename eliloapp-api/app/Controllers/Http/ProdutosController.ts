@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Application from '@ioc:Adonis/Core/Application'
 import Produto from 'App/Models/Produto'
 import Sub_Categoria from 'App/Models/Subcategoria'
-
+import { cuid } from '@ioc:Adonis/Core/Helpers'
 
 export default class ProdutosController {
 
@@ -19,9 +19,9 @@ export default class ProdutosController {
         //ENVIO DE IMAGEM
         const img = request.file('img', this.validationOptions)
         if (img) {
-            const imgName = `${"455555"}.${img!.extname}`
+            const imgName = `${cuid()}.${img!.extname}`
 
-            await img.move(Application.tmpPath('uploads'), {
+            await img.move(Application.tmpPath('imgproduto'), {
                 name: imgName,
             })
             body.img = imgName

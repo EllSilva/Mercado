@@ -66,5 +66,10 @@ Route.post('login', async ({ auth, request, response }) => {
 Route.get('/uploads_categoria/:file?', ({ response, params }) => { 
   return response.download(Application.makePath(`/tmp/imgcategoria/${params.file}`))
 })
+Route.get('/uploads_produto/:file?', ({ response, params }) => { 
+  return response.download(Application.makePath(`/tmp/imgproduto/${params.file}`))
+})
+
+
 
 }).prefix('/api')

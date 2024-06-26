@@ -17,9 +17,9 @@
                 <div class="d-flex m-3 me-0 ">
 
                     <a class="navbar-toggler" type="button" href="#/"><i class="fa fa-home fa-2x text-danger"></i></a>
-                        
+
                     <button class="navbar-toggler  bg-white me-4" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse"><i class="fa fa-bars text-primary"></i></button>
+                        data-bs-target="#navbarCollapse"><i class="fa fa-bars text-primary"></i></button>
 
                     <a href="#" class="position-relative me-4 my-auto">
                         <h1> elilo </h1>
@@ -63,8 +63,8 @@
 
                                                         <div class="col-lg-12 col-md-4 col-sm-12 col-12 ">
                                                             <div class="table-responsive">
- 
-  
+
+
 
                                                                 <table class="table">
                                                                     <tbody>
@@ -72,7 +72,7 @@
                                                                             :key="index">
                                                                             <th scope="row">
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <img :src="cat.image"
+                                                                                    <img :src="img+cat.image"
                                                                                         class="img-fluid me-5 rounded-circle"
                                                                                         style="width: 50px; height: 50px;"
                                                                                         alt="">
@@ -125,18 +125,20 @@
 
                                                                     </tbody>
                                                                 </table>
- 
+
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12 col-md-4 col-sm-12 col-12 pb-1">
                                                             <div class="g-4 justify-content-end">
                                                                 <div class="bg-light rounded">
 
-                                                                        <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary"
-                                                                            href="#/loja/checkout" type="button" style=" bottom: 0;">
-                                                                         <span class="checkout"> {{ totalCat }} AOA </span>   checkout</a>
+                                                                    <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary"
+                                                                        href="#/loja/checkout" type="button"
+                                                                        style=" bottom: 0;">
+                                                                        <span class="checkout"> {{ totalCat }} AOA
+                                                                        </span> checkout</a>
 
-                                                            
+
 
 
 
@@ -178,8 +180,8 @@
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;"> 
-                            {{ qtddCart }}
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
+                                {{ qtddCart }}
                         </a>
                         <a href="#" class="my-auto" data-bs-toggle="dropdown">
                             <i class="fas fa-user fa-2x"></i>
@@ -230,7 +232,7 @@
                                                 style="top: 10px; left: 10px; font-size: 12px;">
                                                 {{ item.categoria }}</div>
                                             <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
-                                                <p style="font-size: 12px; height: 30px;"> {{ item.name }}</p>
+                                                <p style="font-size: 12px; height: 30px;"> {{ item.nome }}</p>
                                                 <p class="text-dark fs-6 fw-bold mb-0">$4.99 / kg</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
 

@@ -6,6 +6,7 @@ let cats = new Array();
 export default {
   data: function () {
     return {
+      id: "",
       qtddCart: 0,
       cats: [],
       img: "",
@@ -14,118 +15,15 @@ export default {
       editedTask: null,
 
       codigo: '',
-      qdd: 1,
-      awesome: true,
+      verif: "",
 
 
       totalCat: 0,
       carinhoLista: [],
       todos_subc_produto: [],
 
-    
-      productos: [
-        {
-          "id": 1,
-          "qdd": 1,
-          "ref": 22,
-          "name": "TANGERINA NACIONAL 600G DA HORTA",
-          "categoria": "fffffff",
-          "price": 200,
-          "image": "./assets/img/produtos/tangerina.png",
-          "description": "TANGERINA NACIONAL 600G DA HORTA"
-        },
-        {
-          "id": 2,
-          "qdd": 1,
-          "ref": 333,
-          "name": "PIMENTO AMARELO 500G DA HORTA",
-          "categoria": "Frutas & Legumes",
-          "price": 250,
-          "image": "./assets/img/produtos/pimenta.png",
-          "description": " PIMENTO AMARELO 500G DA HORTA"
-        },
-        {
-          "id": 3,
-          "qdd": 1,
-          "ref": 555,
-          "name": "PERA IMPORTADA 1KG",
-          "categoria": "Frutas & Legumes",
-          "price": 4699,
-          "image": "./assets/img/produtos/import.png",
-          "description": "PERA IMPORTADA 1KG"
-        },
-        {
-          "id": 4,
-          "qdd": 1,
-          "ref": 77,
-          "name": "LIMÃO NACIONAL 1KG DA HORTA",
-          "categoria": "Frutas & Legumes",
-          "price": 299,
-          "image": "./assets/img/produtos/limao.png",
-          "description": "LIMÃO NACIONAL 1KG DA HORTA"
-        },
-        {
-          "id": 5,
-          "qdd": 1,
-          "ref": 777,
-          "name": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO",
-          "categoria": "Frutas & Legumes",
-          "price": 300,
-          "image": "./assets/img/produtos/uva.jpg",
-          "description": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO"
-        },
-        {
-          "id": 6,
-          "qdd": 1,
-          "ref": 888,
-          "name": "LARANJA NACIONAL 1,2KG DA HORTA",
-          "categoria": "Frutas & Legumes",
-          "price": 3699,
-          "image": "./assets/img/produtos/laranja.png",
-          "description": "LARANJA IMPORTADA 1KG"
-        },
-        {
-          "id": 7,
-          "qdd": 1,
-          "ref": 999,
-          "name": " LARANJA IMPORTADA 1KG",
-          "categoria": "Frutas & Legumes",
-          "price": 5499,
-          "image": "./assets/img/produtos/laranja_import2.png",
-          "description": "LARANJA IMPORTADA 1KG"
-        },
-        {
-          "id": 8,
-          "qdd": 1,
-          "ref": 88,
-          "name": "ALHO IMPORTADO 250G AVO PEDRO",
-          "categoria": "Frutas & Legumes",
-          "price": 200,
-          "image": "./assets/img/produtos/alho.png",
-          "description": "ALHO IMPORTADO 250G AVO PEDRO"
-        },
-        {
-          "id": 9,
-          "qdd": 1,
-          "ref": 1,
-          "name": "BATATA 1KG GIRASSOL",
-          "categoria": "Frutas & Legumes",
-          "price": 2199,
-          "image": "./assets/img/produtos/batata.jpg",
-          "description": "BATATA 1KG GIRASSOL"
-        },
-        {
-          "id": 10,
-          "qdd": 1,
-          "ref": 999,
-          "name": "BATATA DOCE 1KG GIRASSOL",
-          "categoria": "Frutas & Legumes",
-          "price": 2199,
-          "image": "./assets/img/produtos/doce.png",
-          "description": "BATATA DOCE 1KG GIRASSOL"
-        }
 
-      ]
+      productos: []
     }
 
   },
@@ -142,7 +40,7 @@ export default {
       return productos;
     },
 
-    filteredCategoriaxxx() { 
+    filteredCategoriaxxx() {
       let productos = [];
       productos = this.productos.filter((item) => {
         return (
@@ -159,11 +57,9 @@ export default {
 
     async lista_subcat_produtos() {
       let res = await api.lista_subcategorias_produtos();
-
-      this.todos_subc_produto = res.data 
- 
+      this.todos_subc_produto = res.data
       return res;
-  },
+    },
 
     visualizar(id) {
       //this.task = this.productos[id].id;
@@ -172,23 +68,129 @@ export default {
       this.$router.push({ name: "novorota", params: { id } })
     },
 
-    add(index) {
-      this.task = this.productos[index].id;
-      this.awesome = this.task
+
+    editeCat() {
+      // let editcarinho = new Array();  
+      let editcarinho = new Array();
+      editcarinho = JSON.parse(localStorage.getItem("carinho")).filter(item => item.id != this.id)
+
+      const guarda = editcarinho;
+      //console.log(this.id)
+      localStorage.setItem('carinho', JSON.stringify(guarda));
 
     },
 
-    addCat(index) {
+    editeCatxcxccx() {
 
-      cats = this.productos[index];
-      var nome = this.productos[index].name;
-      var qtdd = this.productos[index].qdd;
-      var preco = this.productos[index].price;
-      var categoria = this.productos[index].categoria;
-      var image = this.productos[index].image;
-      var descricao = this.productos[index].description;
+      localStorage.pes_54321 = '{"baz":"biz"}';
+      localStorage.pes_12345 = '{"foo":"bar"}';
+
+      function getData(chave) {
+        return Object.keys(localStorage).filter(function (key) {
+          return key.indexOf(chave) == 0;
+        }).map(function (key) {
+          return JSON.parse(localStorage[key]);
+        });
+      }
+      console.log(JSON.stringify(getData('pes'))); // [{"foo":"bar"},{"baz":"biz"}]
+      console.log(JSON.stringify(getData('pes_54321'))); // [{"baz":"biz"}]
+    },
+
+    editeCat22() {
+      var nome = "6666";
+      var qtdd = "this.productos[index]";
+      var preco = "this.productos[index]";
+      var categoria = "this.productos[index]";
+      var image = "this.productos[index]";
+      var descricao = "this.productos[index]";
+      var totalPreco = " 121312";
+
+
+      // let editcarinho = new Array(); 
+      let editcarinhoc = { nome, qtdd, preco, categoria, image, descricao, totalPreco };
+
+      let editcarinho = new Array();
+      editcarinho = JSON.parse(localStorage.getItem("carinho"))
+
+      // index - indice da tarefa que está sendo editada
+      // value - o novo valor que vai ser utilizado na edição
+      //function editTarefa(index, value) {
+      // Busca a lista e atualiza o valor do indice da tarefa
+      const listaAtualizada = editcarinho;
+      listaAtualizada[1] = editcarinhoc;
+
+
+      localStorage.setItem('carinho', JSON.stringify(listaAtualizada));
+
+
+
+
+      //  localStorage.setItem("carinho", JSON.stringify(editcarinho))
+      // this.task = this.productos[index].id;
+      // this.awesome = this.task
+
+    },
+
+    editeCatxxxxx() {
+
+      var nome = "this.productos[index]";
+      var qtdd = "this.productos[index]";
+      var preco = "this.productos[index]";
+      var categoria = "this.productos[index]";
+      var image = "this.productos[index]";
+      var descricao = "this.productos[index]";
+      var totalPreco = " 121312";
+
+
+      let editcarinho = new Array();
+      editcarinho = JSON.parse(localStorage.getItem("carinho"))
+        .filter(item => item.preco !== "200")
+
+
+      console.log(editcarinho)
+
+      editcarinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
+
+      //  localStorage.setItem("carinho", JSON.stringify(editcarinho))
+
+
+
+      // this.task = this.productos[index].id;
+      // this.awesome = this.task
+
+    },
+
+    addCat(indexc, index) {
+
+
+      cats = this.todos_subc_produto[indexc].produtos;
+      this.id = cats[index].id;
+      var id = cats[index].id;
+      var nome = cats[index].nome;
+      var qtdd = cats[index].quantidade;
+      var preco = cats[index].preco;
+      var categoria = cats[index].categoria;
+      var image = cats[index].img;
+      var descricao = cats[index].descricao;
       var totalPreco = qtdd * preco;
 
+      let verificarexiste = new Array();
+
+      verificarexiste = JSON.parse(localStorage.getItem("carinho"));
+      for (var i = 0; i < verificarexiste.length; i++) {
+        this.verif = verificarexiste[i].id; 
+        if (this.verif === this.id) {
+        //  alert("certo existe")
+          this.editeCat()
+        }
+      }
+
+
+
+
+
+
+      console.log(cats)
 
       //  if (cats.length == 0) {
 
@@ -206,9 +208,10 @@ export default {
         // Converte de String para Object 
         carinho = JSON.parse(localStorage.getItem("carinho"));
       }
+
       // Adiciona um novo objeto no array criado
       //carinho.push(cats);
-      carinho.push({ nome, qtdd, preco, categoria, image, descricao, totalPreco });
+      carinho.push({ id, nome, qtdd, preco, categoria, image, descricao, totalPreco });
 
       // Salva no localStorage
       localStorage.setItem("carinho", JSON.stringify(carinho));
@@ -219,18 +222,22 @@ export default {
       });
 
 
+
       this.carinhos()
-      //  }
+
 
     },
 
-    somaCats() {
-      var soma = 0;
-      for (var i = 0; i < this.carinho.length; i++) {
-        soma += this.carinho[i].totalPreco;
-        this.totalCat = soma
-      }
+    somaCats() { 
+      if (localStorage.getItem('carinho')) {
+        cats = JSON.parse(localStorage.getItem('carinho')) || [];
 
+        var soma = 0;
+        for (var i = 0; i < cats.length; i++) {
+          soma += cats[i].totalPreco;
+          this.totalCat = soma
+        }
+      }
     },
 
     carinhos() {
@@ -241,26 +248,26 @@ export default {
         this.carinhoLista = cats
 
 
-        //  this.somaCats(); 
+          this.somaCats(); 
         this.qtddCart = cats.length
 
       } else {
         this.carinhoLista = "carinho vazio"
       }
     },
- 
-  
+
+
 
     removeCat(index) {
- 
+
     },
 
   },
 
   async mounted() {
 
-   this.img = 'http://localhost:3333/api/uploads_categoria/'
-//console.log(this.filteredCategoria) 
+    this.img = 'http://localhost:3333/api/uploads_produto/'
+    //console.log(this.filteredCategoria) 
 
     if (localStorage.getItem('catCodigo')) {
       this.codigo = localStorage.getItem('catCodigo');
@@ -269,11 +276,12 @@ export default {
     this.lista_subcat_produtos()
     this.carinhos()
 
-    this.carinhoLista.splice(index, 1);
-    localStorage.removeItem(index);
-    localStorage.setItem("carinho", JSON.stringify(this.carinhoLista));
-    this.somaCats();
- 
+
+    //this.carinhoLista.splice(index, 1);
+    //localStorage.removeItem(index);
+    //localStorage.setItem("carinho", JSON.stringify(this.carinhoLista));
+     this.somaCats();
+
 
     this.filteredCategoria
 
