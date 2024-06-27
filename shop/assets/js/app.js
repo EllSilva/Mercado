@@ -50,9 +50,9 @@ Vue.use(Router)
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/loja', component: { template: '<c-loja></c-loja>' } },
-    { path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
-    { path: '/loja/detalhes/:id',  name:"novorota", component: { template: '<p-detalhes></p-detalhes>' } },
-    { path: '/loja/categoria', name:"categoria", component: { template: '<p-categoria></p-categoria>' } },
+    //{ path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/loja/detalhes/:id',  name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
+    { path: '/loja/categoria/:id', name:"categoria", component: { template: '<p-categoria></p-categoria>' } },
     { path: '/loja/checkout', component: { template: '<p-checkout></p-checkout>' } },
  
 

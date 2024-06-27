@@ -2,127 +2,24 @@
 
   <c-menu :qtddCart="qtddCart" :carinhoLista="carinhoLista"></c-menu>
 
-
-
-
   <div class="pd-xl">
 
     <div style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); z-index: 2000;">
       <div class="swiper mySwiper cat-item2">
         <div class="swiper-wrapper pl-4 px-4">
-          <div class="swiper-slide pt-1 pb-1 swiper-font ">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">FRUTAS & LEGUMES</span>
+
+          <div class="swiper-slide pt-1 pb-1 swiper-font " v-for="(cat, index) in todos_categoria" :key="index">
+            <a @click="visualizaratual(cat.id)">
+              <div class="fruite-img">
+                <img :src="imgcat+cat.img" class="img-fluid tamanho-img rounded-top" alt="">
+              </div>
             </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class=" pl-1 px-1 lt-12">BEBIDAS</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">ÁLCOOL</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">CAFÉ & CHÁ</span>
-            </a>
+              <a class="d-flex m-2 py-2 bg-light rounded-pill" @click="visualizaratual(cat.id)">
+                <span class="text-dark pl-1 px-1 lt-12">{{ cat.nome }}</span>
+              </a>
           </div>
 
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">PETISCOS
-              </span>
-            </a>
-          </div>
 
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">PADARIA
-              </span>
-            </a>
-          </div>
-
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12"> PASTELARIA & DOÇARIA </span>
-            </a>
-          </div>
-
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">SAUDÁVEL</span>
-            </a>
-          </div>
-
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">LACTICÍNIOS E OVOS
-              </span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">CEREAIS & BARRAS
-              </span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">ARROZ & MASSA
-              </span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">GELADOS & SOBREMESAS
-              </span>
-            </a>
-          </div>
-
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">MOLHOS & CONDIMENTOS</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">LATAS E FRASCOS</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font ">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12"> HIGIENE PESSOAL</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">BEBÉ</span>
-            </a>
-          </div>
-
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">CASA</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">ELETRODOMÉSTICOS</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font ">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">ELECTRÓNICA</span>
-            </a>
-          </div>
-          <div class="swiper-slide pt-1 pb-1 swiper-font">
-            <a class="d-flex m-2 py-2 bg-light rounded-pill">
-              <span class="text-dark pl-1 px-1 lt-12">PAPELARIA</span>
-            </a>
-          </div>
         </div>
 
         <div class="swiper-2">
@@ -136,7 +33,7 @@
     <div class="fruite  ">
       <div class="container ">
         <div class="tab-class">
-          <div class="tab-content  pt-3" v-for="(produto, indexc) in filteredCategoria"  :key="produto.id">
+          <div class="tab-content  pt-3" v-for="(produto, indexc) in filteredCategoria" :key="produto.id">
 
             <h6 class="">{{ produto.nome }}</h6>
 
@@ -177,8 +74,9 @@
                         <div class="col-md-6 col-lg-2 col-xl-10 col-10">
                           <input type="text" class="form-control text-center border-0" style="height: 21px;"
                             v-model="cat.quantidade">
-                          <a class="btn border border-secondary rounded-pill px-3 text-primary" @click="addCat(indexc, index)"
-                            style="width: 100%;"><i class="fa fa-shopping-bag me-2 text-primary"></i> ADD</a>
+                          <a class="btn border border-secondary rounded-pill px-3 text-primary"
+                            @click="addCat(indexc, index)" style="width: 100%;"><i
+                              class="fa fa-shopping-bag me-2 text-primary"></i> ADD</a>
                         </div>
 
 

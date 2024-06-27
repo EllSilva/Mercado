@@ -2,7 +2,7 @@ import get_template from '../../components/get_template.js'
 import Router from '../../vendor/vue-router.js'
 import api from "../../../../../static/js/api/adm.js"
 let cats = new Array();
-
+ 
 export default {
   data: function () {
     return {
@@ -10,7 +10,7 @@ export default {
       qtddCart: 0,
       cats: [],
       img: "",
-
+      imgcat: "",
       task: "",
       editedTask: null,
 
@@ -21,7 +21,7 @@ export default {
       totalCat: 0,
       carinhoLista: [],
       todos_subc_produto: [],
-
+      todos_categoria: [], 
 
       productos: []
     }
@@ -54,6 +54,15 @@ export default {
 
 
   methods: {
+    async lista_cat() {
+      let res = await api.lista_categorias();
+
+      this.todos_categoria = res.data
+
+      console.log(this.todos_categoria)
+      return res;
+    },
+
 
     async lista_subcat_produtos() {
       let res = await api.lista_subcategorias_produtos();
@@ -65,7 +74,18 @@ export default {
       //this.task = this.productos[id].id;
       // this.editedTask = id; 
       //  localStorage.setItem('codigo', this.task); 
-      this.$router.push({ name: "novorota", params: { id } })
+      this.$router.push({ name: "detalhes", params: { id } })
+    },
+
+
+    visualizaratual(id) { 
+      this.$router.push({ name: "categoria", params: { id } })
+      this.codigo = this.$route.params.id
+
+    this.lista_cat()
+    this.lista_subcat_produtos()
+    this.carinhos()
+     
     },
 
 
@@ -267,12 +287,14 @@ export default {
   async mounted() {
 
     this.img = 'http://localhost:3333/api/uploads_produto/'
+    this.imgcat = 'http://localhost:3333/api/uploads_categoria/'
+    
     //console.log(this.filteredCategoria) 
 
-    if (localStorage.getItem('catCodigo')) {
-      this.codigo = localStorage.getItem('catCodigo');
-    }
+   
+    this.codigo = this.$route.params.id
 
+    this.lista_cat()
     this.lista_subcat_produtos()
     this.carinhos()
 

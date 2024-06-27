@@ -6,15 +6,38 @@ export default {
         return {
             title: "home",
             type: 'A',
+            img: '',
             totalCat: 0,
             isActive2: true,
+            qtddCart: 0,
             carinho: [], 
+            carinhoLista: [],
             dados_pesuais: false,
         } 
         
     },
 
     methods:{
+
+      carinhos() {
+
+        if (localStorage.getItem('carinho')) {
+          cats = JSON.parse(localStorage.getItem('carinho')) || [];
+  
+          this.carinhoLista = cats
+  
+  
+          //  this.somaCats(); 
+          this.qtddCart = cats.length
+  
+          //  alert("Remover")
+          //  alert( this.qtddCart);
+  
+        } else {
+          this.carinhoLista = "carinho vazio"
+        }
+      },
+
         removeCat(index) {
 
             this.carinho.splice(index, 1);
@@ -35,6 +58,8 @@ export default {
     },
 
     async mounted() {
+this.img = 'http://localhost:3333/api/uploads_produto/'
+      this.carinhos()
         if (localStorage.getItem('carinho')) {
           cats = JSON.parse(localStorage.getItem('carinho')) || [];
     

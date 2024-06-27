@@ -1,5 +1,5 @@
 <div class="pd-t">
-    <c-menu :qtddCart="qtddCart"></c-menu>
+    <c-menu :qtddCart="qtddCart" :carinhoLista="carinhoLista"></c-menu>
     <!-- Fruits Shop Start-->
     <div class="fruite  ">
         <div class="container pt-5">
@@ -11,7 +11,7 @@
   
                         <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3" v-for="(cat, index) in todos_categoria"
                             :key="index">
-                            <a @click="visualizar(index)">
+                            <a @click="visualizar(cat.id)">
                                 <div class="rounded position-relative fruite-item"
                                     style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
                                     <div class="fruite-img">

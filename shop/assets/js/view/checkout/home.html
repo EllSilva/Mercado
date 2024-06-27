@@ -1,253 +1,173 @@
-<div>
-  <!-- Modal do carinho -->
-  <div class="header2 menu_alt2">
+<div class=" ">
 
-    <nav class="cats-fn">
-      <div class="mobile-menu-head" style="background-color: rgb(29, 9, 66); height: 90px;">
-        <div class="go_back">
-          <i class="fa fa-angle-left"></i>
-        </div>
+  <div class="mobile-menu-head">
+    <div class="go_backxx">
+      <a href="#/" style="background-color: aquamarine;"
+        class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">
+        <i class="fa fa-angle-left"> Voltar</i></a>
+    </div>
+  </div>
 
-        <h1>Elilo</h1>
-        <a @click="">
-          <div class="mobile-menu-close">&times;</div>
-        </a>
-      </div>
+  <div class="pd-xl">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-2 pd-t" >
 
-      <div class="menu-main ">
+            <h1>JIIIIIII</h1>
+            
+          </div>
 
-
-        <!-- Checkout Page Start -->
-        <div class="container-fluid py-5">
-          <div class="container ">
-            <h1 class="mb-4">Detalhes de cobrança</h1>
-            <form action="#">
-              <div class="row g-5">
-                <div class="col-md-12 col-lg-6 col-xl-7">
-
-                  <div class="form-check my-1 mt-4">
-                    <h5><a @click="dados_pesuais = !dados_pesuais">Dados Pessoais</a> <i class="fa fa-angle-down"></i></h5>
+          <div class="col-xl-6 ftco-animate">
+            <form action="#" class="billing-form">
+              <h3 class="mb-4 billing-heading">Detalhes de cobrança</h3>
+              <div class="row align-items-end">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="firstname">Primeiro Nome</label>
+                    <input type="text" class="form-control" placeholder="">
                   </div>
-                  <hr>
-                  
- 
-                  <div v-if="dados_pesuais">
-                    <div class="row">
-                      <div class="col-md-12 col-lg-6">
-                        <div class="form-item w-100">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="text" class="form-control p-2">
-                            <span>Nome<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-6">
-                        <div class="form-item w-100">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="text" class="form-control p-2">
-                            <span>Sobrenome<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-item">
-
-                      <div class="inputBox  navbar-collapse me-4 my-3">
-                        <input type="text" class="form-control p-2" placeholder="Adicione a sua morada de entrega">
-                        <span>Endereço de entrega<sup>*</sup></span>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-12 col-lg-6">
-                        <div class="form-item w-100">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="text" class="form-control p-2">
-                            <span>Cidade Cidade<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 col-lg-6">
-                        <div class="form-item w-100">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="text" class="form-control p-2">
-                            <span>Zona<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-6 ">
-                        <div class="form-item">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="tel" class="form-control">
-                            <span>Telefone<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-6">
-                        <div class="form-item">
-                          <div class="inputBox  navbar-collapse my-3 me-4">
-                            <input type="e-mail" class="form-control">
-                            <span>Email<sup>*</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="form-check my-1 mt-4">
-                    <h5>Métodos de pagamento</h5>
-                  </div>
-                  <hr>
-
-                  <div class="row g-4 text-center align-items-center justify-content-center border-bottom">
-                    <div class="col-6">
-                      <div class="form-check text-start ">
-                        <input type="checkbox" class="form-check-input bg-primary border-0" id="Transfer-1"
-                          name="Transfer" value="Transfer">
-                        <label class="form-check-label" for="Transfer-1">Cartões Internacionais</label>
-                      </div>
-                    </div>
-
-                    <div class="col-6">
-                      <div class="form-check text-start ">
-                        <input type="checkbox" class="form-check-input bg-primary border-0" id="Payments-1"
-                          name="Payments" value="Payments">
-                        <label class="form-check-label" for="Payments-1">Transferência bancária direta</label>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-check text-start ">
-                        <input type="checkbox" class="form-check-input bg-primary border-0" id="Delivery-1"
-                          name="Delivery" value="Delivery">
-                        <label class="form-check-label" for="Delivery-1">MULTICAIXA Express</label>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-check text-start ">
-                        <input type="checkbox" class="form-check-input bg-primary border-0" id="Paypal-1" name="Paypal"
-                          value="Paypal">
-                        <label class="form-check-label" for="Paypal-1">Pagamento na entrega</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-item mt-5">
-                    <textarea name="text" class="form-control" spellcheck="false" cols="30" rows="11"
-                      placeholder="Adicionar informações adicional (Opcional)"></textarea>
-                  </div>
-
                 </div>
-                <div class="col-md-12 col-lg-6 col-xl-5">
-                  <div class="table-responsive">
-
-                    <table class="table">
-                      <tbody>
-                        <tr v-for="(cat, index) in carinho" :key="index">
-                          <th scope="row">
-                            <div class="d-flex align-items-center">
-                              <img :src="cat.image" class="img-fluid me-5 rounded-circle"
-                                style="width: 50px; height: 50px;" alt="">
-                            </div>
-                          </th>
-                          <td>
-                            <p class="mb-0 " style="font-size: 12px;">{{ cat.name }}</p>
-                            <h6 class="mb-0 ">{{ cat.price }}</h6>
-                          </td>
-
-                          <td>
-                            <div class="input-group quantity  ">
-                              <div class="input-group-btn">
-                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                  <i class="fa fa-minus"></i>
-                                </button>
-                              </div>
-                              <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                              <div class="input-group-btn">
-                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                  <i class="fa fa-plus"></i>
-                                </button>
-                              </div>
-                            </div>
-
-                          </td>
-
-                          <td>
-                            <button class="btn btn-md  text-center " @click="removeCat(index)">
-                              <i class="fa fa-times text-danger"></i>
-                            </button>
-                          </td>
-                        </tr>
-
-                        <tr>
-
-
-                          <td class="">
-                            <h6 class="mb-0 text-dark py-1">Subtotal</h6>
-                          </td>
-                          <td class="">
-                            <div class="py-1 border-bottom border-top">
-                              <h6 class="mb-0 text-dark"> {{ totalCat }} Kz</h6>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                          </th>
-                          <td class="py-5">
-                            <p class="mb-0 text-dark py-4">Envio</p>
-                          </td>
-                          <td colspan="3" class="py-5">
-                            <div class="form-check text-start">
-                              <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-1"
-                                name="Shipping-1" value="Shipping">
-                              <label class="form-check-label" for="Shipping-1">Frete grátis Compra Acima de 25
-                                mil</label>
-                            </div>
-                            <div class="form-check text-start">
-                              <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2"
-                                name="Shipping-1" value="Shipping">
-                              <label class="form-check-label" for="Shipping-2">Taxa fixa: 1.000,00kz</label>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <th scope="row">
-                          </th>
-                          <td class="">
-                            <p class="mb-0 text-dark text-uppercase py-3">TOTAL</p>
-                          </td>
-                          <td class="">
-                            <div class="py-3 border-bottom border-top">
-                              <p class="mb-0 text-dark">$135.00</p>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="lastname">Ultimo Nome</label>
+                    <input type="text" class="form-control" placeholder="">
                   </div>
+                </div>
+                <div class="w-100  pt-3"></div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="country">Cidade/Provincia</label>
+                    <div class="select-wrap">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="" id="" class="form-control">
+                        <option value="">Luanda</option>
+                        <option value="">Benguela</option>
+                        <option value="">Malange</option>
+                        <option value="">Uige</option>
+                        <option value="">Huambo</option>
+                        <option value="">Namibia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-100  pt-3"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="streetaddress">Morada de entrega</label>
+                    <input type="text" class="form-control" placeholder="Zona/Municipio">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Número da casa e nome da rua">
+                  </div>
+                </div>
 
-
-                  <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                    <button type="button" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Fazer
-                      a encomenda</button>
+                <div class="w-100  pt-3"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="emailaddress">Email</label>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                </div>
+                <div class="w-100  pt-3"></div>
+                <div class="col-md-12">
+                  <div class="form-group mt-4">
+                    <div class="radio">
+                      <label class="mr-3"><input type="radio" name="optradio">Enviar para o meu endereço</label>
+                      <label><input type="radio" name="optradio">Enviar para endereço diferente</label>
+                    </div>
                   </div>
                 </div>
               </div>
-            </form>
+            </form><!-- END -->
           </div>
+
+          <div class="col-xl-4">
+            <div class="row mt-5 pt-3">
+              <div class="col-md-12 d-flex mb-4">
+                <div class="cart-detail cart-total p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Total do carrinho</h3>
+                  <p class="d-flex">
+                    <span>Subtotal</span>
+                    <span>AOA {{ totalCat
+                      }}</span>
+                  </p>
+                  <p class="d-flex">
+                    <span>Entrega</span>
+                    <span>AOA 1.000.00</span>
+                  </p>
+                  <p class="d-flex">
+                    <span>Desconto</span>
+                    <span>AOA 0.00</span>
+                  </p>
+                  <hr>
+                  <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span>AOA 17.60</span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="cart-detail p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Métodos de pagamento</h3>
+                  <div class="form-group pt-2">
+                    <div class="col-md-12">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio" class="mr-2">&nbsp;&nbsp;&nbsp;&nbsp;Pagamento na
+                          entrega (Cash)</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-2">
+                    <div class="col-md-12">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio" class="mr-2">&nbsp;&nbsp;&nbsp;&nbsp;Pagamento na
+                          entrega (TPA)</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-2">
+                    <div class="col-md-12">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio" class="mr-2">&nbsp;&nbsp;&nbsp;&nbsp; MULTICAIXA
+                          Express</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-2">
+                    <div class="col-md-12">
+                      <div class="radio">
+                        <label><input type="radio" name="optradio" class="mr-2">&nbsp;&nbsp;&nbsp;&nbsp; Cartões
+                          Internacionais</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-2">
+                    <div class="col-md-12">
+                      <div class="checkbox">
+                        <label style="color: brown;"><input type="checkbox" value="" class="mr-2"> Li e aceito os termos
+                          e condições</label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="pt-3"><a href="#" class="btn btn-primary py-3 px-4">Fazer um pedido</a></p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .col-md-8 -->
+
         </div>
-        <!-- Checkout Page End -->
-
       </div>
-    </nav>
-
-
+    </section> <!-- .section -->
   </div>
-  <!-- fim  Modal do carinho -->
 
 </div>
+<!-- fim  Modal do carinho -->

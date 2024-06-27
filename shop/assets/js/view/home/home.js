@@ -1,8 +1,9 @@
 import get_template from '../../components/get_template.js'
 import api from "../../../../../static/js/api/adm.js"
+let cats = new Array();
+
 
 export default {
-
 
   data: function () {
     return {
@@ -10,6 +11,7 @@ export default {
       qtddCart: 0,
       img: null,
       todos_categoria: [],
+      carinhoLista: [],
       categoria: [
         {
           "id": 1,
@@ -108,14 +110,11 @@ export default {
       return res;
     },
 
-    visualizar(index) {
-      this.tarefa = this.todos_categoria[index].id;
-
-      alert(this.tarefa)
-
-      localStorage.setItem('catCodigo', this.tarefa);
-      this.$router.push({ name: "categoria" })
+    visualizar(id) { 
+      this.$router.push({ name: "categoria", params: { id } })
     },
+
+     
 
     visualizar2(index) {
       this.tarefa = this.categoria[index].name;
@@ -124,19 +123,46 @@ export default {
       this.$router.push({ name: "categoria" })
     },
 
+    carinhos() {
+
+      if (localStorage.getItem('carinho')) {
+        cats = JSON.parse(localStorage.getItem('carinho')) || [];
+
+        this.carinhoLista = cats
+
+
+        this.somaCats();
+        this.qtddCart = cats.length
+
+      } else {
+        this.carinhoLista = "carinho vazio"
+      }
+    },
+
+    somaCats() {
+      if (localStorage.getItem('carinho')) {
+        cats = JSON.parse(localStorage.getItem('carinho')) || [];
+
+        var soma = 0;
+        for (var i = 0; i < cats.length; i++) {
+          soma += cats[i].totalPreco;
+          this.totalCat = soma
+        }
+      }
+    },
+
   },
 
   async mounted() {
     this.img = 'http://localhost:3333/api/uploads_categoria/'
-  
     this.lista_cat()
+    this.carinhos()
 
     if (localStorage.getItem('carinho')) {
       var cats = JSON.parse(localStorage.getItem('carinho'));
       this.qtddCart = cats.length
     }
-
-
+ 
   },
 
   template: await get_template('./assets/js/view/home/home')

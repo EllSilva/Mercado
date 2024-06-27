@@ -157,41 +157,39 @@ export default {
   computed: {
 
     filteredProduto() {
-      let productos = []; 
+      let productos = [];
       productos = this.todos_produto.filter((item) => {
         return (
-          item.nome.toLowerCase().indexOf(this.search.toLowerCase()) > -1 ||
-          item.categoria.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+          item.nome.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         );
       });
       productos = productos.filter((item) => {
         if (this.selected == null) return item;
         return item.isActive === this.selected;
-      });
-
+      }); 
       return productos;
     },
   },
 
 
   methods: {
- 
+
     async lista_produto() {
       let res = await api.lista_produtos();
-      this.todos_produto = res  
+      this.todos_produto = res
       return res;
     },
 
-    addCat(indexc, index) {
-      cats = this.todos_produto[indexc].produtos;
-      this.id = cats[index].id;
-      var id = cats[index].id;
-      var nome = cats[index].nome;
-      var qtdd = cats[index].quantidade;
-      var preco = cats[index].preco;
-      var categoria = cats[index].categoria;
-      var image = cats[index].img;
-      var descricao = cats[index].descricao;
+    addCat(index) {  
+      cats = this.todos_produto 
+      this.id = this.todos_produto[index].id;
+      var id = this.todos_produto[index].id;
+      var nome = this.todos_produto[index].nome;
+      var qtdd = this.todos_produto[index].quantidade;
+      var preco = this.todos_produto[index].preco;
+      var categoria = this.todos_produto[index].categoria;
+      var image = this.todos_produto[index].img;
+      var descricao = this.todos_produto[index].descricao;
       var totalPreco = qtdd * preco;
 
       let verificarexiste = new Array();
@@ -305,7 +303,7 @@ export default {
 
   },
 
-  async mounted() { 
+  async mounted() {
     this.img = 'http://localhost:3333/api/uploads_produto/'
     this.lista_produto()
 

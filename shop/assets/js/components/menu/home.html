@@ -6,9 +6,6 @@
     
     -->
 
-    <!-- qtddCart Spinner End proceed -->
-
-    <!-- Navbar start -->
     <div class="container-fluid fixed-top " style="border: 1px solid #dee2e6;
     border-radius: 10px; box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25); background-color: rgb(29, 9, 66);">
 
@@ -45,6 +42,9 @@
                                             style="background-color: rgb(29, 9, 66); height: 90px;">
                                             <div class="go_back">
                                                 <i class="fa fa-angle-left"></i>
+                                            </div>
+                                            <div class="">
+                                                <h2 style="color: #ffffff; bottom: 0%; position: absolute; display: flex;">Carinhos</h2>
                                             </div>
                                             <a @click="isActive1 = !isActive1">
                                                 <div class="mobile-menu-close" style="color: #dee2e6;">&times;</div>
@@ -128,30 +128,29 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-4 col-sm-12 col-12 pb-1">
-                                                            <div class="g-4 justify-content-end">
-                                                                <div class="bg-light rounded">
 
-                                                                    <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary"
-                                                                        href="#/loja/checkout" type="button"
-                                                                        style=" bottom: 0;">
-                                                                        <span class="checkout"> {{ totalCat }} AOA
-                                                                        </span> checkout</a>
+                                                        <div class=" rodape">
 
+                                                            <div class="position-relative">
 
-
-
-
-
-
+                                                                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
+                                                                    style="width: 130px; height: 130px; top: 0; left: 0;">
+                                                                    <div class="d-flex flex-column">
+                                                                        <span class="h3 mb-0">{{ totalCat
+                                                                            }}</span>
+                                                                        <span class="h5 text-muted mb-0">.00AOA</span>
+                                                                    </div>
                                                                 </div>
+
+                                                                <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary direito"
+                                                                    href="#/loja/checkout" type="button"
+                                                                    style=" bottom: 0;">
+                                                                    checkout</a>
                                                             </div>
+
                                                         </div>
 
-
                                                     </div>
-
-
                                                 </div>
                                                 <!-- Cart Page End -->
                                                 <!--fim Modal do carinho 1 -->
@@ -200,16 +199,17 @@
         aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
-                <div class="modal-header">
+                <div class="modal-header" style="background-color: rgb(29, 9, 66);">
                     <h5 class="modal-title" id="exampleModalLabel">elilo</h5>
                     <div class="modal-body d-flex align-items-center">
                         <div class="input-group w-75 mx-auto d-flex">
                             <input type="search" class="form-control p-3" placeholder="Buscar Produto Nome ou E-mail"
                                 aria-describedby="search-icon-1" v-model="search">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                            <span id="search-icon-1" class="input-group-text "><i class="fa fa-search"></i></span>
                         </div>
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
 
 
@@ -219,53 +219,58 @@
                         <div class="tab-class text-center">
 
                             <div class="tab-content">
-                                <div class="row ">
+                                <div class="row  text-center">
 
-                                    <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-3"
-                                        v-for="(item, row) in filteredProduto" :key="item.Code">
+                                    <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-1"
+                                        v-for="(cat, index)  in filteredProduto" :key="cat.id">
                                         <div class="rounded position-relative fruite-item"
                                             style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
-                                            <div class="fruite-img">
-                                                <img :src="item.image" class="img-fluid w-100 rounded-top" alt="">
-                                            </div>
+                                            <a @click="visualizar(cat.id)">
+                                                <div class="fruite-img">
+                                                    <img :src="img+cat.img" class="img-fluid w-100 rounded-top" alt="">
+                                                </div>
+                                            </a>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                style="top: 10px; left: 10px; font-size: 12px;">
-                                                {{ item.categoria }}</div>
+                                                style="top: 5px; left: 5px; font-size: 12px;">
+                                                {{ cat.categoria }}</div>
                                             <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
-                                                <p style="font-size: 12px; height: 30px;"> {{ item.nome }}</p>
-                                                <p class="text-dark fs-6 fw-bold mb-0">$4.99 / kg</p>
+                                                <p style="font-size: 12px; height: 20px;"> {{ cat.nome }}</p>
+                                                <p class="text-dark fs-6 fw-bold mb-0">{{ cat.preco }} AOA </p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
 
-                                                    <a v-if="awesome" href="#"
-                                                        class="btn border border-secondary rounded-pill px-3 text-primary"
-                                                        @click="awesome = !awesome" style="width: 100%;"><i
-                                                            class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                        Adiciona</a>
+                                                    <div class="row ">
+                                                        <div class="col-md-6 col-lg-6 col-xl-2 col-2 px-2">
 
-                                                    <div v-else
-                                                        class="input-group quantity border border-secondary rounded-pill">
-                                                        <div class="input-group-btn">
-                                                            <button
-                                                                class="btn btn-sm btn-minus rounded-circle bg-light border"
-                                                                @click="item.qdd ? item.qdd-- : false">
-                                                                <i class="fa fa-minus"></i>
-                                                            </button>
+                                                            <div class="btn-group-vertical">
+                                                                <button
+                                                                    class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                                                    @click="cat.quantidade++">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </button>
+                                                                <button
+                                                                    class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                                                    @click="cat.quantidade ? cat.quantidade-- : false">
+                                                                    <i class="fa fa-minus"></i>
+                                                                </button>
+                                                            </div>
+
                                                         </div>
-                                                        <input type="text"
-                                                            class="form-control form-control-sm text-center border-0"
-                                                            v-model="item.qdd">
-                                                        <div class="input-group-btn">
-                                                            <button
-                                                                class="btn btn-sm btn-plus rounded-circle bg-light border"
-                                                                @click="item.qdd++">
-                                                                <i class="fa fa-plus"></i>
-                                                            </button>
+                                                        <div class="col-md-6 col-lg-2 col-xl-10 col-10">
+                                                            <input type="text" class="form-control text-center border-0"
+                                                                style="height: 21px;" v-model="cat.quantidade">
+                                                            <a class="btn border border-secondary rounded-pill px-3 text-primary"
+                                                                @click="addCat(index)" style="width: 100%;"><i
+                                                                    class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                ADD</a>
                                                         </div>
+
+
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
