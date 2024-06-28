@@ -110,7 +110,7 @@
  
   .billing-form .form-control:focus,
   .billing-form .form-control:active {
-    border-color: #82ae46 !important;
+    border-color: #d63384 !important;
   }
  
   .billing-form textarea.form-control {
@@ -155,10 +155,16 @@
 
 
 
- .rodape {
-   position: absolute;
-   bottom: 10%;
- }
+ .rodape { 
+  position: fixed;
+  width: 320px;
+  height: 60px;
+  bottom: 40px;
+  right: 20px;  
+  border-radius: 50px;
+  text-align: right; 
+  box-shadow: 1px 1px 2px #888; 
+}  
 
  .tamanho-img {
    width: auto;

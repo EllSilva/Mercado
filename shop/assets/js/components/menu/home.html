@@ -13,178 +13,186 @@
             <nav class="navbar navbar-light  navbar-expand-xl">
                 <div class="d-flex m-3 me-0 ">
 
-                    <a class="navbar-toggler" type="button" href="#/"><i class="fa fa-home fa-2x text-danger"></i></a>
 
-                    <button class="navbar-toggler  bg-white me-4" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse"><i class="fa fa-bars text-primary"></i></button>
+
+                    <button class="navbar-toggler  bg-white me-4" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation"><i class="fa fa-bars text-primary"></i></button>
+
+                  <!--  <a class="navbar-toggler" type="button" href="#/"><i class="fa fa-home fa-2x text-danger"></i></a>  -->
+
 
                     <a href="#" class="position-relative me-4 my-auto">
                         <h1> elilo </h1>
                     </a>
                     <div class="d-flex position-absolute" style=" right: 0px; ">
-                        <div class=" inputBox collapse navbar-collapse  me-4">
-                            <input type="search" class="form-control p-2" data-bs-toggle="modal"
-                                data-bs-target="#searchModal">
-                            <span>Buscar Produto</span>
-                        </div>
+
+                        <!--  Abrir menu  -->
+                        <nav>
+                            <div class="container-fluid">
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                                    aria-labelledby="offcanvasNavbarLabel">
+                                    <!-- Service Start -->
+                                    <div class="">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <ul class=" list-group-flush justify-content-end flex-grow-1">
+                                                <li class="list-group-item"><a href="">
+                                                        <i class="fa fa-solid fa-2x text-danger fa-home my-3 me-2"></i> <span>Página
+                                                            principal</span> </a></li>
+                                                <li class="list-group-item"><a href="">
+                                                        <i class="fa fa-solid fa-2x text-danger fa-heart my-3 me-2"></i> <span>Os meus
+                                                            favoritos</span> </a></li>
+                                                <li class="list-group-item"><a href="">
+                                                        <i class="fa fa-solid fa-2x text-danger fa-user my-3 me-2"></i> <span>O meu
+                                                            perfil</span> </a></li>
+                                                <li class="list-group-item"><a href="">
+                                                        <i class="fa fa-solid fa-2x text-danger fa-truck my-3 me-2"></i> <span>As minhas
+                                                            encomendas</span> </a></li>
+                                                <li class="list-group-item"><a href="">
+                                                        <i class="fa fa-solid fa-2x text-danger fa-sign-out-alt my-3 me-2"></i> <span>Terminar
+                                                            sessão</span> </a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Service End -->
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- fim  Abrir menu  -->
+
+
+
+                        <!-- Modal do carinho -->
+                        <nav>
+                            <div class="container-fluid">
+
+                                <div class="offcanvas offcanvas-end" tabindex="-1" id="carinho"
+                                    aria-labelledby="carinhoLabel">
+                                    <div class="offcanvas-header">
+                                        <h5 class="offcanvas-title" id="carinhoLabel">Carinho</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr v-for="(cat, index) in carinhoLista" :key="index">
+                                                        <th scope="row">
+                                                            <div class="d-flex align-items-center">
+                                                                <img :src="img+cat.image"
+                                                                    class="img-fluid me-5 rounded-circle"
+                                                                    style="width: 50px; height: 50px;" alt="">
+                                                            </div>
+                                                        </th>
+                                                        <td>
+                                                            <p class="mb-0 " style="font-size: 12px;">{{ cat.nome
+                                                                }}</p>
+                                                            <div class="d-flex mb-2">
+                                                                <h6 class="fw-bold me-2 text-decoration-line-through">
+                                                                    {{ cat.preco }} kz</h6>
+                                                                <h6 class="text-danger ">{{
+                                                                    cat.totalPreco }} kz</h6>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="input-group quantity  ">
+                                                                <div class="input-group-btn">
+                                                                    <button
+                                                                        class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                                                        @click="cat.qtdd ? cat.qtdd-- : false">
+                                                                        <i class="fa fa-minus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-center border-0"
+                                                                    v-model="cat.qtdd">
+                                                                <div class="input-group-btn">
+                                                                    <button
+                                                                        class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                                                        @click="cat.qtdd++">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+
+                                                        <td>
+                                                            <button class="btn btn-md  text-center "
+                                                                @click="removeCat(index)">
+                                                                <i class="fa fa-times text-danger"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+
+                                        <div class=" rodape">
+
+                                            <div class="position-relative">
+
+                                                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
+                                                    style="width: 130px; height: 130px; top: 0; left: 0;">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="h3 mb-0">{{ totalCat
+                                                            }}</span>
+                                                        <span class="h5 text-muted mb-0">.00AOA</span>
+                                                    </div>
+                                                </div>
+
+                                                <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary direito"
+                                                    href="#/loja/checkout" type="button" style=" bottom: 0;">
+                                                    checkout</a>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- fim  Modal do carinho -->
+
+
                         <button
                             class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                             data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                 class="fas fa-search text-primary"></i></button>
 
 
-                        <!-- Modal do carinho -->
-                        <div class="header">
-                            <div class="row v-center">
-                                <div class="header-item item-center ">
-                                    <nav class="menu menu_alt" :class="{ active: isActive1 }">
-                                        <div class="mobile-menu-head"
-                                            style="background-color: rgb(29, 9, 66); height: 90px;">
-                                            <div class="go_back">
-                                                <i class="fa fa-angle-left"></i>
-                                            </div>
-                                            <div class="">
-                                                <h2 style="color: #ffffff; bottom: 0%; position: absolute; display: flex;">Carinhos</h2>
-                                            </div>
-                                            <a @click="isActive1 = !isActive1">
-                                                <div class="mobile-menu-close" style="color: #dee2e6;">&times;</div>
-                                            </a>
-                                        </div>
-                                        <div class="menu-main ">
-                                            <li class="menu-item-has-children ">
-
-
-
-                                                <!-- Cart Page Start -->
-
-                                                <div class="container-fluid py-5">
-
-                                                    <div class="row px-xl-5 pb-3">
-
-                                                        <div class="col-lg-12 col-md-4 col-sm-12 col-12 ">
-                                                            <div class="table-responsive">
-
-
-
-                                                                <table class="table">
-                                                                    <tbody>
-                                                                        <tr v-for="(cat, index) in carinhoLista"
-                                                                            :key="index">
-                                                                            <th scope="row">
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <img :src="img+cat.image"
-                                                                                        class="img-fluid me-5 rounded-circle"
-                                                                                        style="width: 50px; height: 50px;"
-                                                                                        alt="">
-                                                                                </div>
-                                                                            </th>
-                                                                            <td>
-                                                                                <p class="mb-0 "
-                                                                                    style="font-size: 12px;">{{ cat.nome
-                                                                                    }}</p>
-                                                                                <div class="d-flex mb-2">
-                                                                                    <h6
-                                                                                        class="fw-bold me-2 text-decoration-line-through">
-                                                                                        {{ cat.preco }} kz</h6>
-                                                                                    <h6 class="text-danger ">{{
-                                                                                        cat.totalPreco }} kz</h6>
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="input-group quantity  ">
-                                                                                    <div class="input-group-btn">
-                                                                                        <button
-                                                                                            class="btn btn-sm btn-minus rounded-circle bg-light border"
-                                                                                            @click="cat.qtdd ? cat.qtdd-- : false">
-                                                                                            <i class="fa fa-minus"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-sm text-center border-0"
-                                                                                        v-model="cat.qtdd">
-                                                                                    <div class="input-group-btn">
-                                                                                        <button
-                                                                                            class="btn btn-sm btn-plus rounded-circle bg-light border"
-                                                                                            @click="cat.qtdd++">
-                                                                                            <i class="fa fa-plus"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <button class="btn btn-md  text-center "
-                                                                                    @click="removeCat(index)">
-                                                                                    <i
-                                                                                        class="fa fa-times text-danger"></i>
-                                                                                </button>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class=" rodape">
-
-                                                            <div class="position-relative">
-
-                                                                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
-                                                                    style="width: 130px; height: 130px; top: 0; left: 0;">
-                                                                    <div class="d-flex flex-column">
-                                                                        <span class="h3 mb-0">{{ totalCat
-                                                                            }}</span>
-                                                                        <span class="h5 text-muted mb-0">.00AOA</span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <a class="btn border-secondary bg-secondary py-3 px-4 text-uppercase w-100 text-primary direito"
-                                                                    href="#/loja/checkout" type="button"
-                                                                    style=" bottom: 0;">
-                                                                    checkout</a>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <!-- Cart Page End -->
-                                                <!--fim Modal do carinho 1 -->
-
-                                                <!--
-                                                <div class="sub-menu mega-menu mega-menu-column-4 "
-                                                    :class="{ active: isActive2 }"
-                                                    style="background-color: rgb(255, 255, 255);">
-
-                                                    <div>
-                                                        fimmmmmmmm
-                                                    </div>
-
-                                                </div>
-                                            -->
-                                            </li>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- fim  Modal do carinho -->
-
-
-                        <a @click="isActive1 = !isActive1" class="position-relative me-4 my-auto">
+                        <a class="position-relative me-4 my-auto" data-bs-toggle="offcanvas" data-bs-target="#carinho"
+                            aria-controls="carinho" aria-label="Toggle navigation">
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                 {{ qtddCart }}
                         </a>
+
+
+
+
+
+
                         <a href="#" class="my-auto" data-bs-toggle="dropdown">
                             <i class="fas fa-user fa-2x"></i>
                         </a>
+
+
 
                     </div>
                 </div>

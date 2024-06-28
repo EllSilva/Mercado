@@ -1,9 +1,10 @@
 /*!
  * Bootstrap v5.0.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
+ * Copyright 2011-2021 Twitter, Inc. modal-backdrop
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -239,7 +240,7 @@ a {
 }
 
 a:hover {
-    color: #679d06
+    color: #d63384 
 }
 
 a:not([href]):not([class]),
@@ -6049,7 +6050,7 @@ fieldset:disabled .btn {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1040;
+    z-index: 940;
     width: 100vw;
     height: 100vh;
     background-color: #000
