@@ -4,6 +4,24 @@
 
   <div class="pd-xl">
 
+    <div class="" v-if="modal_login"> 
+      <div class="main-main-escolha">
+        <div class="main-escolha">
+          <img src="./assets/img/shopping-animate.svg" alt="astronalta" class="left-login-image-escolher">
+          <div class="card-escolha">
+            <h2 class="text-white">SEM ACESSO ? </h2>
+            <p class="text-white"> Faz o Login para guardares os teus itens no carrinho.</p>
+            <a class="btn-login-escolha" href="#/login">Login</a>
+            <p class="text-white"> ou </p>
+            <button class="btn-login-escolha">CADASTRA-SE</button>
+          </div>
+          <hr>
+          <a @click="modal_login = !modal_login" class="nao_obrigado" >Não, obrigado</a>
+        </div>
+      </div>  
+      <div class="modal-backdrop fade show"></div>
+    </div>
+
     <div style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); z-index: 2000;">
       <div class="swiper mySwiper cat-item2">
         <div class="swiper-wrapper pl-4 px-4">
@@ -14,9 +32,9 @@
                 <img :src="imgcat+cat.img" class="img-fluid tamanho-img rounded-top" alt="">
               </div>
             </a>
-              <a class="d-flex m-2 py-2 bg-light rounded-pill" @click="visualizaratual(cat.id)">
-                <span class="text-dark pl-1 px-1 lt-12">{{ cat.nome }}</span>
-              </a>
+            <a class="d-flex m-2 py-2 bg-light rounded-pill" @click="visualizaratual(cat.id)">
+              <span class="text-dark pl-1 px-1 lt-12">{{ cat.nome }}</span>
+            </a>
           </div>
 
 

@@ -14,106 +14,9 @@ export default {
 
   data: function () {
     return {
-
-
-      productos: [
-        {
-          "id": 1,
-          "qdd": 1,
-          "name": " PIMENTO AMARELO 500G DA HORTA",
-          "categoria": "Fruta e Legumes",
-          "preco": 200,
-          "image": "./assets/img/produtos/tangerina.png",
-          "description": " PIMENTO AMARELO 500G DA HORTA"
-        },
-        {
-          "id": 2,
-          "qdd": 1,
-          "name": "TANGERINA NACIONAL 600G DA HORTA",
-          "categoria": "Fruta e Legumes",
-          "preco": 250,
-          "image": "./assets/img/produtos/pimenta.png",
-          "description": "TANGERINA NACIONAL 600G DA HORTA"
-        },
-        {
-          "id": 3,
-          "qdd": 1,
-          "name": " PERA IMPORTADA 1KG",
-          "categoria": "Fruta e Legumes",
-          "preco": 4699,
-          "image": "./assets/img/produtos/import.png",
-          "description": "PERA IMPORTADA 1KG"
-        },
-        {
-          "id": 4,
-          "qdd": 1,
-          "name": "LIMÃO NACIONAL 1KG DA HORTA",
-          "categoria": "Fruta e Legumes",
-          "preco": 299,
-          "image": "./assets/img/produtos/limao.png",
-          "description": "LIMÃO NACIONAL 1KG DA HORTA"
-        },
-        {
-          "id": 5,
-          "qdd": 1,
-          "name": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO",
-          "categoria": "Fruta e Legumes",
-          "preco": 300,
-          "image": "./assets/img/produtos/grapes.png",
-          "description": " UVA CHARDONNAY IMPORTADA 500G AVO PEDRO"
-        },
-        {
-          "id": 6,
-          "qdd": 1,
-          "name": "LARANJA NACIONAL 1,2KG DA HORTA",
-          "categoria": "Fruta e Legumes",
-          "preco": 3699,
-          "image": "./assets/img/produtos/laranja.png",
-          "description": "LARANJA IMPORTADA 1KG"
-        },
-        {
-          "id": 7,
-          "qdd": 1,
-          "name": " LARANJA IMPORTADA 1KG",
-          "categoria": "Fruta e Legumes",
-          "preco": 5499,
-          "image": "./assets/img/produtos/laranja_import2.png",
-          "description": "LARANJA IMPORTADA 1KG"
-        },
-        {
-          "id": 8,
-          "qdd": 1,
-          "name": "ALHO IMPORTADO 250G AVO PEDRO",
-          "categoria": "Fruta e Legumes",
-          "preco": 200,
-          "image": "./assets/img/produtos/alho.png",
-          "description": "ALHO IMPORTADO 250G AVO PEDRO"
-        },
-        {
-          "id": 9,
-          "qdd": 1,
-          "name": "BATATA 1KG GIRASSOL",
-          "categoria": "Fruta e Legumes",
-          "preco": 2199,
-          "image": "./assets/img/produtos/alho.png",
-          "description": "BATATA 1KG GIRASSOL"
-        },
-        {
-          "id": 10,
-          "qdd": 1,
-          "name": "BATATA DOCE 1KG GIRASSOL",
-          "categoria": "Fruta e Legumes",
-          "preco": 2199,
-          "image": "./assets/img/produtos/doce.png",
-          "description": "BATATA DOCE 1KG GIRASSOL"
-        }
-
-
-      ],
-
+      user_token: "",
       codigo: '',
       verif: "",
-
 
       totalCat: 0,
       carinhoLista: [],
@@ -139,18 +42,8 @@ export default {
       isActive1: true,
       isActive2: false,
 
-      title: "home",
       activo: false,
-      activoService: false,
-      activoSite: false,
-      activoDesign: false,
-      activoMarketig: false,
-      activoOutros: false,
-      activo1: true,
-      activo2: false,
-      activo3: false,
-      activo4: false,
-      activo5: false,
+
     }
   },
 
@@ -166,7 +59,7 @@ export default {
       productos = productos.filter((item) => {
         if (this.selected == null) return item;
         return item.isActive === this.selected;
-      }); 
+      });
       return productos;
     },
   },
@@ -180,8 +73,8 @@ export default {
       return res;
     },
 
-    addCat(index) {  
-      cats = this.todos_produto 
+    addCat(index) {
+      cats = this.todos_produto
       this.id = this.todos_produto[index].id;
       var id = this.todos_produto[index].id;
       var nome = this.todos_produto[index].nome;
@@ -192,17 +85,17 @@ export default {
       var descricao = this.todos_produto[index].descricao;
       var totalPreco = qtdd * preco;
 
-      let verificarexiste = new Array();
-
-      verificarexiste = JSON.parse(localStorage.getItem("carinho"));
-      for (var i = 0; i < verificarexiste.length; i++) {
-        this.verif = verificarexiste[i].id;
-        if (this.verif === this.id) {
-          //  alert("certo existe")
-          this.editeCat()
+      if (localStorage.getItem('carinho')) {
+        let verificarexiste = new Array();
+        verificarexiste = JSON.parse(localStorage.getItem("carinho"));
+        for (var i = 0; i < verificarexiste.length; i++) {
+          this.verif = verificarexiste[i].id;
+          if (this.verif === this.id) {
+            //  alert("certo existe")
+            this.editeCat()
+          }
         }
       }
-
       let totalQuantity = 0;
       if (cats.length == 0) {
       }
@@ -231,7 +124,6 @@ export default {
       });
       this.carinhos()
     },
-
 
     editeCat() {
       // let editcarinho = new Array();  
@@ -305,6 +197,7 @@ export default {
 
   async mounted() {
     this.img = 'http://localhost:3333/api/uploads_produto/'
+    this.user_token = localStorage.getItem('token')
     this.lista_produto()
 
     this.carinhos();

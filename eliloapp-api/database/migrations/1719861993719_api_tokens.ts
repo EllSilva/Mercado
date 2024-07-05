@@ -14,7 +14,7 @@ export default class extends BaseSchema {
       /**
        * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
        */
-      table.timestamp('expires_at', { useTz: true }).nullable().defaultTo(this.now())
+      table.timestamp('expires_at', { useTz: true }).notNullable().defaultTo(this.now())
       table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now())
     })
   }

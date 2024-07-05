@@ -1,0 +1,30 @@
+<div class="offcanvas-body">
+    <ul class=" list-group-flush justify-content-end flex-grow-1">
+
+        <li class="list-group-item"><a href="">
+                <i class="fa fa-solid fa-2x text-danger fa-home my-3 me-2"></i> <span>Página
+                    principal</span> </a></li>
+
+        <div v-if="user_token">
+            <li class="list-group-item"><a href="">
+                    <i class="fa fa-solid fa-2x text-danger fa-heart my-3 me-2"></i> <span>Os meus
+                        favoritos</span> </a></li>
+            <li class="list-group-item"><a href="">
+                    <i class="fa fa-solid fa-2x text-danger fa-user my-3 me-2"></i> <span>O meu
+                        perfil</span> </a></li>
+            <li class="list-group-item"><a href="">
+                    <i class="fa fa-solid fa-2x text-danger fa-truck my-3 me-2"></i> <span>As minhas
+                        encomendas</span> </a></li>
+            <li class="list-group-item" style="cursor: pointer;"><a @click="logout()">
+                    <i class="fa fa-solid fa-2x text-danger fa-sign-out-alt my-3 me-2"></i> <span>Terminar
+                        sessão</span> </a></li>
+        </div>
+
+        <div v-else>
+            <li class="list-group-item" style="cursor: pointer;"><a @click="logout()">
+                    <i class="fa fa-solid fa-2x text-danger fa-sign-in-alt my-3 me-2"></i> <span>Iniciar
+                        sessão</span> </a></li>
+        </div>
+
+    </ul>
+</div>

@@ -1,0 +1,128 @@
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Encomenda from 'App/Models/Encomenda'
+import Produto from 'App/Models/Produto'
+
+
+export default class EncomendasController {
+
+    public async store({ request, response }: HttpContextContract) {
+
+        const { produtos, ...body } = request.only([
+            'codref',
+            'usuario',
+            'email',
+            'telefone1',
+            'telefone2',
+            'provincia',
+            'municipio',
+            'bairro',
+            'rua',
+            'quantidade',
+            'total',
+            'estado',
+            'produtos',
+        ])
+        const encomenda = await Encomenda.create(body)
+
+        if (produtos && produtos.length > 0) {
+
+            //  const prod1 = await Produto.findOrFail(8)
+            //   const prod2 = await Produto.findOrFail(9)
+
+            await encomenda.related('produtos').attach(produtos)
+            await encomenda.load('produtos')
+        }
+
+        return encomenda
+
+    }
+
+    public async update({ params, request, response }: HttpContextContract) {
+
+        const encomendas = await Encomenda.findOrFail(params.id)
+
+        const { produtos, ...body } = request.only([
+            'codref',
+            'usuario',
+            'email',
+            'telefone1',
+            'telefone2',
+            'provincia',
+            'municipio',
+            'bairro',
+            'rua',
+            'quantidade',
+            'total',
+            'estado',
+            'produtos',
+        ])
+
+        encomendas.merge(body)
+        await encomendas.save()
+
+        if (produtos && produtos.length > 0) {
+
+            await encomendas.related('produtos').sync(produtos)
+            await encomendas.load('produtos')
+        }
+
+        return {
+            message: 'Atualizado com sucesso',
+            data: encomendas,
+        }
+
+    }
+
+
+
+
+    //  async index() {
+    //   const publicidade = await Cliente.query().preload('produto')
+    //   return {
+    //     message: 'Lista dos Produtos',
+    //     data: publicidade,
+    //   }
+    //  }
+
+
+
+
+    async index() {
+        const clientes = await Encomenda
+            .query()
+            .preload('produtos', (query) => {
+                query.pivotColumns(['created_at'])
+            })
+        return {
+            message: 'Lista dos Produtos',
+            data: clientes,
+        }
+
+        clientes.forEach((cliente) => {
+            cliente.produtos.forEach((produto) => {
+                console.log(produto.$extras.pivot_estado)
+                console.log(produto.$extras.pivot_cliente_id)
+                console.log(produto.$extras.pivot_produto_id)
+                console.log(produto.$extras.pivot_created_at)
+            })
+        })
+    }
+
+    public async destroy({ request, response }: HttpContextContract) {
+        const encomenda_id = request.param('id')
+        try {
+            const encomenda = await Encomenda.findOrFail(encomenda_id)
+            await encomenda.delete()
+            return "encomenda eliminado"
+        } catch (error) {
+            return response.unauthorized(
+                {
+                    error: true,
+                    message: 'Dados nao encontrado  « Erroo »'
+                }
+            )
+        }
+    }
+
+
+}

@@ -24,7 +24,13 @@ export default {
       carinhoLista: [],
       todos_subc_produto: [],
       todos_categoria: [],
-      productos: []
+      productos: [],
+
+      localizacao: [
+        "luanda", "namibia", "uige", "benguela", "huila",
+      ],
+
+
     }
 
   },
@@ -55,6 +61,9 @@ export default {
 
 
   methods: {
+
+
+
     async lista_cat() {
       let res = await api.lista_categorias();
 
@@ -63,7 +72,6 @@ export default {
       console.log(this.todos_categoria)
       return res;
     },
-
 
     async lista_subcat_produtos() {
       let res = await api.lista_subcategorias_produtos();
@@ -103,7 +111,9 @@ export default {
 
     addCat(indexc, index) {
 
-      if (this.user_token & this.user_local) {
+      this.user_local = this.localizacao.includes("luanda")
+  
+      if (this.user_token && this.user_local) {
 
         cats = this.todos_subc_produto[indexc].produtos;
         this.id = cats[index].id;
@@ -158,10 +168,10 @@ export default {
         this.carinhos()
       }
 
-      else if (this.user_token == "") {
+      else if (!this.user_token) {
         this.modal_login = true
       }
-      else if (this.user_local == "") {
+      else if (!this.user_local) {
         alert(" Este Produto nao esta Disponivel na sua Localizacao  ")
       }
 
@@ -186,13 +196,12 @@ export default {
         cats = JSON.parse(localStorage.getItem('carinho')) || [];
 
         this.carinhoLista = cats
-
-
+ 
         this.somaCats();
         this.qtddCart = cats.length
 
       } else {
-        this.carinhoLista = "carinho vazio"
+       
       }
     },
 
@@ -207,7 +216,6 @@ export default {
     this.img = 'http://localhost:3333/api/uploads_produto/'
     this.imgcat = 'http://localhost:3333/api/uploads_categoria/'
 
-    //console.log(this.filteredCategoria) 
 
 
     this.codigo = this.$route.params.id
@@ -215,6 +223,8 @@ export default {
     this.lista_cat()
     this.lista_subcat_produtos()
     this.carinhos()
+    this.user_token = localStorage.getItem('token')
+    //console.log(this.filteredCategoria) 
 
 
     //this.carinhoLista.splice(index, 1);

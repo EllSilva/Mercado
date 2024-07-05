@@ -6,6 +6,8 @@ import get_template from './components/get_template.js'
 
 import page_menu from './components/menu/home.js'
 Vue.component('c-menu', page_menu)
+import page_submenu from './components/menu/submenu.js'
+Vue.component('c-submenu', page_submenu)
 
 import page_footer from './components/footer/home.js'
 Vue.component('c-footer', page_footer)
@@ -17,8 +19,9 @@ Vue.component('c-form_contact', page_form_contact)
 
 
 
-import page_loja from './components/jls/loja.js'
-Vue.component('c-loja', page_loja)
+import page_login from './components/jls/login.js'
+Vue.component('c-login', page_login)
+
  
 
 
@@ -49,7 +52,7 @@ Vue.use(Router)
  
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
-    { path: '/loja', component: { template: '<c-loja></c-loja>' } },
+    { path: '/login', component: { template: '<c-login></c-login>' } },
     //{ path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/detalhes/:id',  name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/categoria/:id', name:"categoria", component: { template: '<p-categoria></p-categoria>' } },
