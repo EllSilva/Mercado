@@ -12,8 +12,6 @@ Vue.component('c-submenu', page_submenu)
 import page_footer from './components/footer/home.js'
 Vue.component('c-footer', page_footer)
 
-import page_form_contact from './components/form/home.js'
-Vue.component('c-form_contact', page_form_contact)
  
 
 
@@ -21,8 +19,11 @@ Vue.component('c-form_contact', page_form_contact)
 
 import page_login from './components/jls/login.js'
 Vue.component('c-login', page_login)
-
+import page_cadastro from './components/jls/cadastro.js'
+Vue.component('p-cadastro', page_cadastro)
  
+import page_escolhe from './components/jls/escolhe.js'
+Vue.component('c-escolhe', page_escolhe)
 
 
 import page_home from './view/home/home.js'
@@ -33,8 +34,8 @@ import page_categoria from './view/categoria/home.js'
 Vue.component('p-categoria', page_categoria)
 
 
-import page_checkout_hospedagem from './view/checkout/hospedagem.js'
-Vue.component('p-checkout_hospedagem', page_checkout_hospedagem)
+import page_encomenda from './view/checkout/encomenda.js'
+Vue.component('p-encomenda', page_encomenda)
 
 import page_checkout from './view/checkout/home.js'
 Vue.component('p-checkout', page_checkout)
@@ -43,8 +44,7 @@ import page_checkout_website from './view/checkout/website.js'
 Vue.component('p-checkout_website', page_checkout_website)
 
  
-import page_contato from './view/contato/home.js'
-Vue.component('p-contato', page_contato)
+
  
 
 Vue.use(Router)
@@ -53,18 +53,20 @@ Vue.use(Router)
 const routes = [
     { path: '/', component: { template: '<p-home></p-home>' } },
     { path: '/login', component: { template: '<c-login></c-login>' } },
+    { path: '/cadastro', component: { template: '<p-cadastro></p-cadastro>' } }, 
+    
+
     //{ path: '/loja/detalhes', name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/detalhes/:id',  name:"detalhes", component: { template: '<p-detalhes></p-detalhes>' } },
     { path: '/loja/categoria/:id', name:"categoria", component: { template: '<p-categoria></p-categoria>' } },
     { path: '/loja/checkout', component: { template: '<p-checkout></p-checkout>' } },
- 
+    { path: '/loja/encomenda', component: { template: '<p-encomenda></p-encomenda>' } },
 
-    { path: '/hospedagem', component: { template: '<p-checkout_hospedagem></p-checkout_hospedagem>' } },
+   
     { path: '/criacao-de-sites',  component: { template: '<p-checkout_website></p-checkout_website>' } }, 
    
       
      
-    { path: '/contato', component: { template: '<p-contato></p-contato>' } },
  
 ]
 

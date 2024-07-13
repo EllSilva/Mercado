@@ -1,6 +1,6 @@
 <div>
     <!-- Sidebar  -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="ps ps--active-y" :class="{ active: isActive }">
         <div class="sidebar_blog_1">
             <div class="sidebar-header">
                 <div class="logo_section">
@@ -15,19 +15,23 @@
                     <div class="user_img"><img class="img-responsive" src="./assets/images/layout_img/user_img.jpg" alt="#" />
                     </div>
                     <div class="user_info">
-                        <h6>Dany </h6>
+                        <h6>Dany sdfsdfsd </h6>
                         <p><span class="online_animation"></span> Online</p>
                     </div>
-                </div>
+                     
+                    <button type="button" id="sidebarCollapse" class="sidebar_toggle_close" @click="mostrarMenu()" >
+                        X
+                    </button>
+                </div> 
             </div>
         </div>
         <div class="sidebar_blog_2">
             <h4>Geral</h4>
             <ul class="list-unstyled components">
                 <li><a href="#/"><i class="fas fa-tachometer-alt blue2_color"></i> <span>Dashboard</span></a></li>
-   
+   <!-- 
                 <li><a href="#Estoque"><i class="fa fa-clone yellow_color"></i> <span>Gestão de Estoque</span></a></li>
-                
+                -->
                 <li>
                     <a href="#/encomenda">
                         <i class="fa fa-paper-plane red_color"></i> <span>Encomendas</span></a>
@@ -43,7 +47,7 @@
                         <li><a href="">> <span>Usuario</span></a></li>
                     </ul>
                 </li>
-
+   <!--  
                 <li>
                     <a href="#lista" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
                             class="fa fa-object-group blue2_color"></i> <span>Listagem </span></a>
@@ -69,6 +73,9 @@
                 </li>
                 <li><a href="map.html"><i class="fa fa-map purple_color2"></i> <span>Map</span></a></li> 
                 <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
+           
+             -->
+           
             </ul>
         </div>
     </nav>
@@ -80,13 +87,14 @@
         <div class="topbar">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="full">
-                    <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i
+                    <button type="button" id="sidebarCollapse" class="sidebar_toggle" @click="mostrarMenu()" ><i
                             class="fa fa-bars"></i></button>
                     <div class="logo_section">
                      <h1 class="" style="color: rgb(255, 255, 255);">
                         Elilo
                      </h1> 
                     </div>
+
                     <div class="right_topbar">
                         <div class="icon_info">
                             <ul>

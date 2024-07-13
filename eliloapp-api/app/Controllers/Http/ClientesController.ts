@@ -1,10 +1,9 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Cliente from 'App/Models/Cliente'
-import Produto from 'App/Models/Produto'
+import Cliente from 'App/Models/Cliente' 
 
 export default class ClientesController {
 
-    public async store({ request, response }: HttpContextContract) {
+    public async store({ request }: HttpContextContract) {
 
         const body = request.body() 
 

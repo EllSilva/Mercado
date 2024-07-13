@@ -12,7 +12,7 @@
   sidebar small only desktop
 -----------------------------------*/
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px) { 
     /*-- small sidebar --*/
     #sidebar.active {
         min-width: 90px;
@@ -191,6 +191,27 @@
 }
 
 @media (max-width: 1199px) {
+    .sidebar_toggle {
+        border: none;
+        padding: 14px 26px 14px;
+        font-size: 21px;
+        background: #ff5722;
+        margin-right: 0;
+        cursor: pointer;
+        float: left;
+        display: block;
+    }
+    
+    .sidebar_toggle_close {
+        border: none;
+        padding: 4px 10px 4px;
+        font-size: 21px;
+        background: #ff5722; 
+        cursor: pointer;
+        margin-right: 10%;
+        height: 10%;
+        display: block;
+    }
     * {
         box-sizing: border-box;
     }

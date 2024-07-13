@@ -8,9 +8,9 @@ export default {
         })
     },
 
-    async cadastrar(nome, sobrenome, email, password, cargo) {
+    async cadastrar(usuario, email, password, telefone1) {
         return await http.post('/users', {
-            nome, sobrenome, email, password, cargo
+            usuario, email, password, telefone1
         })
     },
 
@@ -45,14 +45,22 @@ export default {
     async lista_um_produto(id) {
         return await http.get('/produtos/'+id)
     }, 
-
-     
-
-    async listar_blog( titulo, descricao, imagem) {
-        return await http.get('/publicidades', {
-             titulo, descricao, imagem
+ 
+    async encomenda(
+        id, cod_ref, gorjeta, tipo_pagamento, total, bairro, rua, estado, instrucoes, user_id, produtos) {
+        return await http.post('/encomenda', {
+            id, cod_ref, gorjeta, tipo_pagamento, total, bairro, rua, estado, instrucoes, user_id, produtos
         })
     },
+     
+    async lista_encomenda() {
+        return await http.get('/encomenda') 
+    }, 
+  
+
+
+    
+
 
 
     async cometar_public(id, nome, email, texto) {
@@ -62,18 +70,6 @@ export default {
     },
  
 
-    async cadastra_projeto(
-        titulo, categoria, link) {
-        return await http.post('/projectoslinks', {
-            titulo, categoria, link
-        })
-    },
-     
-    async lista_projecto() {
-        return await http.get('/projectos')
-      //  return await http.get('/projectos')
-    }, 
-  
 
     async lista_projecto_id(id) {
         return await http.get('/projectos/'+id)

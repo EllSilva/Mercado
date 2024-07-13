@@ -18,6 +18,33 @@ export default {
 
   methods: {
 
+    async verificarUser() {
+
+      const token = localStorage.getItem('token') || "";
+ 
+      const myHeaders = new Headers({
+        'Authorization': `Bearer ${token}`
+      });
+
+      let res = await fetch(
+        `http://localhost:3333/api/dashboard`,
+        {
+          method: 'GET',
+          headers: myHeaders
+        }
+      );
+
+      let data = await res.json();
+ 
+      var sms = data.message;
+      this.user_token  = data.estaLogado;
+
+      console.log(sms)
+      console.log(this.user_token)
+
+    },
+
+
     async logout() {
 
       iziToast.show({
@@ -48,10 +75,7 @@ export default {
   },
 
   async mounted() {
-     this.user_token = localStorage.getItem('token')
-     if (this.user_token) {
-
-     }
+     this.verificarUser()
 
   },
 

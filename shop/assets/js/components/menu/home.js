@@ -66,6 +66,32 @@ export default {
 
 
   methods: {
+    
+    async verificarUser() {
+
+      const token = localStorage.getItem('token') || "";
+ 
+      const myHeaders = new Headers({
+        'Authorization': `Bearer ${token}`
+      });
+
+      let res = await fetch(
+        `http://localhost:3333/api/dashboard`,
+        {
+          method: 'GET',
+          headers: myHeaders
+        }
+      );
+
+      let data = await res.json();
+ 
+      var sms = data.message;
+      this.user_token  = data.estaLogado;
+
+      console.log(sms)
+      console.log(this.user_token)
+
+    },
 
     async lista_produto() {
       let res = await api.lista_produtos();
@@ -196,12 +222,53 @@ export default {
   },
 
   async mounted() {
+ 
+
+  $(document).ready(function () {
+
+    $('.sub-btn').click(function () {
+      $(this).next('.sub-menu').slideToggle();
+      $(this).find('.dropdown').toggleClass('rotate');
+    });
+
+    $('.menu-btn').click(function () {
+      $('.side-bar').addClass('active');
+      $('.menu-btn').css("visibility", "hidden");
+    });
+
+    $('.carinho-btn').click(function () {
+      $('.side-carinho').addClass('active');
+      $('.menu-carinho').css("visibility", "hidden");
+    });
+
+    $('.close-btn').click(function () {
+      $('.side-carinho').removeClass('active');
+      $('.side-bar').removeClass('active');
+      $('.menu-btn').css("visibility", "visible");
+    });
+
+    $('.close-carinho').click(function () {
+      $('.side-carinho').removeClass('active'); 
+      $('.menu-carinho').css("visibility", "visible");
+    });
+    
+  }); 
+  
+
+ 
+
+
+ 
+
+
+    this.verificarUser()
+    
     this.img = 'http://localhost:3333/api/uploads_produto/'
-    this.user_token = localStorage.getItem('token')
     this.lista_produto()
 
     this.carinhos();
     this.somaCats();
+    
 
   },
   template: await get_template('./assets/js/components/menu/home')

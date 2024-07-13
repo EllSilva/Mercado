@@ -11,7 +11,7 @@ export default {
             ref: "",
             imagemVer: null,
             todos_categoria: [],
-
+             
         }
 
     },
@@ -20,6 +20,7 @@ export default {
     methods: {
  
         async sendFile() {
+            alert("oiiii")
             this.error = null;
             // localStorage.removeItem('token')
             let res = await api.cadastra_subcategoria(this.ref, this.nome);

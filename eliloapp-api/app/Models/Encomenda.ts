@@ -1,46 +1,43 @@
 import { DateTime } from 'luxon' 
-import { column, beforeSave, BaseModel, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, BaseModel, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Produto from 'App/Models/Produto'
 
 export default class Encomenda extends BaseModel {
   @column({ isPrimary: true })
   public id: number
+  
+  @column()
+  public cod_ref: number
+  
+  @column()
+  public telefone: string
+  
+  @column()
+  public gorjeta: string
 
   @column()
-  public usuario: string
+  public tipo_pagamento: string
 
   @column()
-  public email: string
-
-  @column({ serializeAs: null })
-  public password: string
+  public total: string
  
   @column()
-  public telefone1: string
+  public municipio: string
 
   @column()
-  public telefone2: string
-
-  @column()
-  declare provincia: string 
-
-  @column()
-  declare municipio: string
- 
-  @column()
-  declare bairro: string
+  declare bairro: string 
 
   @column()
   declare rua: string
-  
-  @column()
-  declare quantidade: string
  
   @column()
-  declare total: string
+  declare estado: string
 
   @column()
-  declare estado: string 
+  declare instrucoes: string 
+
+  @column()
+  declare userId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

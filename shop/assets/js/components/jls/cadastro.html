@@ -1,0 +1,44 @@
+<div class="body-user">
+
+  <div class="box">
+    <div class="img-box">
+        <img src="img-formulario.png">
+    </div>
+    <div class="form-box">
+        <h2>Criar Conta</h2>
+        <p> Já é um membro? <a href="#/login"> Login </a> </p>
+        <form >
+            <div class="input-group">
+                <label for="nome"> Nome Completo</label>
+                <input type="text" id="nome" placeholder="Digite o seu nome completo" v-model="usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Digite o seu email" v-model="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" placeholder="Digite o seu telefone" v-model="telefone1" required>
+            </div>
+
+            <div class="input-group w50">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="Digite sua senha" v-model="password" required>
+            </div>
+
+            <div class="input-group w50">
+                <label for="Confirmarsenha">Confirmar Senha</label>
+                <input type="password" id="Confirmarsenha" placeholder="Confirme a senha" required>
+            </div>
+
+            <div class="input-group">
+                <button @click="cadusers()">Cadastrar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+ 
+</div>

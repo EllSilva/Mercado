@@ -3,13 +3,17 @@ import get_template from '../../components/get_template.js'
 export default {
     data: function () {
         return {
+            isActive: false,
+
 
             isActive1: false,
             isActive2: false,
             isActive3: false,
 
             title: "home",
+
             activo: false,
+
             activoService: false,
             activoSite: false,
             activoDesign: false,
@@ -32,7 +36,7 @@ export default {
 
 
         mostrarMenu() {
-            this.activo = !this.activo;
+            this.isActive = !this.isActive;
         },
  
         mostrarSite() {

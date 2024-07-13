@@ -7,7 +7,7 @@ const options = {
     method: 'POST',
     mode: 'cors',
     cache: 'default',
-    body: null
+    body: null 
 }
 
 const error_default = {

@@ -1,26 +1,26 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Encomenda from 'App/Models/Encomenda'
-import Produto from 'App/Models/Produto'
+import Encomenda from 'App/Models/Encomenda' 
 
 
 export default class EncomendasController {
 
-    public async store({ request, response }: HttpContextContract) {
+    public async store({ request }: HttpContextContract) {
 
         const { produtos, ...body } = request.only([
-            'codref',
-            'usuario',
-            'email',
-            'telefone1',
-            'telefone2',
-            'provincia',
+            'id',
+            'cod_ref', 
+            'telefone',
+            'gorjeta',
+            'tipo_pagamento',
+            'total',
             'municipio',
             'bairro',
             'rua',
-            'quantidade',
-            'total',
             'estado',
+            'instrucoes', 
+            'user_id', 
             'produtos',
+  
         ])
         const encomenda = await Encomenda.create(body)
 
@@ -37,7 +37,7 @@ export default class EncomendasController {
 
     }
 
-    public async update({ params, request, response }: HttpContextContract) {
+    public async update({ params, request }: HttpContextContract) {
 
         const encomendas = await Encomenda.findOrFail(params.id)
 

@@ -734,6 +734,18 @@ a:focus {
     margin-right: 0;
     cursor: pointer;
     float: left;
+    display: none;
+}
+
+.sidebar_toggle_close {
+    border: none;
+    padding: 4px 10px 4px;
+    font-size: 21px;
+    background: #ff5722; 
+    cursor: pointer;
+    margin-right: 10%;
+    height: 10%;
+    display: none;
 }
 
 .icon_info span.badge {

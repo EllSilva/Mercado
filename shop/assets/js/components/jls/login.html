@@ -1,37 +1,33 @@
 <div class="">
- 
-  <div class="main-main"> 
-  
-  
-  <div class="mobile-menu-head" style="position: absolute; left: 0; top: 0;">
-       <a href="#/" 
-        class="banner-btn btn py-3 px-5 back-login">
-        <i class="fa fa-angle-left"> Voltar</i></a>
-    </div>
- 
+  <div class="body-user">
 
-  
-    <div class="main-login">
-    <div class="left-login">
-      <h1>Iniciar Sessão </h1> 
-      <img src="./assets/img/shopping-animate.svg" alt="astronalta" class="left-login-image">
-    </div>
-    <div class="right-login">
-      <div class="card-login">
-        <h1>LOGIN</h1>
-        <div class="textfield">
-          <label for="usuario">Usuario</label>
-          <input type="text" placeholder="usuario" name="usuario" v-model="email">
-        </div>
-        <div class="textfield">
-          <label for="senha">Senha</label>
-          <input type="password" placeholder="senha" name="senha" v-model="password">
-        </div>
-        <button class="btn-login" @click="logar()">Login</button>
+    <div class="box">
+      <div class="img-box">
+        <img src="./assets/img/img-formulario.png" alt="astronalta" class="left-login-image">
+      </div>
+      <div class="form-box">
+        <h2>Logar na Conta</h2>
+        <p> Não tem uma Conta? <a href="#/cadastro"> Criar Conta </a> </p>
+        <form action="#">
+
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Digite o seu email" v-model="email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha" v-model="password" required>
+          </div>
+
+
+          <div class="input-group">
+            <button @click="logar()">Acessar Conta</button>
+          </div>
+          <p>esquece a senha</p>
+        </form>
       </div>
     </div>
-  </div>
-  </div>
 
-  <div class="modal-backdrop fade show"></div>
+  </div>
 </div>

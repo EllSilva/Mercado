@@ -1,20 +1,45 @@
-import { DateTime } from 'luxon'
-import { BaseModel, column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
+import { DateTime } from 'luxon' 
+import { BaseModel, HasMany, column, hasMany, beforeSave } from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
+import Encomenda from './Encomenda'
 
 export default class User extends BaseModel {
+  @hasMany(() => Encomenda)
+  public encomendas: HasMany<typeof Encomenda>
+
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public full_name: string | null 
+  public usuario: string
 
   @column()
   public email: string
 
   @column({ serializeAs: null })
   public password: string
+ 
+  @column()
+  public telefone1: string
 
+  @column()
+  public telefone2: string
+
+  @column()
+  declare provincia: string 
+
+  @column()
+  declare municipio: string
+ 
+  @column()
+  declare bairro: string
+
+  @column()
+  declare rua: string
+
+  @column()
+  declare complemento: string    
+  
   @column()
   public remember_me_token: string
 

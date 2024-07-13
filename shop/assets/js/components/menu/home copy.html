@@ -12,7 +12,48 @@
         <div class="container px-0 ">
             <nav class="navbar navbar-light  navbar-expand-xl">
                 <div class="d-flex m-3 me-0 ">
- 
+
+
+                    <header>
+                        <nav>
+
+                            
+
+                            <div class="side-bar  ">
+                                <div class="close-btn">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="menu">
+                                    <div class="item"><a href="index.html"><i class="fas fa-desktop"></i>Admin</a></div>
+                                    <div class="item">
+                                        <a class="sub-btn"><i class="fas fa-table"></i>Cursos<i
+                                                class="fas fa-angle-right dropdown"></i></a>
+                                        <div class="sub-menu">
+                                            <a href="#" class="sub-item">Javascript</a>
+                                            <a href="#" class="sub-item">PHP</a>
+                                            <a href="#" class="sub-item">React.js</a>
+                                        </div>
+                                    </div>
+                                    <div class="item"><a href="index.html"><i class="fas fa-th"></i>Recursos</a></div>
+                                    <div class="item">
+                                        <a class="sub-btn"><i class="fas fa-cogs"></i>Login<i
+                                                class="fas fa-angle-right dropdown"></i></a>
+                                        <div class="sub-menu">
+                                            <a href="#" class="sub-item">Cadastre-se</a>
+                                            <a href="#" class="sub-item">Logar</a>
+                                        </div>
+                                    </div>
+                                    <div class="item"><a href="index.html"><i class="fas fa-info-circle"></i>Sobre</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </nav>
+                    </header>
+
+
+
+
                     <button class="navbar-toggler  bg-white me-4 menu-btn" type="button">
                         <i class="fa fa-bars text-primary"></i></button>
 
@@ -27,59 +68,47 @@
                     <div class="d-flex position-absolute" style=" right: 0px; ">
 
                         <!--  Abrir menu  -->
-                        <header>
-                            <nav>
-    
-                                
-    
-                                <div class="side-bar  ">
-                                    <div class="close-btn">
-                                        <i class="fas fa-times"></i>
+
+
+
+
+
+
+
+                        <nav>
+                            <div class="container-fluid">
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                                    aria-labelledby="offcanvasNavbarLabel">
+                                    <!-- Service Start -->
+                                    <div class="">
+                                        <div class="offcanvas-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <c-submenu></c-submenu>
                                     </div>
-                                    <div class="menu">
-                                        <div class="item"><a href="/#"><i class="fa fa-solid fa-2x fa-home"></i>Admin</a></div>
-                                        <div v-if="user_token">
-                                        <div class="item"><a href="index.html"><i class="fa fa-solid fa-2x fa-user"></i>O meu perfil</a></div>
-                                        <div class="item"><a href="index.html"><i class="fa fa-solid fa-2x fa-truck"></i>Meus favoritos</a></div>
-                                        <div class="item"><a href="#/loja/encomenda"><i class="fa fa-solid fa-2x fa-truck"></i>As minhas encomendas</a></div>
-                                        <div class="item"><a href="index.html"><i class="fa fa-solid fa-2x fa-sign-out-alt"></i>Terminar sessão</a></div>
-                                    </div>
-    
-                                    <div v-else>
-                                        <div class="item"><a href="index.html"><i class="fa fa-solid fa-2x fa-sign-out-alt"></i>Iniciar sessão</a></div>
-                                        
-                                    </div> 
-                                    </div>
+                                    <!-- Service End -->
                                 </div>
-    
-                            </nav>
-                        </header>
- 
+                            </div>
+                        </nav>
                         <!-- fim  Abrir menu  -->
 
 
 
-
-
- 
-                          
-
-
-                        
-
-
-
                         <!-- Modal do carinho -->
-                        
-                        <header>
-                            <nav > 
-                                <div class="side-carinho ">
-                                    <div class="close-carinho">
-                                        <i class="fas fa-times"></i>
+                        <nav>
+                            <div class="container-fluid">
+
+                                <div class="offcanvas offcanvas-end" tabindex="-1" id="carinho"
+                                    aria-labelledby="carinhoLabel">
+                                    <div class="offcanvas-header">
+                                        <h5 class="offcanvas-title" id="carinhoLabel">Carinho</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
                                     </div>
-                                    <div class="menu p-3">
-                                       
-                                        <div class="table-responsive pt-5">
+                                    <div class="offcanvas-body">
+
+                                        <div class="table-responsive">
                                             <table class="table">
                                                 <tbody>
                                                     <tr v-for="(cat, index) in carinhoLista" :key="index">
@@ -90,27 +119,27 @@
                                                                     style="width: 50px; height: 50px;" alt="">
                                                             </div>
                                                         </th>
-                                                        <td class="carinho-item">
-                                                            <p class="mb-0" >{{ cat.nome
+                                                        <td>
+                                                            <p class="mb-0 " style="font-size: 12px;">{{ cat.nome
                                                                 }}</p>
                                                             <div class="d-flex mb-2">
-                                                                <h6 class="fw-bold me-2 text-decoration-line-through" style="font-size: 11px;">
+                                                                <h6 class="fw-bold me-2 text-decoration-line-through">
                                                                     {{ cat.preco }} kz</h6>
-                                                                <p class="text-danger ">{{
-                                                                    cat.totalPreco }} kz</p>
+                                                                <h6 class="text-danger ">{{
+                                                                    cat.totalPreco }} kz</h6>
                                                             </div>
                                                         </td>
 
-                                                        <td style="width: 50px; height: 30px;">
+                                                        <td>
                                                             <div class="input-group quantity  ">
                                                                 <div class="input-group-btn">
-                                                                    <button  
+                                                                    <button
                                                                         class="btn btn-sm btn-minus rounded-circle bg-light border"
                                                                         @click="cat.qtdd ? cat.qtdd-- : false">
                                                                         <i class="fa fa-minus"></i>
                                                                     </button>
                                                                 </div>
-                                                                <input type="text" style="width: 20px; height: 60px; position: absolute; margin-left: 30px;"
+                                                                <input type="text"
                                                                     class="form-control form-control-sm text-center border-0"
                                                                     v-model="cat.qtdd">
                                                                 <div class="input-group-btn">
@@ -123,7 +152,7 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <button class="btn btn-md  text-center "  
+                                                            <button class="btn btn-md  text-center "
                                                                 @click="removeCat(index)">
                                                                 <i class="fa fa-times text-danger"></i>
                                                             </button>
@@ -132,7 +161,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-     
+
                                         <div class=" rodape">
                                             <div class="position-relative">
                                                 <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
@@ -150,44 +179,32 @@
                                         </div>
                                     </div>
                                 </div>
-    
-                            </nav>
-                        </header>
- 
+                            </div>
+                        </nav>
                         <!-- fim  Modal do carinho -->
 
-
-
-                        
-
-
-
-
-                        
 
                         <button
                             class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                             data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                 class="fas fa-search text-primary"></i></button>
- 
-                        <div v-show="user_token">
 
-                          
 
-                            <a class="position-relative me-4 my-auto carinho-btn"  >
+                        <div v-if="user_token">
+                            <a class="position-relative me-4 my-auto" data-bs-toggle="offcanvas"
+                                data-bs-target="#carinho" aria-controls="carinho" aria-label="Toggle navigation">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span
                                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                     {{ qtddCart }}
                             </a>
-                            
                             <a href="#" class="my-auto" data-bs-toggle="dropdown">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
 
-                        <div v-show="!user_token">
+                        <div v-else>
                             <a class="btn border border-secondary rounded-pill text-text" href="#/login"
                                 style="width: 100%; height: 100%; align-items: center; display: flex; ">
                                 <i class="me-2 fa fa-sign-in-alt "></i>

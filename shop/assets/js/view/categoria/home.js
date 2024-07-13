@@ -62,7 +62,31 @@ export default {
 
   methods: {
 
+    async verificarUser() {
 
+      const token = localStorage.getItem('token') || "";
+
+      const myHeaders = new Headers({
+        'Authorization': `Bearer ${token}`
+      });
+
+      let res = await fetch(
+        `http://localhost:3333/api/dashboard`,
+        {
+          method: 'GET',
+          headers: myHeaders
+        }
+      );
+
+      let data = await res.json();
+
+      var sms = data.message;
+      this.user_token = data.estaLogado;
+
+      console.log(sms)
+      console.log(this.user_token)
+
+    },
 
     async lista_cat() {
       let res = await api.lista_categorias();
@@ -206,12 +230,12 @@ export default {
     },
 
     removeCat(index) {
-
     },
 
   },
 
   async mounted() {
+    this.verificarUser()
 
     this.img = 'http://localhost:3333/api/uploads_produto/'
     this.imgcat = 'http://localhost:3333/api/uploads_categoria/'
@@ -223,7 +247,6 @@ export default {
     this.lista_cat()
     this.lista_subcat_produtos()
     this.carinhos()
-    this.user_token = localStorage.getItem('token')
     //console.log(this.filteredCategoria) 
 
 
