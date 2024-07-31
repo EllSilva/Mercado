@@ -1,0 +1,115 @@
+<div class="pd-t">
+
+  <c-menu :qtddCart="qtddCart" :carinhoLista="carinhoLista"></c-menu>
+
+  <div class="pd-xl">
+
+    <div class="" v-if="modal_login"> 
+      <div class="main-main-escolha">
+        <div class="main-escolha">
+          <img src="./assets/img/shopping-animate.svg" alt="astronalta" class="left-login-image-escolher">
+          <div class="card-escolha">
+            <h2 class="text-white">SEM ACESSO ? </h2>
+            <p class="text-white"> Faz o Login para guardares os teus itens no carrinho.</p>
+            <a class="btn-login-escolha" href="#/login">Login</a>
+            <p class="text-white"> ou </p>
+            <button class="btn-login-escolha">CADASTRA-SE</button>
+          </div>
+          <hr>
+          <a @click="modal_login = !modal_login" class="nao_obrigado" >Não, obrigado</a>
+        </div>
+      </div>  
+      <div class="modal-backdrop fade show"></div>
+    </div>
+
+    <div style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); z-index: 2000;">
+      <div class="swiper mySwiper cat-item2">
+        <div class="swiper-wrapper pl-4 px-4">
+
+          <div class="swiper-slide pt-1 pb-1 swiper-font " v-for="(cat, index) in todos_categoria" :key="index">
+            <a @click="visualizaratual(cat.id)">
+              <div class="fruite-img">
+                <img :src="imgcat+cat.img" class="img-fluid tamanho-img rounded-top" alt="">
+              </div>
+            </a>
+            <a class="d-flex m-2 py-2 bg-light rounded-pill" @click="visualizaratual(cat.id)">
+              <span class="text-dark pl-1 px-1 lt-12">{{ cat.nome }}</span>
+            </a>
+          </div>
+
+
+        </div>
+
+        <div class="swiper-2">
+          <div class="swiper-button-next swiper-navBtn "></div>
+          <div class="swiper-button-prev swiper-navBtn swiper-3"></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Fruits Shop Start  sem acesso -->
+    <div class="fruite  ">
+      <div class="container ">
+        <div class="tab-class">
+          <div class="tab-content  pt-3" v-for="(produto, indexc) in filteredCategoria" :key="produto.id">
+
+            <h6 class="">{{ produto.nome }}</h6>
+
+            <div class="row  text-center">
+
+              <div class="col-md-6 col-lg-2 col-xl-2 col-6 pt-1" v-for="(cat, index)  in produto.produtos"
+                :key="cat.id">
+                <div class="rounded position-relative fruite-item"
+                  style="box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25);">
+                  <a @click="visualizar(cat.id)">
+                    <div class="fruite-img">
+                      <img :src="img+cat.img" class="img-fluid w-100 rounded-top" alt="">
+                    </div>
+                  </a>
+                  <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                    style="top: 5px; left: 5px; font-size: 12px;">
+                    {{ cat.categoria }}</div>
+                  <div class="p-2 border border-secondary border-top-0 rounded-bottom ">
+                    <p style="font-size: 12px; height: 20px;"> {{ cat.nome }}</p>
+                    <p class="text-dark fs-6 fw-bold mb-0">{{ cat.preco }} AOA </p>
+                    <div class="d-flex justify-content-between flex-lg-wrap">
+
+                      <div class="row ">
+                        <div class="col-md-6 col-lg-6 col-xl-2 col-2 px-2">
+
+                          <div class="btn-group-vertical">
+                            <button class="btn btn-sm btn-plus rounded-circle bg-light border"
+                              @click="cat.quantidade++">
+                              <i class="fa fa-plus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-minus rounded-circle bg-light border"
+                              @click="cat.quantidade ? cat.quantidade-- : false">
+                              <i class="fa fa-minus"></i>
+                            </button>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-2 col-xl-10 col-10">
+                          <input type="text" class="form-control text-center border-0" style="height: 21px;"
+                            v-model="cat.quantidade">
+                          <a class="btn border border-secondary rounded-pill px-3 text-primary"
+                            @click="addCat(indexc, index)" style="width: 100%;"><i
+                              class="fa fa-shopping-bag me-2 text-primary"></i> ADD</a>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fruits Shop End-->
+
+    </div>
+  </div>

@@ -10,6 +10,16 @@ const options = {
     body: null 
 }
 
+const optionsPut = {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: 'PUT',
+    mode: 'cors',
+    cache: 'default',
+    body: null 
+}
+
 const error_default = {
     status_code: 500,
     next: false,
@@ -49,6 +59,18 @@ async function post(path, data) {
     return await res.json()
 }
 
+async function put(path, data) {
+    let base = config.path
+    let token = localStorage.getItem('token')
+    if(token){
+        data.token = token
+    }
+    optionsPut.body = obj_to_url(data)
+    let res = await fetch(`${base}${path}`, optionsPut)
+    let status_code = res.status
+    return await res.json()
+}
+
 async function get(path, data = {}) {
     let base = config.path
     let token = localStorage.getItem('token')
@@ -62,5 +84,6 @@ async function get(path, data = {}) {
 
 export default {
     post,
+    put,
     get
 }

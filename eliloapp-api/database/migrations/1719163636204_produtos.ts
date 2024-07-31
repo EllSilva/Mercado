@@ -10,6 +10,8 @@ export default class extends BaseSchema {
       table.string('preco').nullable()
       table.string('descricao').nullable()
       table.string('quantidade').nullable()
+      table.string('estoque_minimo').nullable()
+      table.string('estoque_maximo').nullable()
       table.string('categoria').nullable()
       table.string('img').nullable()
       table.integer('subcategoria_id').unsigned().references('subcategorias.id').onDelete('CASCADE')

@@ -1,0 +1,27 @@
+<div>
+  <h1>
+    9oooooooooooo 
+  </h1>
+  <div class="" v-for="encomenda in todas_encomenda">
+
+
+
+    <div class="p-2 flex-fill text-center">
+      <h6>Estado da Encomenda: <span class=" text-danger"> {{ encomenda.tipo_pagamento }} </span> </h6>
+
+
+    </div>
+
+
+    <div  v-for="produto in encomenda.produtos">
+      <h6>Estado da Encomenda: <span class=" text-danger"> {{ produto.nome }} </span> </h6>
+
+      
+    </div>
+
+
+
+  </div>
+</div>
+
+<!-- fim  Modal do carinho -->

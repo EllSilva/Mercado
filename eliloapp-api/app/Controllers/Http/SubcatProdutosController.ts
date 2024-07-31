@@ -11,7 +11,7 @@ export default class SubcatProdutosController {
             data: publicidade,
         }
     }
-
+     
     //mostrar varias categoria e os seus produtos 
     async show({ params }: HttpContextContract) {
         const publicidade = await Sub_Categoria.findOrFail(params.id)

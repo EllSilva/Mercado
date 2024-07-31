@@ -62,5 +62,37 @@ export default class UsersController {
     }
   }
 
+  public async update({ request, response }: HttpContextContract) {
+    const user_id = request.param('id')
+    const body = request.only(['usuario', 'email', 'password', 'telefone1', 'telefone2', 'provincia', 'municipio', 'bairro', 'rua' ])
+    
+    try {
+      const user = await User.find(user_id)
+      await user?.merge(body).save()
+      response.status(201)
+
+      return {
+        message: 'Usuario Atualizado com sucesso',
+        data: user,
+      }
+    } catch (error) {
+      return response.unauthorized(
+        {
+          error: true,
+          message: 'Erro no Atualizar, Verifique seus dados '
+        }
+      )
+    }
+
+
+  }
+ 
+
+  public async destroy({ request }: HttpContextContract) {
+    const user_id = request.param('id')
+    const user = await User.findOrFail(user_id)
+    await user.delete()
+    return "Usuario eliminado"
+  }
 
 }

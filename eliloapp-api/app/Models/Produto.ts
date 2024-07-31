@@ -20,7 +20,13 @@ export default class Produto extends BaseModel {
 
   @column()
   declare quantidade: string
- 
+
+  @column()
+  declare estoque_minimo: number
+  
+  @column()
+  declare estoque_maximo: number
+  
   @column()
   declare categoria: string
 

@@ -1,0 +1,142 @@
+<div>
+  <div class="col-xl-12 col-12 mobile_perfil">
+    <div class="d-flex p-2" style="background-color: rgb(29, 9, 66); width: 100%;">
+      <div class="p-2 flex-fill">
+        <a class="rounded-pill text-white" href="#/loja/encomenda" style="align-items: center; display: flex; ">
+          <i class="bi bi-arrow-bar-left px-2"></i>
+          Voltar </a>
+      </div>
+      <div class="p-2 flex-fill">
+        <h4 class="text-white">Meu Perfil</h4>
+      </div>
+    </div>
+  </div>
+  <section class=" p-2 perfil">
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-xl-2 col-2 desktop_perfil">
+          <c-submenu></c-submenu>
+        </div>
+
+        <div class="col-xl-10 col-12">
+
+          <div class="tab-content">
+
+            <div class="body-perfil">
+
+              <div class="box">
+                <div class="perfil-box">
+                  <h2>Criar Conta</h2>
+                  <img src="img-formulario.png">
+                </div>
+                <div class="formperfil-box">
+
+ <hr>
+ 
+                    <div class="containeradio">
+
+                      <div class="radio-tile-group">
+
+                        <div class="input-container">
+                          <input id="walk" type="radio" name="radio" value="perfil"  @click="perfil = true">
+                          <div class="radio-tile">
+                            <i class="tm-icon bi bi-cash-stack"></i>
+                            <label for="walk"> Perfil </label>
+                          </div>
+                        </div>
+
+
+                        <div class="input-container">
+                          <input id="car" type="radio" name="radio" value="perfil" @click="perfil = false">
+                          <div class="radio-tile">
+                            <i class="tm-icon bi bi-phone-fill"></i>
+                            <label for="car" style="font-size: 10px; text-align: center;">
+                              Endereço</label>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+ 
+ 
+
+                  <form>
+                    <div id="tab-1" class="" v-if="perfil">
+                      <div class="input-group">
+                        <label for="nome"> Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Digite o seu nome completo" v-model="usuario"
+                          required>
+                      </div>
+
+                      <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Digite o seu email" v-model="email" required>
+                      </div>
+
+
+                      <div class="input-group w50">
+                        <label for="telefone">Telefone 1</label>
+                        <input type="tel" id="telefone" placeholder="Digite o seu telefone" v-model="telefone1"
+                          required>
+
+                      </div>
+
+                      <div class="input-group w50">
+                        <label for="telefone2">Telefone 2</label>
+                        <input type="tel" id="telefone2" placeholder="Digite o seu telefone2" v-model="telefone2"
+                          required>
+                      </div>
+                    </div>
+
+                    <div id="tab-2" class="" v-else>
+
+                      <div class="input-group w50">
+                        <label for="provincia">Provincia</label>
+                        <input type="text" id="provincia" placeholder="Digite o seu provincia" v-model="provincia"
+                          required>
+                      </div>
+
+                      <div class="input-group w50">
+                        <label for="municipio">Municipio</label>
+                        <input type="text" id="municipio" placeholder="Digite o seu municipio" v-model="municipio"
+                          required>
+                      </div>
+
+                      <div class="input-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" placeholder="Digite o nome do seu bairro" v-model="bairro"
+                          required>
+                      </div>
+
+                      <div class="input-group">
+                        <label for="rua">Rua</label>
+                        <input type="text" id="rua" placeholder="Digite o  nome da sua rua completo" v-model="rua"
+                          required>
+                      </div>
+
+                    </div>
+                    <div class="input-group">
+                      <button @click="cadusers()">Guardar</button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </section> <!-- .section -->
+</div>
+
+<!-- fim  Modal do carinho -->

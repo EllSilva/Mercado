@@ -1,5 +1,5 @@
 import http from './http.js'
- 
+
 export default {
 
     async login(email, password) {
@@ -14,9 +14,15 @@ export default {
         })
     },
 
+    async alteraruser (id, usuario, email, telefone1, telefone2,  provincia, municipio, bairro, rua) {
+        return await http.put('/users/'+id, {
+         id, usuario, email, telefone1, telefone2,  provincia, municipio, bairro, rua
+        })
+    },
+  
     async lista_categorias() {
         return await http.get('/categorias')
-    }, 
+    },
 
     async cadastra_subcategoria(
         ref, nome, img) {
@@ -25,104 +31,108 @@ export default {
 
         })
     },
-    
-    async lista_subcategorias() { 
+
+    async lista_subcategorias() {
         return await http.get('/subcategorias')
-    },   
+    },
 
-    async lista_produtos() { 
+    async lista_produtos() {
         return await http.get('/produtos')
-    },   
+    },
 
 
 
 
-    async lista_subcategorias_produtos() { 
+    async lista_subcategorias_produtos() {
         return await http.get('/subcategorias-produtos')
-    },   
+    },
 
 
     async lista_um_produto(id) {
         return await http.get('/produtos/'+id)
-    }, 
- 
+    },
+
     async encomenda(
-        id, cod_ref, gorjeta, tipo_pagamento, total, bairro, rua, estado, instrucoes, user_id, produtos) {
+        id, cod_ref, telefone, gorjeta, tipo_pagamento, total, municipio, bairro, rua, estado, instrucoes, user_id, produtos) {
         return await http.post('/encomenda', {
-            id, cod_ref, gorjeta, tipo_pagamento, total, bairro, rua, estado, instrucoes, user_id, produtos
+            id, cod_ref, telefone, gorjeta, tipo_pagamento, total, municipio, bairro, rua, estado, instrucoes, user_id, produtos
         })
     },
-     
+
     async lista_encomenda() {
-        return await http.get('/encomenda') 
+        return await http.get('/encomenda')
+    },
+
+    async lista_encomenda_id(id) {
+        return await http.get('/encomenda/'+id) 
     }, 
+
+
+
+
+
+
+
   
+    /*! 
+async recuperar_password(email) {
+    return await http.post('/recuperar-password', {
+        email
+    })
+},
+
+  async lista_portifolio() {
+    return await http.get('/portifolio')
+}, 
+
+async alterar_password(password, token) {
+    return await http.post('/alterar-password', {
+        password,
+        token
+    })
+},
 
 
-    
+async atualizarFinaliza(cpf_cnpj, data_nascimento, tipo, token) {
+    return await http.post('/completar-profile', {
+        cpf_cnpj, data_nascimento, tipo, token
+    })
+},
 
+async ListarPerfil(token) {
+    return await http.get('/profile', {
+        token
+    })
+},
 
+async cadastrarEndereco(
+    nome_identificacao, cep, logradouro, numero, complemento, bairro, cidade, estado, token) {
+    return await http.post('/create-endereco', {
+        nome_identificacao,
+        cep,
+        logradouro,
+        numero,
+        complemento,
+        bairro,
+        cidade,
+        estado,
+        token
 
-    async cometar_public(id, nome, email, texto) {
-        return await http.post('/publicidades/'+id+'/comentarios', {
-           nome, email, texto
-        })
-    },
- 
+    })
+},
 
-
-    async lista_projecto_id(id) {
-        return await http.get('/projectos/'+id)
-    },
-    
-        /*! 
-    async recuperar_password(email) {
-        return await http.post('/recuperar-password', {
-            email
-        })
-    },
-
-      async lista_portifolio() {
-        return await http.get('/portifolio')
-    }, 
-
-    async alterar_password(password, token) {
-        return await http.post('/alterar-password', {
-            password,
-            token
-        })
-    },
-
-
-    async atualizarFinaliza(cpf_cnpj, data_nascimento, tipo, token) {
-        return await http.post('/completar-profile', {
-            cpf_cnpj, data_nascimento, tipo, token
-        })
-    },
-
-    async ListarPerfil(token) {
-        return await http.get('/profile', {
-            token
-        })
-    },
-
-    async cadastrarEndereco(
-        nome_identificacao, cep, logradouro, numero, complemento, bairro, cidade, estado, token) {
-        return await http.post('/create-endereco', {
-            nome_identificacao,
-            cep,
-            logradouro,
-            numero,
-            complemento,
-            bairro,
-            cidade,
-            estado,
-            token
-
-        })
-    },
-
-    async atualizarEndereco(
+async atualizarEndereco(
+    token,
+    nome_identificacao,
+    cep,
+    logradouro,
+    numero,
+    complemento,
+    bairro,
+    cidade,
+    estado,
+) {
+    return await http.post('/update-endereco', {
         token,
         nome_identificacao,
         cep,
@@ -132,78 +142,85 @@ export default {
         bairro,
         cidade,
         estado,
-    ) {
-        return await http.post('/update-endereco', {
-            token,
-            nome_identificacao,
-            cep,
-            logradouro,
-            numero,
-            complemento,
-            bairro,
-            cidade,
-            estado,
-        })
-    },
+    })
+},
 
-    async listarEndereco(token) {
-        return await http.get('/endereco', {
-            token
-        })
-    },
+async listarEndereco(token) {
+    return await http.get('/endereco', {
+        token
+    })
+},
 
-    async listarEn(nome_identificacao, cep, logradouro, numero, complemento, bairro, cidade, estado, token) {
-        return await http.get('/list-endereco', {
-            nome_identificacao,
-            cep,
-            logradouro,
-            numero,
-            complemento,
-            bairro,
-            cidade,
-            estado,
-            token
-        })
-    },
+async listarEn(nome_identificacao, cep, logradouro, numero, complemento, bairro, cidade, estado, token) {
+    return await http.get('/list-endereco', {
+        nome_identificacao,
+        cep,
+        logradouro,
+        numero,
+        complemento,
+        bairro,
+        cidade,
+        estado,
+        token
+    })
+},
 
-    async listarCredencial() {
-        return await http.get('/list-credencial', {
+async listarCredencial() {
+    return await http.get('/list-credencial', {
 
-        })
-    },
+    })
+},
 
-    async credencial(id) {
-        return await http.get('/credencial', {
-            id
-        })
-    },
+async credencial(id) {
+    return await http.get('/credencial', {
+        id
+    })
+},
 
-    async cadastrarCredencia(
-        nome_identificacao, recursos) {
-        return await http.post('/create-credencial', {
-            nome_identificacao,
-            recursos,
+async cadastrarCredencia(
+    nome_identificacao, recursos) {
+    return await http.post('/create-credencial', {
+        nome_identificacao,
+        recursos,
 
-        })
-    },
+    })
+},
 
-    async atualizarCredencia(
-        id, nome_identificacao, recursos) {
-        return await http.post('/update-credencial', {
-            id,
-            nome_identificacao,
-            recursos,
-        })
-    },
+async atualizarCredencia(
+    id, nome_identificacao, recursos) {
+    return await http.post('/update-credencial', {
+        id,
+        nome_identificacao,
+        recursos,
+    })
+},
 
-    async deleterCredencia(id) {
-        return await http.post('/delete-credencial', {
-            id,
-        })
-    },
+async deleterCredencia(id) {
+    return await http.post('/delete-credencial', {
+        id,
+    })
+},
 
 
-    async cadastrarInstituicao(
+async cadastrarInstituicao(
+    token,
+    nome_fantasia,
+    razao_social,
+    subdomaim,
+    email,
+    telefone,
+    cnpj,
+    cep,
+    logradouro,
+    bairro,
+    cidade,
+    estado,
+    numero,
+    tipo_empresa, 
+    complemento,
+
+) {
+    return await http.post('/create-instituicao', {
         token,
         nome_fantasia,
         razao_social,
@@ -219,47 +236,39 @@ export default {
         numero,
         tipo_empresa, 
         complemento,
-
-    ) {
-        return await http.post('/create-instituicao', {
-            token,
-            nome_fantasia,
-            razao_social,
-            subdomaim,
-            email,
-            telefone,
-            cnpj,
-            cep,
-            logradouro,
-            bairro,
-            cidade,
-            estado,
-            numero,
-            tipo_empresa, 
-            complemento,
-        })
-    },
-    async validarDomain(subdomain) {
-        return await http.get('/subdominio-disponivel', {
-            subdomain
-        })
-    },
+    })
+},
+async validarDomain(subdomain) {
+    return await http.get('/subdominio-disponivel', {
+        subdomain
+    })
+},
 
 
-    async domainPerson(
+async domainPerson(
+    token,
+    instituicao_id,
+    dominio
+
+) {
+    return await http.post('/update-domain-person', {
         token,
         instituicao_id,
         dominio
+    })
+},
 
-    ) {
-        return await http.post('/update-domain-person', {
-            token,
-            instituicao_id,
-            dominio
-        })
-    },
+async alterarInstituicao(
+    token,
+    instituicao_id,
+    nome_fantasia,
+    razao_social,
+    email,
+    cnpj,
+    telefone,
 
-    async alterarInstituicao(
+) {
+    return await http.post('/update-instituicao', {
         token,
         instituicao_id,
         nome_fantasia,
@@ -267,63 +276,65 @@ export default {
         email,
         cnpj,
         telefone,
-
-    ) {
-        return await http.post('/update-instituicao', {
-            token,
-            instituicao_id,
-            nome_fantasia,
-            razao_social,
-            email,
-            cnpj,
-            telefone,
-        })
-    },
+    })
+},
 
 
-    async listarInstutuicao(token) {
-        return await http.get('/instituicao', {
-            token
-        })
-    },
+async listarInstutuicao(token) {
+    return await http.get('/instituicao', {
+        token
+    })
+},
 
-    async listarInstutuicaoTodas(token) {
-        return await http.get('/list-instituicao', {
-            token
-        })
-    },
+async listarInstutuicaoTodas(token) {
+    return await http.get('/list-instituicao', {
+        token
+    })
+},
 
 
 
-    async listarEnderecoInst(
+async listarEnderecoInst(
+    token,
+    instituicao_id,) {
+    return await http.get('/list-endereco-instituicao', {
         token,
-        instituicao_id,) {
-        return await http.get('/list-endereco-instituicao', {
-            token,
-            instituicao_id,
-        })
-    },
+        instituicao_id,
+    })
+},
 
-    async listarBancoInst(
-        instituicao_id,) {
-        return await http.get('/list-conta-instituicao', {
-            instituicao_id,
-        })
-    },
+async listarBancoInst(
+    instituicao_id,) {
+    return await http.get('/list-conta-instituicao', {
+        instituicao_id,
+    })
+},
 
-    async onoffIntituicao(
+async onoffIntituicao(
+    instituicao_id,
+    token,
+) {
+    return await http.post('/on-off-instituicao', {
         instituicao_id,
         token,
-    ) {
-        return await http.post('/on-off-instituicao', {
-            instituicao_id,
-            token,
-        })
-    },
+    })
+},
 
 
 
-    async enderecoInstituicao(
+async enderecoInstituicao(
+    token,
+    id,
+    nome_identificacao,
+    logradouro,
+    complemento,
+    bairro,
+    cidade,
+    estado,
+    numero,
+    cep,
+) {
+    return await http.post('/endereco-instituicao', {
         token,
         id,
         nome_identificacao,
@@ -334,23 +345,20 @@ export default {
         estado,
         numero,
         cep,
-    ) {
-        return await http.post('/endereco-instituicao', {
-            token,
-            id,
-            nome_identificacao,
-            logradouro,
-            complemento,
-            bairro,
-            cidade,
-            estado,
-            numero,
-            cep,
 
-        })
-    },
+    })
+},
 
-    async configuracaoInstituicao(
+async configuracaoInstituicao(
+    token,
+    instituicao_id,
+    titulo_site,
+    tags,
+    descricao_site,
+    cor,
+    logo
+) {
+    return await http.post('/configuracao-instituicao', {
         token,
         instituicao_id,
         titulo_site,
@@ -358,134 +366,147 @@ export default {
         descricao_site,
         cor,
         logo
-    ) {
-        return await http.post('/configuracao-instituicao', {
-            token,
-            instituicao_id,
-            titulo_site,
-            tags,
-            descricao_site,
-            cor,
-            logo
-        })
-    },
+    })
+},
 
-    async listConf(instituicao_id) {
-        return await http.get('/instituicao-id', {
-            instituicao_id
-        })
-    },
+async listConf(instituicao_id) {
+    return await http.get('/instituicao-id', {
+        instituicao_id
+    })
+},
 
-    async uploadImg(
-        form
-    ) {
-         
+async uploadImg(
+    form
+) {
+     
 
-    },
+},
 
 
-    async todoSubdomain(subdomaim) {
-        return await http.get('/info-subdomaim', {
-            subdomaim
-        })
-    },
+async todoSubdomain(subdomaim) {
+    return await http.get('/info-subdomaim', {
+        subdomaim
+    })
+},
 
 
-    async cadastrarSubadm(
+async cadastrarSubadm(
+    nome,
+    email,
+    password,
+    telefone,
+    credencial_id,
+    token,
+) {
+    return await http.post('/criate-subadm', {
         nome,
         email,
         password,
         telefone,
         credencial_id,
         token,
-    ) {
-        return await http.post('/criate-subadm', {
-            nome,
-            email,
-            password,
-            telefone,
-            credencial_id,
-            token,
-        })
-    },
+    })
+},
 
-    async editarSubadm(
+async editarSubadm(
+    nome,
+    telefone,
+    credencial_id,
+    email,
+    secret,
+    token,
+) {
+    return await http.post('/atualizar-subadm', {
         nome,
         telefone,
         credencial_id,
         email,
         secret,
         token,
-    ) {
-        return await http.post('/atualizar-subadm', {
-            nome,
-            telefone,
-            credencial_id,
-            email,
-            secret,
-            token,
-        })
-    },
+    })
+},
 
 
 
-    async listarSubadm() {
-        return await http.get('/list-subadm', {
+async listarSubadm() {
+    return await http.get('/list-subadm', {
 
-        })
-    },
+    })
+},
 
 
-    async cadastrarPlanos(
+async cadastrarPlanos(
+    id,
+    instituicao_id,
+    nome,
+    amount,
+    token,
+) {
+    return await http.post('/create-plano', {
         id,
         instituicao_id,
         nome,
         amount,
         token,
-    ) {
-        return await http.post('/create-plano', {
-            id,
-            instituicao_id,
-            nome,
-            amount,
-            token,
-        })
-    },
+    })
+},
 
-    async editarPlanos(
+async editarPlanos(
+    plano_id,
+    nome,
+    amount,
+    token,
+) {
+    return await http.post('/update-plano', {
         plano_id,
         nome,
         amount,
         token,
-    ) {
-        return await http.post('/update-plano', {
-            plano_id,
-            nome,
-            amount,
-            token,
-        })
-    },
+    })
+},
 
-    async listarPlanos(instituicao_id) {
-        return await http.get('/plano', {
-            instituicao_id
-        })
-    },
+async listarPlanos(instituicao_id) {
+    return await http.get('/plano', {
+        instituicao_id
+    })
+},
 
 
-    async onoffPlano(
+async onoffPlano(
+    plano_id,
+    token,
+) {
+    return await http.post('/on-off-plano', {
         plano_id,
         token,
-    ) {
-        return await http.post('/on-off-plano', {
-            plano_id,
-            token,
-        })
-    },
+    })
+},
 
-    async transacaoPlano(
+async transacaoPlano(
+    instituicao_id,
+    mensal, 
+    planos_valor,
+    planos_nome,
+    email,
+    nome,
+    genero,
+    cpf,
+    telefone,
+    cep,
+    numero,
+    estado,
+    endereco,
+    bairro,
+    cidade,
+    type_pagamento,
+    cart_numero,
+    cart_cvv,
+    cart_validade,
+    cart_nome,
+) {
+    return await http.post('/transacao', {
         instituicao_id,
-        mensal, 
+        mensal,
         planos_valor,
         planos_nome,
         email,
@@ -504,35 +525,32 @@ export default {
         cart_cvv,
         cart_validade,
         cart_nome,
-    ) {
-        return await http.post('/transacao', {
-            instituicao_id,
-            mensal,
-            planos_valor,
-            planos_nome,
-            email,
-            nome,
-            genero,
-            cpf,
-            telefone,
-            cep,
-            numero,
-            estado,
-            endereco,
-            bairro,
-            cidade,
-            type_pagamento,
-            cart_numero,
-            cart_cvv,
-            cart_validade,
-            cart_nome,
-        })
-    },
+    })
+},
 
-    
-    async transacao(
+ 
+async transacao(
+    instituicao_id,
+    mensal, 
+    planos_valor,
+    planos_nome,
+    email,
+    nome,
+    genero,
+    cpf,
+    telefone,
+    cep,
+    numero,
+    estado,
+    endereco,
+    bairro,
+    cidade,
+    type_pagamento,
+   
+) {
+    return await http.post('/transacao', {
         instituicao_id,
-        mensal, 
+        mensal,
         planos_valor,
         planos_nome,
         email,
@@ -547,36 +565,26 @@ export default {
         bairro,
         cidade,
         type_pagamento,
-       
-    ) {
-        return await http.post('/transacao', {
-            instituicao_id,
-            mensal,
-            planos_valor,
-            planos_nome,
-            email,
-            nome,
-            genero,
-            cpf,
-            telefone,
-            cep,
-            numero,
-            estado,
-            endereco,
-            bairro,
-            cidade,
-            type_pagamento,
-            
-        })
-    },
+        
+    })
+},
 
-    async listarPlanoDigital(token) {
-        return await http.get('/plano-digital-list', {
-            token
-        })
-    },
+async listarPlanoDigital(token) {
+    return await http.get('/plano-digital-list', {
+        token
+    })
+},
 
-    async cadastrarPlanosDigital(
+async cadastrarPlanosDigital(
+    nome,
+    whatsapp,
+    instituicao_max,
+    quant_disparos,
+    codigo_cupom,
+    amount,
+    token,
+) {
+    return await http.post('/plano-digital-new', {
         nome,
         whatsapp,
         instituicao_max,
@@ -584,95 +592,103 @@ export default {
         codigo_cupom,
         amount,
         token,
-    ) {
-        return await http.post('/plano-digital-new', {
-            nome,
-            whatsapp,
-            instituicao_max,
-            quant_disparos,
-            codigo_cupom,
-            amount,
-            token,
-        })
-    },
+    })
+},
 
 
-    async editarPlanosDigital(
+async editarPlanosDigital(
+    plano_id,
+    nome,
+    token,
+) {
+    return await http.post('/plano-digital-update', {
         plano_id,
         nome,
         token,
-    ) {
-        return await http.post('/plano-digital-update', {
-            plano_id,
-            nome,
-            token,
-        })
-    },
+    })
+},
 
-    async onOff(
+async onOff(
+    plano_id,
+    token,
+) {
+    return await http.post('/plano-digital-on-off', {
         plano_id,
         token,
-    ) {
-        return await http.post('/plano-digital-on-off', {
-            plano_id,
-            token,
-        })
-    },
+    })
+},
 
 
 
-    async split(
+async split(
+    instituicao_id,
+    recebedor_id,
+    responsavel_estorno,
+    porcentagem,
+    token,
+) {
+    return await http.post('/split-new', {
         instituicao_id,
         recebedor_id,
         responsavel_estorno,
         porcentagem,
         token,
-    ) {
-        return await http.post('/split-new', {
-            instituicao_id,
-            recebedor_id,
-            responsavel_estorno,
-            porcentagem,
-            token,
-        })
-    },
+    })
+},
 
-    async splitUpdate(
+async splitUpdate(
+    id,
+    instituicao_id,
+    recebedor_id,
+    responsavel_estorno,
+    porcentagem,
+    token,
+) {
+    return await http.post('/split-update', {
         id,
         instituicao_id,
         recebedor_id,
         responsavel_estorno,
         porcentagem,
         token,
-    ) {
-        return await http.post('/split-update', {
-            id,
-            instituicao_id,
-            recebedor_id,
-            responsavel_estorno,
-            porcentagem,
-            token,
-        })
-    },
+    })
+},
 
 
 
 
-    async listarSplit(instituicao_id) {
-        return await http.get('/split-list', {
-            instituicao_id
-        })
-    },
+async listarSplit(instituicao_id) {
+    return await http.get('/split-list', {
+        instituicao_id
+    })
+},
 
-    async deleterSplit(id, token) {
-        return await http.post('/split-delete', {
-            id, token
-        })
-    },
+async deleterSplit(id, token) {
+    return await http.post('/split-delete', {
+        id, token
+    })
+},
 
 
 
-    async addMetas(
+async addMetas(
+    token,
+    instituicao_id,
+    ano,
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro
+) {
+    return await http.post('/save-metas', {
         token,
         instituicao_id,
         ano,
@@ -688,42 +704,42 @@ export default {
         outubro,
         novembro,
         dezembro
-    ) {
-        return await http.post('/save-metas', {
-            token,
-            instituicao_id,
-            ano,
-            janeiro,
-            fevereiro,
-            marco,
-            abril,
-            maio,
-            junho,
-            julho,
-            agosto,
-            setembro,
-            outubro,
-            novembro,
-            dezembro
-        })
-    },
+    })
+},
 
 
 
-    async listarMetas(
+async listarMetas(
+    token,
+    instituicao_id,
+    ano,
+) {
+    return await http.get('/list-metas', {
         token,
         instituicao_id,
         ano,
-    ) {
-        return await http.get('/list-metas', {
-            token,
-            instituicao_id,
-            ano,
 
-        })
-    },
+    })
+},
 
-    async cotaInstituicao(
+async cotaInstituicao(
+    token,
+    instituicao_id,
+    codigo_banco,
+    agencia,
+    agencia_digito,
+    conta,
+    conta_digito,
+    tipo_conta,
+    nome_completo,
+    documento_numero,
+    recebedor_nome,
+    email_recebedor,
+    site_url,
+    telefone_recebedor,
+
+) {
+    return await http.post('/create-conta-instituicao', {
         token,
         instituicao_id,
         codigo_banco,
@@ -738,28 +754,24 @@ export default {
         email_recebedor,
         site_url,
         telefone_recebedor,
-
-    ) {
-        return await http.post('/create-conta-instituicao', {
-            token,
-            instituicao_id,
-            codigo_banco,
-            agencia,
-            agencia_digito,
-            conta,
-            conta_digito,
-            tipo_conta,
-            nome_completo,
-            documento_numero,
-            recebedor_nome,
-            email_recebedor,
-            site_url,
-            telefone_recebedor,
-        })
-    },
+    })
+},
 
 
-    async cotaEditarInstituicao(
+async cotaEditarInstituicao(
+    token,
+    instituicao_id,
+    codigo_banco,
+    agencia,
+    agencia_digito,
+    conta,
+    conta_digito,
+    tipo_conta,
+    nome_completo,
+    documento_numero,
+
+) {
+    return await http.post('/update-conta-instituicao', {
         token,
         instituicao_id,
         codigo_banco,
@@ -770,67 +782,63 @@ export default {
         tipo_conta,
         nome_completo,
         documento_numero,
+    })
+},
 
-    ) {
-        return await http.post('/update-conta-instituicao', {
-            token,
-            instituicao_id,
-            codigo_banco,
-            agencia,
-            agencia_digito,
-            conta,
-            conta_digito,
-            tipo_conta,
-            nome_completo,
-            documento_numero,
-        })
-    },
+async listarDoacoes(instituicao_id) {
+    return await http.get('/list-doacoes', {
+        instituicao_id
+    })
+},
 
-    async listarDoacoes(instituicao_id) {
-        return await http.get('/list-doacoes', {
-            instituicao_id
-        })
-    },
+async listarDoadores(instituicao_id) {
+    return await http.get('/list-doadores', {
+        instituicao_id
+    })
+},
 
-    async listarDoadores(instituicao_id) {
-        return await http.get('/list-doadores', {
-            instituicao_id
-        })
-    },
+async visualizarDoador(
+    token, cpf) {
+    return await http.post('/list-doador', {
+        token,
+        cpf,
 
-    async visualizarDoador(
-        token, cpf) {
-        return await http.post('/list-doador', {
-            token,
-            cpf,
+    })
+},
 
-        })
-    },
+async listarEmail(instituicao_id) {
+    return await http.get('/list-email', {
+        instituicao_id
+    })
+},
 
-    async listarEmail(instituicao_id) {
-        return await http.get('/list-email', {
-            instituicao_id
-        })
-    },
-
-    async alterarEmail(
+async alterarEmail(
+    instituicao_id,
+    assunto,
+    corpo,
+    status,
+    cron
+) {
+    return await http.post('/atualiza-email', {
         instituicao_id,
         assunto,
         corpo,
         status,
         cron
-    ) {
-        return await http.post('/atualiza-email', {
-            instituicao_id,
-            assunto,
-            corpo,
-            status,
-            cron
-        })
-    },
+    })
+},
 
 
-    async recorrenciaDigital(
+async recorrenciaDigital(
+    token,
+    plano_token,
+    amount,
+    cart_nome,
+    cart_numero,
+    cart_cvv,
+    cart_validade,
+) {
+    return await http.post('/recorrencia-digital', {
         token,
         plano_token,
         amount,
@@ -838,21 +846,21 @@ export default {
         cart_numero,
         cart_cvv,
         cart_validade,
-    ) {
-        return await http.post('/recorrencia-digital', {
-            token,
-            plano_token,
-            amount,
-            cart_nome,
-            cart_numero,
-            cart_cvv,
-            cart_validade,
-        })
-    },
+    })
+},
 
 
 
-    async savarEmail(
+async savarEmail(
+    token,
+    instituicao_id,
+    host,
+    protocolo,
+    porta,
+    email,
+    password,
+) {
+    return await http.post('/smtp-save', {
         token,
         instituicao_id,
         host,
@@ -860,79 +868,70 @@ export default {
         porta,
         email,
         password,
-    ) {
-        return await http.post('/smtp-save', {
-            token,
-            instituicao_id,
-            host,
-            protocolo,
-            porta,
-            email,
-            password,
-        })
-    },
+    })
+},
 
-    async savarEvenda(
+async savarEvenda(
+    instituicao_id,
+    canal,
+) {
+    return await http.post('/save-evendas', {
         instituicao_id,
         canal,
-    ) {
-        return await http.post('/save-evendas', {
-            instituicao_id,
-            canal,
-        })
-    },
+    })
+},
 
-    async antecipacao(
+async antecipacao(
+    token,
+    instituicao_id,
+    amount,
+) {
+    return await http.post('/antecipacao', {
         token,
         instituicao_id,
         amount,
-    ) {
-        return await http.post('/antecipacao', {
-            token,
-            instituicao_id,
-            amount,
-        })
-    },
+    })
+},
 
-    async listarCarteira(
-        token,
-        instituicao_id,) {
-        return await http.get('/carteira', {
-            token,
-            instituicao_id,
-        })
-    },
-
-    // DASHBOARD
-
-    async dashboardInstituicao(
+async listarCarteira(
+    token,
+    instituicao_id,) {
+    return await http.get('/carteira', {
         token,
         instituicao_id,
-    ) {
-        return await http.get('/dashboard-instituicao', {
-            token,
-            instituicao_id,
-        })
-    },
+    })
+},
 
-    async dashboardAdm(
-        token,
-    ) {
-        return await http.post('/dashboard-adm', {
-            token,
-        })
-    },
+// DASHBOARD
 
-    async dashboard(
+async dashboardInstituicao(
+    token,
+    instituicao_id,
+) {
+    return await http.get('/dashboard-instituicao', {
         token,
-    ) {
-        return await http.post('/dashboard', {
-            token,
-        })
-    },
+        instituicao_id,
+    })
+},
+
+async dashboardAdm(
+    token,
+) {
+    return await http.post('/dashboard-adm', {
+        token,
+    })
+},
+
+async dashboard(
+    token,
+) {
+    return await http.post('/dashboard', {
+        token,
+    })
+},
 
  
- */
+*/
 }
 
 // editarSubadm

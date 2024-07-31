@@ -88,25 +88,30 @@ export default class EncomendasController {
 
 
     async index() {
-        const clientes = await Encomenda
+        const encomenda = await Encomenda
             .query()
             .preload('produtos', (query) => {
                 query.pivotColumns(['created_at'])
             })
         return {
-            message: 'Lista dos Produtos',
-            data: clientes,
+            message: 'Lista das encomendas',
+            data: encomenda,
         }
-
-        clientes.forEach((cliente) => {
-            cliente.produtos.forEach((produto) => {
-                console.log(produto.$extras.pivot_estado)
-                console.log(produto.$extras.pivot_cliente_id)
-                console.log(produto.$extras.pivot_produto_id)
-                console.log(produto.$extras.pivot_created_at)
-            })
-        })
+ 
     }
+
+    async show({ params }: HttpContextContract) {
+        const encomenda = await Encomenda.findOrFail(params.id)
+
+        await encomenda.load('produtos')
+
+        return {
+            message: 'Lista das encomendas pelo id',
+            data: encomenda,
+        }
+    }
+
+
 
     public async destroy({ request, response }: HttpContextContract) {
         const encomenda_id = request.param('id')

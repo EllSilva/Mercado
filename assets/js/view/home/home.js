@@ -17,20 +17,36 @@ export default {
 
   async mounted() {
 
-    var swiper = new Swiper(".slider_flayer", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
+  
+    var swiper = new Swiper(".mySwiper", {
+
+      loop: true,
+      centerSlide: "true",
+      fade: "true",
+      grabCursor: "true",
       pagination: {
         el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+        },
+        520: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1000: {
+          slidesPerView: 5,
+        },
       },
     });
   },

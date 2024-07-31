@@ -1,0 +1,69 @@
+<div class="pd-t">
+
+    <!-- Single Product Start -->
+    <div class="container-fluid py-5 ">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="border rounded">
+                        <a href="#">
+                            <img :src="imagem" class="img-fluid rounded" style="width: 100%;" alt="Image">
+                          
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h4 class="fw-bold mb-3">{{ nome }} </h4>
+                    <p class="mb-3">Categoria: {{ categoria }} </p>
+                    <h5 class="fw-bold mb-3">{{ preco }}  AOA</h5>
+ 
+                    <div class="d-flex mb-4">
+                        <i class="fa fa-star text-secondary"></i>
+                        <i class="fa fa-star text-secondary"></i>
+                        <i class="fa fa-star text-secondary"></i>
+                        <i class="fa fa-star text-secondary"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="mb-4">{{ descricao }}</p>
+                    <div class="input-group quantity mb-5" style="width: 100px;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" @click="qdd--">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control form-control-sm text-center border-0" v-model="qdd">
+                        <div class="input-group-btn">
+                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" @click="qdd++">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                            class="fa fa-shopping-bag me-2 text-primary"></i> Add no carrinho</a>
+
+                    <div class="d-flex pt-2">
+                        <strong class="text-dark mr-2">Partilhar:</strong>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Single Product End -->
+
+
+</div>
