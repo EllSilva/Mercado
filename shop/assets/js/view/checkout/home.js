@@ -6,7 +6,7 @@ export default {
   data: function () {
     return {
       title: "home",
-      type: 'nao',
+      conforma: 'nao',
       img: '',
       totalCat: 0,
       isActivo2: true,
@@ -33,7 +33,7 @@ export default {
       user_id: '',
 
 
-    
+
       produtos: [],
 
     }
@@ -98,6 +98,7 @@ export default {
 
           this.msg = res.message;
           localStorage.removeItem('carinho')
+          this.conforma = "sim"
           iziToast.success({
             title: "OK",
             message: this.msg,
@@ -105,7 +106,11 @@ export default {
           });
 
         } else {
-          alert("Errroooooo")
+          iziToast.error({
+            title: "Error",
+            message: "Sem dados no Carinho",
+            position: "bottomCenter",
+          });
         }
       } catch (error) {
         this.error = error
@@ -192,9 +197,6 @@ export default {
   async mounted() {
 
 
-    
-
-
 
     this.verificarUser()
 
@@ -231,7 +233,7 @@ export default {
       toggleMenu2();
     })
     function toggleMenu2() {
-      
+
       menu2.classList.toggle("activo");
       document.querySelector(".menu2-overlay").classList.toggle("activo");
     }

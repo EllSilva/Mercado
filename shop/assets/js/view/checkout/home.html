@@ -1,192 +1,175 @@
-<div class="checkoutbody">
+<div>
 
-	<div class='checkout'>
-		<div class="row ">
-			<div class="col-md-5 col-lg-5 col-xl-4 col-12">
+	<div class="checkout-back">
+		<button class='checkout-back-cta' title='Confirmao seu pedido'
+		@click="finalizarpedido()"><span>VOLTAR</span></button>
+	</div>
 
-				<div class='order'>
-					<h2>Checkout</h2>
-					<h5>Order #0101</h5>
-					<ul class='order-list' v-for="(cat, index) in carinho" :key="index">
-						<li>
-							<img class="img-fluid me-5 rounded-circle" :src="img+cat.image" style="margin-left: 20px;">
-							<h4>{{ cat.nome }}</h4>
-							<h5> AOA{{ cat.totalPreco }}</h5>
-						</li>
+	<div class="checkoutbody">
+
+		<div class='checkout'>
+			<div class="row ">
+				<div class="col-md-5 col-lg-5 col-xl-4 col-12">
+
+					<div class='order'>
+						<h2>Checkout</h2>
+						<h5>Orde #0101</h5>
+						<ul class='order-list'>
+							<li v-for="(cat, index) in carinho" :key="index">
+								<img class="img-fluid me-5 rounded-circle" :src="img+cat.image"
+									style="margin-left: 20px;">
+								<h4>{{ cat.nome }}</h4>
+								<h5> AOA{{ cat.totalPreco }}</h5>
+							</li>
 
 
-					</ul>
-					<div class="d-flex">
-						<div class="flex-fill">
-							<h5>Entrega</h5>
-							<h4>AOA1.000,00</h4>
+						</ul>
+						<div class="d-flex">
+							<div class="flex-fill">
+								<h5>Entrega</h5>
+								<h4>AOA1.000,00</h4>
+							</div>
+							<div class="flex-fill">
+								<h5>Desconto</h5>
+								<h4>AOA9.50</h4>
+							</div>
+
 						</div>
-						<div class="flex-fill">
-							<h5>Desconto</h5>
-							<h4>AOA9.50</h4>
-						</div>
 
+						<h5 class='total'>Total</h5>
+						<h1>AOA 167.50</h1>
 					</div>
-
-					<h5 class='total'>Total</h5>
-					<h1>AOA 167.50</h1>
 				</div>
-			</div>
 
-			<div class="col-md-7 col-lg-7 col-xl-8 col-12">
+				<div class="col-md-7 col-lg-7 col-xl-8 col-12">
 
-				<h2>Pagamento</h2>
-				<div id='payment' class='payment'>
-
-
-					<div class='card-form'>
-
-						<div class="containeradio">
-
-							<div class="radio-tile-group">
-
-								<div class="input-container">
-									<input id="walk" type="radio" name="radio" value="Cash ( Pagamento na entrega )"
-										v-model="tipo_pagamento">
-									<div class="radio-tile">
-										<i class="tm-icon bi bi-cash-stack"></i>
-										<label for="walk"> Dinheiro </label>
-
-									</div>
-								</div>
-
-								<div class="input-container">
-									<input id="bike" type="radio" name="radio" value="TPA ( Pagamento na entrega )"
-										v-model="tipo_pagamento">
-									<div class="radio-tile">
-										<i class="tm-icon bi bi-credit-card-fill"></i>
-										<label for="bike">TPA</label>
-									</div>
-								</div>
-
-								<div class="input-container">
-									<input id="car" type="radio" name="radio" value="MULTICAIXA Express"
-										v-model="tipo_pagamento">
-									<div class="radio-tile">
-										<i class="tm-icon bi bi-phone-fill"></i>
-										<label for="car" style="font-size: 10px; text-align: center;">MULTICAIXA
-											Express</label>
-									</div>
-								</div>
-
-							</div>
-						</div>
+					<h2>Pagamento</h2>
+					<div id='payment' class='payment'>
 
 
-						<div class=" fruite">
-							<div class="tab-class">
+						<div class='card-form'>
 
-								<div class="row ">
+							<div class="containeradio">
 
-									<div class="p-2 ">
-									<div class="d-flex p-2 rounded " style=" border: 2px solid #dc3545; width: 60%; ">
-										<div class="flex-fill  w-50">
-											<h4>Gorjeta p motorista</h4>
-										</div> 
-									</div>
-								</div>
+								<div class="radio-tile-group">
 
-									<div class="p-2 ">
-										<h4 class="">Endereço de Entrega</h4>
-
-										<div class="p-3 rounded bg-light">
-											{{ municipio }}, {{ bairro }}, {{ rua }},
-										</div>
-
-									</div>
-
-
-
-									<div v-if="type === 'sim'">
-
-										<div class="row text-center align-items-center justify-content-center  ">
-											<div class="col-4">
-												<div class="form-check text-start my-1">
-													<input type="radio" class="form-check-input bg-primary border-0"
-														id="Delivery-1" name="Delivery" value="500" v-model="gorjeta">
-													<label class="form-check-label" for="Delivery-1">500 AOA</label>
-												</div>
-											</div>
-											<div class="col-4">
-												<div class="form-check text-start my-1">
-													<input type="radio" class="form-check-input bg-primary border-0"
-														id="Delivery-2" name="Delivery" value="1000" v-model="gorjeta">
-													<label class="form-check-label" for="Delivery-2">1000
-														AOA</label>
-												</div>
-											</div>
-											<div class="col-4">
-												<div class="form-check text-start my-1">
-													<input type="radio" class="form-check-input bg-primary border-0"
-														id="Delivery-3" name="Delivery" value="1500" v-model="gorjeta">
-													<label class="form-check-label" for="Delivery-3">1500
-														AOA</label>
-												</div>
-											</div>
+									<div class="input-container">
+										<input id="walk" type="radio" name="radio" value="Cash ( Pagamento na entrega )"
+											v-model="tipo_pagamento">
+										<div class="radio-tile">
+											<i class="tm-icon bi bi-cash-stack"></i>
+											<label for="walk"> Dinheiro </label>
 
 										</div>
 									</div>
-									<div v-else>
+
+									<div class="input-container">
+										<input id="bike" type="radio" name="radio" value="TPA ( Pagamento na entrega )"
+											v-model="tipo_pagamento">
+										<div class="radio-tile">
+											<i class="tm-icon bi bi-credit-card-fill"></i>
+											<label for="bike">TPA</label>
+										</div>
 									</div>
 
+									<div class="input-container">
+										<input id="car" type="radio" name="radio" value="MULTICAIXA Express"
+											v-model="tipo_pagamento">
+										<div class="radio-tile">
+											<i class="tm-icon bi bi-phone-fill"></i>
+											<label for="car" style="font-size: 10px; text-align: center;">MULTICAIXA
+												Express</label>
+										</div>
+									</div>
 
 								</div>
 							</div>
-						</div>
+
+							<div class=" fruite">
+								<div class="tab-class">
+
+									<div class="row ">
+
+										<div class="p-2 ">
+											<h4 class="">Endereço de Entrega</h4>
+
+											<div class="p-4 rounded bg-light">
+												{{ municipio }}, {{ bairro }}, {{ rua }},
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="rounded">
 
 
-
-						<div class="rounded">
-
-							<div class="col-lg-12">
-								<div class="border-bottom rounded my-4">
+								<div class="border-bottom rounded my-2">
+									<h4 class="">Outras informações</h4>
 									<textarea id='cardnumber' v-model="instrucoes" id=""
-										class="form-control border-secondary " cols="30" rows="4"
+										class="form-control border-secondary " cols="20" rows="3"
 										placeholder="Adicionar informações adicionais aqui *"
 										spellcheck="false"></textarea>
 								</div>
+
 							</div>
+
+
+							<div class="form-group pt-2">
+								<div class="checkbox">
+									<label style="color: brown;"><input type="checkbox" value="" class="mr-2">
+										Li e
+										aceito os
+										termos
+										e condições</label>
+								</div>
+							</div>
+							<button class='button-cta' title='Confirmao seu pedido'
+								@click="finalizarpedido()"><span>FAZER PEDIDO</span></button>
 						</div>
-
-						<button class='button-cta' title='Confirm your purchase'><span>PURCHASE</span></button>
 					</div>
+
+
+
+
 				</div>
+			</div>
+		</div>
+
+		<div class='icon-credits'>Outlined icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> &
+			<a href="http://www.flaticon.com/authors/abhimanyu-rana" title="Abhimanyu Rana">Abhimanyu Rana</a> from <a
+				href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a
+				href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+				3.0
+				BY</a>
+		</div>
+	</div>
 
 
+	<div v-if="conforma === 'sim'">
 
-				<div id='paid' class='paid'>
-
-
-					<svg id='icon-paid' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-						version="1.1" x="0px" y="0px" viewBox="0 0 310.277 310.277"
-						style="enable-background:new 0 0 310.277 310.277;" xml:space="preserve" width="180px"
-						height="180px">
-						<g>
-							<path
-								d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139   c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437   l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z"
-								fill="#3ac569" />
-						</g>
-					</svg>
-					<h2>Your payment was completed.</h2>
-					<h2>Thank you!</h2>
-				</div>
-
-
+		<div id='paid' class='paid'>
+			<div class="paid-center">
+				<svg id='icon-paid' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+					version="1.1" x="0px" y="0px" viewBox="0 0 310.277 310.277"
+					style="enable-background:new 0 0 310.277 310.277;" xml:space="preserve" width="180px"
+					height="180px">
+					<g>
+						<path
+							d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139   c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437   l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z"
+							fill="#3ac569" />
+					</g>
+				</svg>
+				<h2>Sua Encomenda foi Enviador.</h2>
+				<h2>Obrigadoo!</h2>
 			</div>
 		</div>
 	</div>
 
-	<div class='icon-credits'>Outlined icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> &
-		<a href="http://www.flaticon.com/authors/abhimanyu-rana" title="Abhimanyu Rana">Abhimanyu Rana</a> from <a
-			href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a
-			href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
-			3.0
-			BY</a>
+	<div v-else>
+
 	</div>
-</div>
+	
 </div>

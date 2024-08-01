@@ -129,9 +129,9 @@
 
 
                                                 <div class="wrap">
-                                                    <button class="button" @click="awesome = !awesome">checkout</a>
+                                                    <a class="button" href="#/loja/checkout">checkout</a>
 
-                                                        <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
+                                                    <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
                                                         style="width: 100px; height: 100px; top: -20px; left: -50px;">
                                                         <div class="d-flex flex-column">
                                                             <span class="h4 mb-0">{{ totalCat }}</span>
@@ -139,13 +139,7 @@
                                                         </div>
                                                     </div>
 
-                                                </div>
-
-
-
-
-
-
+                                                </div> 
                                             </div>
                                         </div>
 
@@ -164,12 +158,6 @@
 
                         <!-- fim  Modal do carinho -->
 
-                        <div v-if="awesome">
-
-                            <p-checkout></p-checkout>
-
-                        </div>
-                        <div v-else></div>
 
 
 
